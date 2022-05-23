@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<!-- saved from url=(0209)file:///D:/chase's/stuff/ByteBeat/Chasyxx%20Player.html#v3b64q1YqTswtyEkNSixJVbIyNDAw0FFKyy/KLc1JVLJS0ijR0tAtsbMzVzPV1NIAMizUDIEsQzM1MxNNbZCAkZqhkblmTJ6+loJzfn6OgmG2R5WCU2piiYJTpYJ7aklKfk5BRmZeaoqPv4+Clr5SLQA= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="description" content="Bytebeat music is a very short single-line JS expressions generating musical output. Bytebeat composer is an algorhithmic music generator.">
+	<title>Chasyxx Enhanced</title>
+	<link rel="canonical" href="https://dollchan.net/bytebeat/index.html">
+	<link rel="shortcut icon" href="https://dollchan.net/bytebeat/favicon.png">
+	<link rel="stylesheet" type="text/css" href="./index_files/bytebeat.css">
+	<script type="text/javascript" async="" src="./index_files/analytics.js.download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script src="./index_files/pako.min.js.download"></script>
+	<script src="./index_files/bytebeat.js.download"></script>
+	<script src="./index_files/playlist.js.download"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async="" src="./index_files/js"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-118978685-1');
+	</script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
+	<p align="left"> Version 1.0 </p>
+	<div class="middle container-fixed">
+		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
+		<div align="center" style="border: 3px solid #00FF00 ; background-color:#007F00">
+			<div class="buttons-control">
+
+				<button onclick="byteBeat.rev()">◀</button>
+				<button onclick="byteBeat.down()">speed ▼</button>
+				<button onclick="byteBeat.pause()">||</button>
+				<button onclick="byteBeat.up()">speed ▲</button>
+				<button onclick="byteBeat.play()">▶</button>
+				<button onclick="byteBeat.stop()">■</button>
+				<button onclick="byteBeat.gotostart()">▩</button>
+				<button onclick="byteBeat.changeScale(true);">+</button>
+				<button onclick="byteBeat.changeScale(false);">-</button>
+				<button onclick="byteBeat.rec()">●</button>
+				<!--<select id="cons-change" onchange="byteBeat.setConstant(+this.selectedOptions[0].value); byteBeat.refeshCalc();"> <span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>
+		<option value="false">Non-Consant Update (less lag)</option>
+		<option value="true">Constant Update</option>
+	</select>-->
+				<select id="mode-change" onchange="byteBeat.setMode(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
+					<option value="0">Diagram</option>
+					<option value="1">Points</option>
+					<option value="2">Grid</option>
+					<option value="10">Anti-Lag (none)</option>
+				</select>
+
+				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
+					<option value="0">ByteBeat</option>
+					<option value="1">Signed</option>
+					<option value="2">Floatbeat</option>
+					<option value="3">BitBeat</option>
+				</select>
+				<select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
+					<option value="1000">1kHz</option>
+					<option value="1250">5/4kHz</option>
+					<option value="1378.225">1378.225Hz</option>
+					<option value="2000">2kHz</option>
+					<option value="2500">5/2kHz</option>
+					<option value="2756.25">2756.25Hz</option>
+					<option value="3000">3kHz</option>
+					<option value="4000">4kHz</option>
+					<option value="5000">5kHz</option>
+					<option value="5512.5">5512.5Hz</option>
+					<option value="6000">6kHz</option>
+					<option value="7000">7kHz</option>
+					<option value="8000">8kHz</option>
+					<option value="10000">10kHz</option>
+					<option value="11025">11kHz</option>
+					<option value="12000">12kHz</option>
+					<option value="16000">16kHz</option>
+					<option value="20000">20kHz</option>
+					<option value="22050">22kHz</option>
+					<option value="24000">24kHz</option>
+					<option value="32000">32kHz</option>
+					<option value="40000">40kHz</option>
+					<option value="44100">44kHz</option>
+					<option value="48000">48kHz</option>
+					<option value="64000">64kHz</option>
+					<option value="88200">88kHz</option>
+					<option value="96000">96kHz</option>
+					<option value="128000">128kHz</option>
+					<option value="256000">256kHz</option>
+					<option value="512000">512kHz</option>
+					<option value="1024000">1MHz</option>
+					<option value="2048000">2MHz</option>
+					<option value="4096000">4MHz</option>
+					<option value="8192000">8MHz</option>
+					<option value="16384000">16MHz</option>
+					<option value="32768000">32MHz</option>
+					<option value="65536000">65MHz</option>
+
+				</select>
+			</div>
+		</div>
+			<div id="error"></div>
+			<div id="canvas-container">
+				<canvas id="canvas-main" width="1024" height="256"></canvas>
+				<div id="timecursor" style="display: block; left: 0px;"></div>
+			</div>
+		</div>
+	<div class="middle container-scroll" align="center" style="max-height: 604px;">
+		<div id="button-info" class="button-toggle" style="border: 1px dotted #00C0ff">/Enhancements &amp; Update Log\</div>
+		<div id="info" class="paragraph" style="display: none;">
+			<p style="color: #FFFF00">⚠WARNING: When using grid mode, zoom out to the highest length. in V1.1, i plan to fix this bug.⚠</p>
+			<p align="center" style="border: 1px solid white">
+				UPDATE LOG<br>
+				Beta 1.0 [1]: "Basic" additions, First publicly released version<br>
+				Beta 1.1 [2]: Finished library.<br>
+				Beta 2.0 [3]: added SR variable and br() function (bit reversial function) <br>
+				Beta 3.0 [4]: Button speed controls ( -4, -2, -1, 0, 1, 2 ,4 ) <br>
+				Beta 3.1 [5]: Button speed controls 2 ( -1, speed-. 0, speed+, 1) + sinf, etc.<br>
+				Beta 4.0 [6]: Additon of BitBeat and other smaller changes. <br>
+				V1.0     [7]: Grid Mode was aded. everything is mostly complete! As a result, we left beta stages after only 6. This is moving quick!
+			</p>
+			<p align="center" style="border: 5px solid #00C0ff ; background-color: #00607f">
+				Super-Important<br>
+				Green/cyan = Positive Values <br>
+				Red/pink = Negative Values  <br>
+				( polarity does not invert brightness, only change the color. ) <br><br>
+
+				SR is the samplerate. Useful to bump songs to higher quality when appiicable, but songs will be bumped back to original quality before going in the library.<br>
+				br() bit reverses it's input.<br>
+			</p>
+			<p align="center" style="border: 3px dashed #808080">
+				Important<br>
+				The Advanced Freqency Options are added from the start of <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out! it's where the codes on here are!<br>
+				The blue reprsents the output divided by 256.<br>
+				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the freqency
+			</p>
+			<p align="center" style="border:1px dotted #3F3F3F">
+				General<br>
+				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
+				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
+			</p>
+		</div>
+			<div id="button-info" class="button-toggle">/Info\</div>
+			<div id="info" class="paragraph" style="display: none;">
+				<p>
+					Bytebeat music (or one-liner music) is discovered in september 2011. It's a piece of rhythmic and somewhat melodic music with no score, no instruments, and no real oscillators. It's simply a single-line formula that defines a waveform as a function of time, processed 8000 times per second, resulting in an audible waveform with a 256-step resolution from silence (0) to full amplitude (256). If you put that formula into a program with a loop that increments time variable (t), you can generate the headerless unsigned 8 bit mono 8kHz audio stream on output, like in this application. Or for example, you can generate PWM signal on the pin of your microcontroller and send it to the speaker.<br>
+					<a href="http://canonical.org/~kragen/bytebeat/" target="_blank">History of bytebeat</a>
+				</p>
+				<p>
+					Original blog posts and videos from Viznut:<br>
+					<a href="http://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html" target="_blank">Blog posts #1</a><br>
+					<a href="http://countercomplex.blogspot.com.au/search/label/algorithmic%20music" target="_blank">Blog posts #2</a><br>
+					<a href="https://www.youtube.com/watch?v=GtQdIYUtAHg" target="_blank">YouTube video #1</a><br>
+					<a href="https://www.youtube.com/watch?v=qlrs2Vorw2Y" target="_blank">YouTube video #2</a><br>
+					<a href="https://www.youtube.com/watch?v=tCRPUv8V22o" target="_blank">YouTube video #3</a>
+					<a href="https://www.youtube.com/watch?v=V4GfkFbDojc" target="_blank">YouTube video #4</a>
+				</p>
+				<p>
+					On-line JavaScript players:<br>
+					<a href="http://entropedia.co.uk/generative_music/" target="_blank">Player by Paul Hayes</a><br>
+					Unfourtanately, the Wurst player is down.
+				</p>
+				<p>
+					Here on this page you can play with the collection of one-liner bytebeat music formulas that I found on the internet (<a href="https://github.com/eclectics/ardcore/blob/master/e16_oneliner.ino" target="_blank">1</a>,
+					<a href="https://github.com/erlehmann/algorithmic-symphonies/" target="_blank">2</a>,
+					<a href="https://github.com/kragen/viznut-music/" target="_blank">3</a>,
+					<a href="http://www.pouet.net/topic.php?which=8357&amp;page=1" target="_blank">4</a>) and which I discovered through experimentation, trial-and-error testing and piece-by-piece constructing.<br>
+				</p>
+			</div>
+			<div id="button-library" class="button-toggle" title="Songs from verious scources">/Library\</div>
+			<div id="library" class="paragraph">
+				<div id="button-library-common" class="button-toggle" title="Fourmulas found on the internet">/Common\</div>
+				<div id="library-common" class="paragraph">
+					<div id="button-library-classic8k" class="button-toggle" title="8kHz rate songs in C">
+						&nbsp;-{C Compatible}-
+					</div>
+					<div id="library-classic8k" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								by Bear @ Celephais<br>
+								<code title="Click to play this code">t&gt;&gt;6^t&amp;37|t+(t^t&gt;&gt;11)-t*((t%24?2:6)&amp;t&gt;&gt;11)^t&lt;&lt;1&amp;(t&amp;598?t&gt;&gt;4:t&gt;&gt;10)</code> ★
+							</li>
+							<li>
+								By Tejeez:<br>
+								Noisy Beats:<br> <code>((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14))</code><br>
+							</li>
+							<li>
+								Viznut-like<br>
+								Sin Isn't kosher, People: <code title="Click to play this code">10*(t&gt;&gt;6|t|t&gt;&gt;(t&gt;&gt;16))+(7&amp;t&gt;&gt;11)</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>  by <a href="https://youtu.be/qlrs2Vorw2Y?t=15s" target="_blank">Viznut</a><br>
+								Combined xPansive and varajohukka's stuff: '<code title="Click to play this code">10*(t&gt;&gt;6|t|t&gt;&gt;7)+4*(t&amp;t&gt;&gt;13|t&gt;&gt;6)</code> <span class="yellow">★</span> by <a href="https://youtu.be/qlrs2Vorw2Y?t=2m31s" target="_blank">Viznut, Xpansive, Varjohukka</a><br>
+								<code title="Click to play this code">10*(t&gt;&gt;7|3*t|t&gt;&gt;(t&gt;&gt;15))+(t&gt;&gt;8&amp;5)</code> - Frere Jacques (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=7#c388764" target="_blank">Lord Graga</a>)
+							</li>
+							<li>
+								by Stimmer<br>
+								<code title="Click to play this code">(128&amp;t*(4|7&amp;t&gt;&gt;13)&gt;&gt;(1&amp;-t&gt;&gt;11))+(127&amp;t*(t&gt;&gt;11&amp;t&gt;&gt;13)*(3&amp;-t&gt;&gt;9))</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Street Surfer (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=4#c388479" target="_blank">Skurk</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=4#c388494" target="_blank">Raer</a>)<br>
+								<code title="Click to play this code">t&amp;4096?(t*(t^t%255)|t&gt;&gt;4)&gt;&gt;1:t&gt;&gt;3|(t&amp;8192?t&lt;&lt;2:t)</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=4#c388503" target="_blank">Varjohukka</a><br>
+								<code>(t&amp;8192?t&amp;4096?t&amp;1024?2*t:4*t:t&amp;512?4*t:4.2*t:(t&amp;4096?t&amp;1024?2*t:10*t:t&amp;512?2*t:8*t)&gt;&gt;2)*(t&amp;16384?3:2)|t*(t&amp;16384?.125:1/(.01*t))</code><br>
+								<code title="Click to play this code">(t&amp;8192?t&amp;4096?t&amp;1024?2*t:4*t:t&amp;512?4*t:4.2*t:(t&amp;4096?t&amp;1024?2*t:10*t:t&amp;512?2*t:8*t)&gt;&gt;2)*(t&amp;16384?3:2)</code> - simplified
+							</li>
+							<li>
+								Varjohukka + Street Surfer (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=4#c388504" target="_blank">Raer</a>)<br>
+								<code title="Click to play this code">(t&amp;4096?(t*(t^t%255)|t&gt;&gt;4)&gt;&gt;1:t&gt;&gt;3|(t&amp;8192?t&lt;&lt;2:t))^((t&amp;8192?t&amp;4096?t&amp;1024?2*t:4*t:t&amp;512?4*t:4.2*t:(t&amp;4096?t&amp;1024?2*t:10*t:t&amp;512?2*t:8*t)&gt;&gt;2)*(t&amp;16384?3:2)|t*(t&amp;16384?.125:1/(.01*t))&gt;&gt;1)</code> ★
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=6#c388670" target="_blank">Paralax</a><br>
+								<code>10*(t&amp;5*t|t&gt;&gt;6|(t&amp;32768?-6*t/7:(t&amp;65536?-9*t&amp;100:-9*(t&amp;100))/11))</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Electrohouse<br>
+								<code title="Click to play this code">t&gt;&gt;t%(t%2?t&amp;32768?41:t&amp;16384?51:61:34)&amp;t&gt;&gt;4</code> ★
+							</li>
+							<li>
+								Running man (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388930" target="_blank">Viznut</a>)<br>
+								<code title="Click to play this code">t*(3+(1^5&amp;t&gt;&gt;10))*(5+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Sierpinski harmony<br>
+								<code title="Click to play this code">5*t&amp;t&gt;&gt;7|3*t&amp;4*t&gt;&gt;10</code> ★ by <a href="https://youtu.be/qlrs2Vorw2Y?t=2m14s" target="_blank">Miiro</a><br>
+								<code title="Click to play this code">(9*t&amp;t&gt;&gt;4|5*t&amp;t&gt;&gt;7|3*t&amp;t&gt;&gt;10)</code> ★ by <a href="https://news.ycombinator.com/item?id=3064986" target="_blank">Stephth</a><br>
+								<code title="Click to play this code">(9*t&amp;t&gt;&gt;4|5*t&amp;t&gt;&gt;7|3*t&amp;t&gt;&gt;10)-1</code> - with drums<br>
+								<code>9*t&amp;t&gt;&gt;4|5*t&amp;t&gt;&gt;7|(3*t&amp;t&gt;&gt;10)-1</code> - by <a href="https://github.com/radavis/bytebeat/blob/master/errie_error.c" target="_blank">Radavis</a>
+							</li>
+							<li>
+								CA98 (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388902" target="_blank">Rrola</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388929" target="_blank">Ryg</a>)<br>
+								<code title="Click to play this code">t*(0xCA98CA98&gt;&gt;(t&gt;&gt;9&amp;30)&amp;15)|t&gt;&gt;8</code><br>
+								<code title="Click to play this code">t*(0xCA98&gt;&gt;(t&gt;&gt;9&amp;14)&amp;15)|t&gt;&gt;8</code> ★
+							</li>
+							<li>
+								Bassline (by Tejeez)<br>
+								<code>(-t&gt;&gt;2)*((127&amp;t*(7&amp;t&gt;&gt;10))&lt;(245&amp;t*(2+(5&amp;t&gt;&gt;14))))</code> ★
+							</li>
+							<li>
+								Crowd (by <a href="https://github.com/erlehmann/algorithmic-symphonies/blob/master/crowd/" target="_blank">Erlehmann</a>)<br>
+								<code title="Click to play this code">t&lt;&lt;1^(t&lt;&lt;1)+(t&gt;&gt;7)&amp;t&gt;&gt;12|t&gt;&gt;4-(1^7&amp;t&gt;&gt;19)|t&gt;&gt;7</code>
+							</li>
+							<li>
+								by <a href="https://chipmusic.org/%C2%B5b/music/one-liner/" target="_blank">µB</a><br>
+								<code>64*(t&gt;&gt;3|t&gt;&gt;4|t&gt;&gt;9)+(t&gt;&gt;11&amp;t&lt;&lt;2)^2*(t&gt;&gt;16|t|t&gt;&gt;7)+32*(t&gt;&gt;t&amp;32)</code>
+							</li>
+							<li>
+								Old noisy beat (by <a href="http://www.reddit.com/r/programming/comments/kyj77/algorithmic_symphonies_from_one_line_of_code_how/" target="_blank">Lucasvb</a>)<br>
+								<code>(t&gt;&gt;6|t&lt;&lt;1)+(t&gt;&gt;5|t&lt;&lt;3|t&gt;&gt;3)|t&gt;&gt;2|t&lt;&lt;1</code>
+							</li>
+							<li>
+								Computing... (by Bear &amp; Celephais)<br>
+								<code>t+(t&amp;t^t&gt;&gt;6)-t*(t&gt;&gt;9&amp;(t%16?2:6)&amp;t&gt;&gt;9)</code>
+							</li>
+							<li>
+								Moon scanner (by Viznut &amp; Jaffa)<br>
+								<code>2*(t&gt;&gt;5&amp;t)-(t&gt;&gt;5)+t*(t&gt;&gt;14&amp;14)</code> ★
+							</li>
+							<li>
+								Fractal trees (by Danharaj &amp; 216)<br>
+								<code>t|t%255|t%257</code>
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=10#c388999" target="_blank">Droid</a><br>
+								<code>t&gt;&gt;6&amp;1?t&gt;&gt;5:-t&gt;&gt;4</code>
+							</li>
+							<li>
+								The fall of Derp Herp (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=10#c388980" target="_blank">Marmakoide</a>)<br>
+								<code>t*(0x13371337&gt;&gt;(t&gt;&gt;13&amp;27)&amp;127)|t&gt;&gt;4|t&lt;&lt;5</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Zemfira (by Anonymous)<br>
+								<code>430*(5*t&gt;&gt;11|5*t&gt;&gt;1)</code> ★
+							</li>
+							<li>
+								Mr. arpeggiator playing a solo (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=5#c388569" target="_blank">Tonic</a>)<br>
+								<code>t/8&gt;&gt;(t&gt;&gt;9)*t/((t&gt;&gt;14&amp;3)+4)</code>
+							</li>
+							<li>
+								The 42 melody<br>
+								<code>t*(42&amp;t&gt;&gt;10)</code>
+							</li>
+							<li>
+								A jaunty tune (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=17#c389829" target="_blank">Ryg</a>)<br>
+								<code>(t*(t&gt;&gt;12)*64+(t&gt;&gt;1)*(t&gt;&gt;10)*(t&gt;&gt;11)*48)&gt;&gt;(((t&gt;&gt;16)|(t&gt;&gt;17))&amp;1)</code>
+							</li>
+							<li>
+								Arcade game (by <a href="http://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html?showComment=1318497618021#c332012386255047591" target="_blank">Niklas Roy</a>)<br>
+								<code>t*((t&gt;&gt;9|t&gt;&gt;13)&amp;15)&amp;129</code><br>
+								<code>t*(t&gt;&gt;9|t&gt;&gt;13)&amp;16</code> - Clean melody<br>
+								<code>9*(t*((t&gt;&gt;9|t&gt;&gt;13)&amp;15)&amp;16)</code> - Louder clean melody
+							</li>
+							<li>
+								Modem melody (by Krcko)<br>
+								<code>(t&amp;t&gt;&gt;12)*(t&gt;&gt;4|t&gt;&gt;8)</code> ★<br>
+								<code>(t-(t&gt;&gt;4&amp;t&gt;&gt;8)&amp;t&gt;&gt;12)-1</code> - by <a href="https://www.reddit.com/r/bytebeat/comments/20km9l/cool_equations/" target="_blank">[deleted]</a>
+							</li>
+							<li>
+								Good old fractal melody (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=12#c389114" target="_blank">Blueberry</a>)<br>
+								<code>(t&gt;&gt;9^(t&gt;&gt;9)-1^1)%13*t</code>
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401680" target="_blank">Yehar</a><br>
+								<code>t&gt;&gt;4+!(-t&gt;&gt;13&amp;7)+2*!(t&gt;&gt;17)|t*t*(t&gt;&gt;(t&gt;&gt;12^t&gt;&gt;11)%3+10)/(7+(t&gt;&gt;10&amp;t&gt;&gt;14&amp;3))*!(t&amp;512)&lt;&lt;3+(t&gt;&gt;14&amp;1)</code><br>
+								<code>t&gt;&gt;4|t*t*(t&gt;&gt;6&amp;8^8)*(t&gt;&gt;11^t/3&gt;&gt;12)/(7+(t&gt;&gt;10&amp;t&gt;&gt;14&amp;3))</code> ★ <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401690" target="_blank">a bare-bones version</a>
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=20#c401561" target="_blank">Yehar</a><br>
+								<code>t*(t&gt;&gt;(t&gt;&gt;11&amp;15))*(t&gt;&gt;9&amp;1)&lt;&lt;2</code>
+							</li>
+							<li>
+								Lemmings March (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=7#c388798" target="_blank">Marmakoide</a>)<br>
+								<code>t&gt;&gt;5|t&lt;&lt;4|t&amp;1023^1981|t-67&gt;&gt;4</code>
+							</li>
+							<li>
+								Sneezing modem<br>
+								<code>100*((t&lt;&lt;2|t&gt;&gt;5|t^63)&amp;(t&lt;&lt;10|t&gt;&gt;11))</code>
+							</li>
+							<li>
+								Noisy beats (by <a href="https://youtu.be/GtQdIYUtAHg?t=2m55s" target="_blank">Tejeez</a>)<br>
+								<code>((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14))</code>
+							</li>
+							<li>
+								8-bit Atari inspired sounds (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=13#c389250" target="_blank">Visy</a>)<br>
+								<code>t%25+(t&gt;&gt;2|15*t)+t&gt;&gt;3</code> - simplified version
+							</li>
+							<li>
+								by <a href="http://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html?showComment=1318368575135#c8615755234789420078" target="_blank">Ola</a><br>
+								<code>2*(1-(t+10&gt;&gt;(t&gt;&gt;9&amp;t&gt;&gt;14)&amp;t&gt;&gt;4&amp;-2))*((t&gt;&gt;10^t+(t&gt;&gt;6&amp;127)&gt;&gt;10)&amp;1)*32+128</code>
+							</li>
+							<li>
+								Robot out of control (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=6#c388680" target="_blank">Frenzy</a>)<br>
+								<code>(t&amp;64|t&gt;&gt;5)^(t&amp;33|t&gt;&gt;8)^(t&amp;14|t&gt;&gt;9|t&amp;76)^(t|187)^t*(t&gt;&gt;8&amp;838+t&gt;&gt;13)&amp;644</code> ★
+							</li>
+							<li>
+								One million alarm clocks (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401895" target="_blank">Yehar</a>)<br>
+								<code>t*t/(t&gt;&gt;12&amp;t&gt;&gt;8)&lt;&lt;7</code> ★
+							</li>
+							<li>
+								by Xpansive<br>
+								<code>t%(t/(t&gt;&gt;9|t&gt;&gt;13))</code> - by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401775" target="_blank">Xpansive</a><br>
+								<code>t*(t&gt;&gt;8|t&gt;&gt;9)&amp;46&amp;t&gt;&gt;8^(t&amp;t&gt;&gt;13|t&gt;&gt;6)</code> - <a href="http://www.pouet.net/topic.php?which=8357&amp;page=3#c388375" target="_blank">Lost in Space</a>
+							</li>
+							<li>
+								C64 weird jumps (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=8#c388896" target="_blank">Skurk</a>)<br>
+								<code>t*(t&gt;&gt;(t&amp;4096?t*t&gt;&gt;12:t&gt;&gt;12))|t&lt;&lt;(t&gt;&gt;8)|t&gt;&gt;4</code>
+							</li>
+							<li>
+								Oh the headaches (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=2#c388363" target="_blank">Sub</a>)<br>
+								<code>t&gt;&gt;5|(t&lt;&lt;3)+12*t*(t&gt;&gt;13|(t&gt;&gt;1|t&gt;&gt;10|t&gt;&gt;2)&amp;t&gt;&gt;8)</code>
+							</li>
+							<li>
+								by <a href="https://chipmusic.org/forums/post/79378/#p79378" target="_blank">Godinpants</a><br>
+								<code>t/3&gt;&gt;t%40+5|t/(24+t&amp;3)&gt;&gt;t%(15-(t&gt;&gt;15)%8*6)+5</code><br>
+								<code>t/3&gt;&gt;1|t/2&gt;&gt;2&amp;t/5&gt;&gt;7|t&amp;31*t*(t&gt;&gt;8)</code>
+							</li>
+							<li>
+								Harmonics phone<br>
+								<code title="Click to play this code">t*(4+(t&gt;&gt;9)%3)&amp;t/3&gt;&gt;7&amp;224</code>
+							</li>
+							<li>
+								Explosions<br>
+								<code>t&gt;&gt;5|(t&gt;&gt;2)*(t&gt;&gt;5)</code>
+							</li>
+							<li>
+								Driving my 8 bit car (by <a href="https://www.reddit.com/r/bytebeat/comments/7e7a61/t6t4300xccdd1000_11khz_infix/" target="_blank">Direm01</a>)<br>
+								<code>0xCCDD*((t&gt;&gt;6)*t&gt;&gt;430)%0x1E3</code> ★
+							</li>
+							<li>
+								by Harism<br>
+								<code>3*((t&gt;&gt;1)+20)*t&gt;&gt;14*t&gt;&gt;18</code>
+							</li>
+							<li>
+								by <a href="https://www.reddit.com/r/bytebeat/comments/20km9l/cool_equations/" target="_blank">[Deleted]</a><br>
+								<code>t%50.01+t%40.1+t%30.1+t%60.01</code> - "Harmony". Based off of mu6k's "Long Line Theory"<br>
+								<code>(((t&amp;t*5)|t&gt;&gt;4)+(t|t&gt;&gt;4*t&lt;&lt;8-1))^t&gt;&gt;12</code> ★ Wip<br>
+								<code>t/(t%(t&gt;&gt;8|t&gt;&gt;16))</code> ★ Extremely loud grinding machine<br>
+								<code>t*t/(1+(t&gt;&gt;9&amp;t&gt;&gt;8))&amp;128</code> ★ Everything is broken<br>
+								<code>t*((t/401)^(t/400))</code> - It wont stop<br>
+								<code>t*-(t&gt;&gt;8|t|t&gt;&gt;9|t&gt;&gt;13)^t</code> - Ststututterter<br>
+								<code>(t/91&amp;t^t/90&amp;t)-1</code> - Waiver<br>
+								<code>t*t/(t&gt;&gt;13^t&gt;&gt;8)</code> - Glissando<br>
+								<code>((t/4)&gt;&gt;t/4)|(t&gt;&gt;2)</code> - Plucker v2
+							</li>
+							<li>
+								by <a href="https://www.noisebridge.net/wiki/Bytebeat" target="_blank">noisebridge.net</a><br>
+								<code>t*(1+(t&gt;&gt;10)*(43+2*(t&gt;&gt;15-(t&gt;&gt;16)%13)%8)%8)*(1+(t&gt;&gt;14)%4)</code><br>
+								<code>11*(t*(1|(t&gt;&gt;10-(t&gt;&gt;17)%4)%8)&amp;(8&lt;&lt;(t&gt;&gt;13)%4)*(1|(t&gt;&gt;15)%8))*(t&gt;&gt;10)</code><br>
+								<code>(t&gt;&gt;(t&gt;&gt;12)%4)+t*(1+(1+(t&gt;&gt;16)%6)*(t&gt;&gt;10)*(t&gt;&gt;11)%8)^t&gt;&gt;13^t&gt;&gt;6</code><br>
+								<code>(t*(t&gt;&gt;13|t&gt;&gt;8)|t&gt;&gt;16^t)-64</code><br>
+								<code>(~t&gt;&gt;2)*(2+(42&amp;2*t*(7&amp;t&gt;&gt;10))&lt;(24&amp;t*((3&amp;t&gt;&gt;14)+2)))</code><br>
+								<code>(1+(t&gt;&gt;10)%7)*(t*(1+(t&gt;&gt;13)%4)%(24+9*(t&gt;&gt;14)%8)&amp;16)*10</code><br>
+								<code>t*(3+(t&gt;&gt;10)%(4+(t&gt;&gt;11)%8))|t&gt;&gt;5</code><br>
+								<code>t^t&gt;&gt;4^(t*((t&gt;&gt;(11+(t&gt;&gt;16)%3))%16))^t*3</code><br>
+								<code>t&lt;&lt;3+(t&gt;&gt;10)%3^t&gt;&gt;4+(t&gt;&gt;12)%4^t**(2+(t&gt;&gt;13)%8)</code>
+							</li>
+							<li>
+								by <a href="https://youtu.be/tCRPUv8V22o?t=345" target="_blank">216</a><br>
+								<code>t*(t^t+(t&gt;&gt;15|1)^(t-1280^t)&gt;&gt;10)</code>
+							</li>
+							<li>
+								New Sawtooth Music (by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc" target="_blank">Gabriel Miceli</a>)<br>
+								<code>t*((t-2296&amp;t)&gt;&gt;11)</code>
+							</li>
+							<li>
+								Triangle waves (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389010" target="_blank">Ryg</a>)<br>
+								<code>(t&lt;&lt;5)^-(t&gt;&gt;3&amp;1)</code> - The general form is (t&lt;&lt;N)^-(t&lt;&lt;(N-8)&amp;1)<br>
+								<code>(t&lt;&lt;4)^-(t&gt;&gt;4&amp;1)</code><br>
+								<code>(t&lt;&lt;3)^-(t&gt;&gt;5&amp;1)</code>
+							</li>
+							<li>
+								SIN non-math (by <a href="https://github.com/erlehmann/algorithmic-symphonies/blob/master/sine-nomath/" target="_blank">Erlehmann</a>)<br>
+								<code>(t&amp;15)*(0-t&amp;15)*(((t&amp;16)&gt;&gt;3)-1)*128/65+128</code>
+							</li>
+						</ul>
+					</div>
+					<div id="button-library-js8k" class="button-toggle" title=" Javescript 8kHz code not compatible with C.">
+						&nbsp;-{JS 8k}-
+					</div>
+					<div id="library-js8k" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								No Limit (non-SIN version) (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388931" target="_blank">Mu6k</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=10#c388986" target="_blank">Ryg</a>)<br>
+								<code>128/(y=t&amp;4095)*25+(x=t*(15&amp;0x9866&gt;&gt;(t&gt;&gt;12&amp;12))/6&amp;127)*y/1E4+((t&gt;&gt;6^t&gt;&gt;8|t&gt;&gt;12|x)&amp;63)</code> ★
+							</li>
+							<li>
+								by <a href="https://www.reddit.com/r/bytebeat/comments/20km9l/cool_equations/" target="_blank">[Deleted]</a><br>
+								<code>w=[1,2,3,4,3,4,1][(t&gt;&gt;13)%7]*t,(w%50.01+w%40.1+w%30.1+w%60.01)</code> <span class="yellow">★</span> "Harmony v2". Based off of mu6k's "Long Line Theory"<br>
+								<code>a=[1,1,2,3,1,1,2,3,1,1,2,4,4,4,5,5,5][(t&gt;&gt;12)%17],b=[5,4,3,2][(t&gt;&gt;16)%4],(t*b/a)%50.1+(t*b/a)%50</code> - Array song<br>
+								<code>Math.sin(Math.sin(t/100)-t/((2+(t&gt;&gt;10&amp;t&gt;&gt;12)%9)))*64+128</code> - Trill
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401841" target="_blank">Mu6k</a><br>
+								<code>u=10^(t&gt;&gt;15&amp;7),u+=3,y=(t&gt;&gt;11&amp;7)/u,f=t*8*y,z=(t*16/u)&amp;0x63|f|f*1.01,z*2</code> ★
+							</li>
+							<li>
+								by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc" target="_blank">Gabriel Miceli</a><br>
+								<code>d=t*465/(43+6*(t&gt;&gt;15&amp;3^1)),((d/4&amp;t&gt;&gt;6)+d/2&amp;127)+(d/6&amp;127)</code> <span class="yellow">★</span> Now this actually sounds pretty cool<br>
+								<code title="Click to play this code">d=t&gt;&gt;12&amp;1,h=(t&gt;&gt;9)+4,(t*t*(t&amp;255)*d/156+(t*(t^15)+t)*((h|t/2048+1&amp;127)-h)/64&amp;127-d*((t&gt;&gt;5&amp;127)*2/3+32))</code> ★ Crazy Groovy Beats 2
+							</li>
+							<li>
+								Industrial chiptune (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389003" target="_blank">Rez</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389005" target="_blank">Ryg</a>)<br>
+								<code>t*(1+"4451"[t&gt;&gt;13&amp;3]/10)&amp;t&gt;&gt;9+(.003*t&amp;3)</code>
+							</li>
+							<li>
+								ripthisentry.txt, tune#3 (by <a href="https://battleofthebits.org/arena/Entry/ripthisentry.txt/32559/" target="_blank">raphaelgoulart</a>)<br>
+								<code title="Click to play this code">n=[1,0,1,0,2,2,1,0,1,0,2,2,1,0,2,2],freq=n[Math.floor(t/500)%16]*2,mod=t/15e3,Math.sin(t*freq/40.7+Math.sin(t*freq/40.7)*mod)*64+64</code>
+							</li>
+							<li>
+								Never Gonna Give You Up (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=12#c389109" target="_blank">Gasman</a>)<br>
+								<code title="Click to play this code">(t&lt;&lt;3)*[8/9,1,1.125,1.2,4/3,1.5,0][[0xd2d2c8,0xce4088,0xca32c8,0x8e4009][t&gt;&gt;14&amp;3]&gt;&gt;3*(0x3dbe4688&gt;&gt;3*(9&lt;(t&gt;&gt;10&amp;15)?18:t&gt;&gt;10&amp;15)&amp;7)&amp;7]</code> ★
+							</li>
+							<li>
+								Constructivist (by <a href="https://news.ycombinator.com/item?id=3064980" target="_blank">A1k0n</a>)<br>
+								<code title="Click to play this code">SS=function(s,o,r,p){var&nbsp;c=s.charCodeAt((t&gt;&gt;r)%p);return&nbsp;c==95?0:31&amp;t*Math.pow(2,c/12-o)},3*SS("0_0_____7_7_____037:&lt;&lt;",6,10,32)+5*(t&amp;4096?SS("037",4,8,3)*(4096-(t&amp;4095))&gt;&gt;12:0)</code>
+							</li>
+							<li>
+								Earl Grey Groove (by <a href="http://battleofthebits.org/arena/Entry/Earl+Grey+Groove/20500/" target="_blank">Savestate</a>)<br>
+								<a class="prettycode-toggle">Toggle pretty code</a><code>((<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;abcdeghi&nbsp;is&nbsp;what&nbsp;bar&nbsp;you're&nbsp;currently&nbsp;on&nbsp;in&nbsp;the&nbsp;stepper,&nbsp;which&nbsp;is&nbsp;s.<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;s&nbsp;rises&nbsp;very&nbsp;slowly&nbsp;relative&nbsp;to&nbsp;t.&nbsp;we&nbsp;set&nbsp;it&nbsp;to&nbsp;step&nbsp;0-7&nbsp;inclusive<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;for&nbsp;each&nbsp;step&nbsp;in&nbsp;the&nbsp;bars&nbsp;(0-7)&nbsp;we&nbsp;assign&nbsp;a&nbsp;letter&nbsp;variable&nbsp;to&nbsp;it<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;save&nbsp;space.&nbsp;This&nbsp;is&nbsp;the&nbsp;bass&nbsp;note&nbsp;layout&nbsp;for&nbsp;each&nbsp;bar.<br>&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;=&nbsp;(s&nbsp;=&nbsp;Math.floor(t&nbsp;/&nbsp;9600&nbsp;%&nbsp;8))&nbsp;==&nbsp;0)&nbsp;*&nbsp;(y&nbsp;=&nbsp;t&nbsp;*&nbsp;2)&nbsp;*&nbsp;1.5873&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;=&nbsp;(s&nbsp;==&nbsp;1))&nbsp;*&nbsp;y&nbsp;*&nbsp;(v&nbsp;=&nbsp;1.4983)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(c&nbsp;=&nbsp;(s&nbsp;==&nbsp;2))&nbsp;*&nbsp;y&nbsp;*&nbsp;v&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(d&nbsp;=&nbsp;(s&nbsp;==&nbsp;3))&nbsp;*&nbsp;y&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(e&nbsp;=&nbsp;(s&nbsp;==&nbsp;4))&nbsp;*&nbsp;y&nbsp;*&nbsp;1.5873&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(g&nbsp;=&nbsp;(s&nbsp;==&nbsp;5))&nbsp;*&nbsp;y&nbsp;*&nbsp;v&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(h&nbsp;=&nbsp;(s&nbsp;==&nbsp;6))&nbsp;*&nbsp;y&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;=&nbsp;(s&nbsp;==&nbsp;7))&nbsp;*&nbsp;y<br>)&nbsp;%&nbsp;(m&nbsp;=&nbsp;256)&nbsp;+<br>(<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;u&nbsp;is&nbsp;an&nbsp;octave&nbsp;frequency,&nbsp;4x&nbsp;the&nbsp;frequency&nbsp;of&nbsp;y&nbsp;(bass&nbsp;line)&nbsp;which&nbsp;is&nbsp;2x&nbsp;the&nbsp;frequency&nbsp;of&nbsp;t&nbsp;(raw&nbsp;counter&nbsp;%&nbsp;256)<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;constant&nbsp;multipliers&nbsp;above&nbsp;and&nbsp;below&nbsp;are&nbsp;derived&nbsp;from&nbsp;the&nbsp;formula<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;as&nbsp;described&nbsp;on&nbsp;http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;to&nbsp;solve&nbsp;for&nbsp;a&nbsp;note&nbsp;offset,&nbsp;plug&nbsp;a&nbsp;constant&nbsp;into&nbsp;the&nbsp;formula&nbsp;f/(12th&nbsp;root&nbsp;of&nbsp;2)<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;notice&nbsp;how&nbsp;we're&nbsp;using&nbsp;multiple&nbsp;bar&nbsp;identifier&nbsp;for&nbsp;the&nbsp;same&nbsp;notes.<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;this&nbsp;is&nbsp;another&nbsp;code&nbsp;shrinker.<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;also,&nbsp;v&nbsp;is&nbsp;=&nbsp;to&nbsp;1.4983.&nbsp;I&nbsp;just&nbsp;used&nbsp;it&nbsp;so&nbsp;much<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;the&nbsp;song&nbsp;I&nbsp;replaced&nbsp;it&nbsp;with&nbsp;a&nbsp;variable.<br>&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;|&nbsp;e)&nbsp;*&nbsp;(u&nbsp;=&nbsp;y&nbsp;*&nbsp;4)&nbsp;*&nbsp;v&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;|&nbsp;c&nbsp;|&nbsp;g&nbsp;|&nbsp;h)&nbsp;*&nbsp;1.3348&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;*&nbsp;0.8908&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;*&nbsp;1.2599<br>&nbsp;&nbsp;&nbsp;&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;above&nbsp;is&nbsp;equivalent&nbsp;to<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;u*(<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;0)&nbsp;*&nbsp;1.4983&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;1)&nbsp;*&nbsp;1.3348&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;2)&nbsp;*&nbsp;1.3348&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;3)&nbsp;*&nbsp;0.8908&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;4)&nbsp;*&nbsp;1.4983&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;5)&nbsp;*&nbsp;1.3348&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;6)&nbsp;*&nbsp;1.3348&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;(s&nbsp;==&nbsp;7)&nbsp;*&nbsp;1.2599<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;)<br>)&nbsp;%&nbsp;m&nbsp;+&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;+&nbsp;(a&nbsp;|&nbsp;e)&nbsp;*&nbsp;1.1892&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;|&nbsp;c&nbsp;|&nbsp;g&nbsp;|&nbsp;h)&nbsp;*&nbsp;1.1224&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;*&nbsp;v<br>&nbsp;&nbsp;&nbsp;&nbsp;)<br>)&nbsp;%&nbsp;m&nbsp;+&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;|&nbsp;e)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;|&nbsp;g&nbsp;|&nbsp;h)&nbsp;*&nbsp;0.8908&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;*&nbsp;0.9438&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;*&nbsp;1.1892&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;*&nbsp;0.7491<br>&nbsp;&nbsp;&nbsp;&nbsp;)<br>)&nbsp;%&nbsp;m&nbsp;+&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a&nbsp;|&nbsp;e)&nbsp;*&nbsp;0.7937&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b&nbsp;|&nbsp;c&nbsp;|&nbsp;g&nbsp;|&nbsp;h)&nbsp;*&nbsp;0.7491&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;/&nbsp;2&nbsp;+&nbsp;i&nbsp;*&nbsp;0.627<br>&nbsp;&nbsp;&nbsp;&nbsp;)<br>)&nbsp;%&nbsp;m)&nbsp;/&nbsp;8&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;now&nbsp;this&nbsp;is&nbsp;where&nbsp;the&nbsp;gating/chord&nbsp;groove&nbsp;happens<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;during&nbsp;the&nbsp;duration&nbsp;of&nbsp;the&nbsp;8&nbsp;bars&nbsp;above,&nbsp;there's<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;96&nbsp;steps.&nbsp;w&nbsp;represents&nbsp;each&nbsp;step&nbsp;as&nbsp;it&nbsp;occurs.<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;as&nbsp;the&nbsp;number&nbsp;'1'&nbsp;is&nbsp;bitshifted&nbsp;through&nbsp;each&nbsp;set<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;of&nbsp;hex&nbsp;numbers,&nbsp;if&nbsp;it&nbsp;lines&nbsp;up&nbsp;with&nbsp;another&nbsp;1,&nbsp;it<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;will&nbsp;activate&nbsp;the&nbsp;above&nbsp;chord&nbsp;to&nbsp;be&nbsp;played&nbsp;by<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;evaluating&nbsp;to&nbsp;1,&nbsp;otherwise,&nbsp;it&nbsp;will&nbsp;be&nbsp;zero&nbsp;and<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;mute&nbsp;the&nbsp;above&nbsp;chords.<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;I'm&nbsp;not&nbsp;doing&nbsp;any&nbsp;sort&nbsp;of&nbsp;fancy&nbsp;tempo&nbsp;changes&nbsp;for&nbsp;the&nbsp;groove<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;er,&nbsp;i&nbsp;guess&nbsp;the&nbsp;best&nbsp;way&nbsp;to&nbsp;show&nbsp;how&nbsp;the&nbsp;groove&nbsp;works&nbsp;is&nbsp;with&nbsp;a<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;pseudo&nbsp;tracker&nbsp;interface<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;C-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;---&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;D-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;C-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;---&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;D-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;E-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;---&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;G-5&nbsp;--<br>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;manual&nbsp;swing&nbsp;i&nbsp;guess&nbsp;you&nbsp;can&nbsp;call&nbsp;it<br>&nbsp;&nbsp;&nbsp;&nbsp;(((w&nbsp;=&nbsp;Math.floor(t&nbsp;/&nbsp;800&nbsp;%&nbsp;96))&nbsp;&lt;&nbsp;32)&nbsp;*&nbsp;(1&nbsp;&lt;&lt;&nbsp;w&nbsp;&amp;&nbsp;0xC007307)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;&gt;=&nbsp;32&nbsp;&amp;&amp;&nbsp;w&nbsp;&lt;&nbsp;64)&nbsp;*&nbsp;(1&nbsp;&lt;&lt;&nbsp;w&nbsp;&amp;&nbsp;0x73070E70)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;&gt;&nbsp;64)&nbsp;*&nbsp;(1&nbsp;&lt;&lt;&nbsp;w&nbsp;&amp;&nbsp;0xE70C400))&nbsp;!=&nbsp;0<br>)&nbsp;+<br><br>//&nbsp;noise&nbsp;generators<br>(t&nbsp;*&nbsp;Math.sin(t&nbsp;*&nbsp;Math.cos(t))&nbsp;%&nbsp;18&nbsp;+&nbsp;25)&nbsp;*&nbsp;((1&nbsp;&lt;&lt;&nbsp;(t&nbsp;/&nbsp;200&nbsp;%&nbsp;24)&nbsp;&amp;&nbsp;1052928)&nbsp;!=&nbsp;0)&nbsp;+<br>(t&nbsp;*&nbsp;Math.sin(t&nbsp;*&nbsp;Math.cos(t))&nbsp;%&nbsp;38&nbsp;+&nbsp;75)&nbsp;*&nbsp;((1&nbsp;&lt;&lt;&nbsp;(t&nbsp;/&nbsp;400&nbsp;%&nbsp;24)&nbsp;&amp;&nbsp;12288)&nbsp;!=&nbsp;0)&nbsp;+<br>(Math.tan(Math.sin(t&nbsp;*&nbsp;Math.cos(t)))&nbsp;*&nbsp;32&nbsp;+&nbsp;74)&nbsp;*&nbsp;(t&nbsp;%&nbsp;Math.sin(t&nbsp;/&nbsp;33)&nbsp;&lt;&nbsp;Math.cos(0.032&nbsp;*&nbsp;t))&nbsp;*&nbsp;((1&nbsp;&lt;&lt;&nbsp;(t&nbsp;/&nbsp;400&nbsp;%&nbsp;24)&nbsp;&amp;&nbsp;1)&nbsp;!=&nbsp;0)&nbsp;+<br>//&nbsp;same&nbsp;concept&nbsp;as&nbsp;above,&nbsp;except&nbsp;they're&nbsp;running&nbsp;on&nbsp;much&nbsp;smaller&nbsp;loops.&nbsp;&nbsp;<br><br>//&nbsp;melody!<br>//&nbsp;manually&nbsp;changes&nbsp;the&nbsp;frequency&nbsp;based&nbsp;on&nbsp;what<br>//&nbsp;tick&nbsp;we're&nbsp;on&nbsp;(0-95)<br>//&nbsp;zero&nbsp;is&nbsp;considered&nbsp;to&nbsp;be&nbsp;off...&nbsp;but&nbsp;sometimes&nbsp;we&nbsp;need&nbsp;the&nbsp;root&nbsp;note,<br>//&nbsp;so&nbsp;we&nbsp;just&nbsp;use&nbsp;a&nbsp;number&nbsp;really&nbsp;close&nbsp;to&nbsp;zero!&nbsp;!!&nbsp;!&nbsp;!&nbsp;HAX<br>(Math.pow(1.059463,&nbsp;z&nbsp;=&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;83&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;77&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;63&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;35&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;17&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;51&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;47&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;9&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;0&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;30)&nbsp;*&nbsp;-5&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;3)&nbsp;*&nbsp;0.1&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;41&nbsp;|&nbsp;w&nbsp;==&nbsp;6&nbsp;|&nbsp;w&nbsp;==&nbsp;74)&nbsp;*&nbsp;-2&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;72&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;66&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;80&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;59&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;62&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;29&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;18&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;54&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;15&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;==&nbsp;12)&nbsp;*&nbsp;-7&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;69&nbsp;|&nbsp;w&nbsp;==&nbsp;56&nbsp;|&nbsp;w&nbsp;==&nbsp;26&nbsp;|&nbsp;w&nbsp;==&nbsp;20&nbsp;|&nbsp;w&nbsp;==&nbsp;14)&nbsp;*&nbsp;-9&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;21)&nbsp;*&nbsp;-12&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;50&nbsp;|&nbsp;w&nbsp;==&nbsp;44&nbsp;|&nbsp;w&nbsp;==&nbsp;33)&nbsp;*&nbsp;-4&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(w&nbsp;==&nbsp;93)&nbsp;*&nbsp;-6<br>))&nbsp;*&nbsp;u&nbsp;*&nbsp;2)&nbsp;%&nbsp;m&nbsp;/&nbsp;4&nbsp;*&nbsp;(z&nbsp;!=&nbsp;0)</code><br><code title="Click to play this code">(((a=(s=Math.floor(t/9600%8))==0)*(y=t*2)*1.5873+(b=(s==1))*y*(v=1.4983)+(c=(s==2))*y*v+(d=(s==3))*y+(e=(s==4))*y*1.5873+(g=(s==5))*y*v+(h=(s==6))*y+(i=(s==7))*y)%(m=256)+((a|e)*(u=y*4)*v+u*((b|c|g|h)*1.3348+d*0.8908+i*1.2599))%m+(u*(i+(a|e)*1.1892+(b|c|g|h)*1.1224+d*v))%m+(u*((a|e)+(b|g|h)*0.8908+c*0.9438+d*1.1892+i*0.7491))%m+(u*((a|e)*0.7937+(b|c|g|h)*0.7491+d/2+i*0.627))%m)/8*((((w=Math.floor(t/800%96))&lt;32)*(1&lt;&lt;w&amp;0xC007307)+(w&gt;=32&amp;&amp;w&lt;64)*(1&lt;&lt;w&amp;0x73070E70)+(w&gt;64)*(1&lt;&lt;w&amp;0xE70C400))!=0)+(t*Math.sin(t*Math.cos(t))%18+25)*((1&lt;&lt;(t/200%24)&amp;1052928)!=0)+(t*Math.sin(t*Math.cos(t))%38+75)*((1&lt;&lt;(t/400%24)&amp;12288)!=0)+(Math.tan(Math.sin(t*Math.cos(t)))*32+74)*(t%Math.sin(t/33)&lt;Math.cos(0.032*t))*((1&lt;&lt;(t/400%24)&amp;1)!=0)+(Math.pow(1.059463,z=((w==83|w==77|w==63|w==35|w==17|w==51|w==47|w==9|w==0|w==30)*-5+(w==3)*0.1+(w==41|w==6|w==74)*-2+(w==72|w==66|w==80|w==59|w==62|w==29|w==18|w==54|w==15|w==12)*-7+(w==69|w==56|w==26|w==20|w==14)*-9+(w==21)*-12+(w==50|w==44|w==33)*-4+(w==93)*-6))*u*2)%m/4*(z!=0)</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Longline Theory<br>
+								<a class="prettycode-toggle">Toggle pretty code</a><code>intro&nbsp;=&nbsp;((sb&nbsp;=&nbsp;t&nbsp;&gt;&nbsp;0xffff)&nbsp;&amp;&nbsp;0),<br>background&nbsp;=<br>&nbsp;&nbsp;&nbsp;&nbsp;(((y&nbsp;=&nbsp;Math.pow(2,&nbsp;[15,&nbsp;15,&nbsp;23,&nbsp;8][t&nbsp;&gt;&gt;&nbsp;14&nbsp;&amp;&nbsp;3]&nbsp;/&nbsp;12))&nbsp;&amp;&nbsp;0)&nbsp;+&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((y&nbsp;*&nbsp;t&nbsp;*&nbsp;0.241)&nbsp;&amp;&nbsp;127&nbsp;-&nbsp;64)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((y&nbsp;*&nbsp;t&nbsp;*&nbsp;0.25)&nbsp;&amp;&nbsp;127&nbsp;-&nbsp;64)<br>&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;*&nbsp;1.2),<br>drum&nbsp;=&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;((a&nbsp;=&nbsp;1&nbsp;-&nbsp;(t&nbsp;&amp;&nbsp;0x7ff)&nbsp;/&nbsp;0x7ff)&nbsp;&amp;&nbsp;0)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(((5&nbsp;*&nbsp;t&nbsp;&amp;&nbsp;0x7ff)&nbsp;*&nbsp;a)&nbsp;&amp;&nbsp;255&nbsp;-&nbsp;127)&nbsp;*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((0x53232323&nbsp;&gt;&gt;&nbsp;(t&nbsp;&gt;&gt;&nbsp;11&nbsp;&amp;&nbsp;31))&nbsp;&amp;&nbsp;1)&nbsp;*&nbsp;a&nbsp;*&nbsp;1.0&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;(((d&nbsp;=&nbsp;(14&nbsp;*&nbsp;t&nbsp;*&nbsp;t&nbsp;^&nbsp;t)&nbsp;&amp;&nbsp;0x7ff)&nbsp;*&nbsp;a)&nbsp;&amp;&nbsp;255&nbsp;-&nbsp;128)&nbsp;*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((0xa444c444&nbsp;&gt;&gt;&nbsp;(t&nbsp;&gt;&gt;&nbsp;11&nbsp;&amp;&nbsp;31))&nbsp;&amp;&nbsp;1)&nbsp;*&nbsp;a&nbsp;*&nbsp;1.5&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;((a&nbsp;*&nbsp;a&nbsp;*&nbsp;d&nbsp;*&nbsp;(t&nbsp;&gt;&gt;&nbsp;9&nbsp;&amp;&nbsp;1)&nbsp;&amp;&nbsp;0xff&nbsp;-&nbsp;0x80)&nbsp;*&nbsp;0.1337)<br>)&nbsp;*&nbsp;sb,<br>instrument&nbsp;=<br>&nbsp;&nbsp;&nbsp;&nbsp;+((g&nbsp;=&nbsp;(t&nbsp;&amp;&nbsp;0x7ff)&nbsp;/&nbsp;0x7ff)&nbsp;&amp;&nbsp;0)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;((g&nbsp;=&nbsp;1&nbsp;-&nbsp;(g&nbsp;*&nbsp;g))&nbsp;&amp;&nbsp;0)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;((h&nbsp;=&nbsp;Math.pow(2,&nbsp;([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15,&nbsp;18,&nbsp;17,&nbsp;17,&nbsp;17,&nbsp;17,&nbsp;999,&nbsp;999,&nbsp;22,&nbsp;22,&nbsp;999,&nbsp;18,&nbsp;999,&nbsp;15,&nbsp;20,&nbsp;22],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20,&nbsp;18,&nbsp;17,&nbsp;17,&nbsp;10,&nbsp;10,&nbsp;999,&nbsp;999,&nbsp;20,&nbsp;22,&nbsp;20,&nbsp;18,&nbsp;17,&nbsp;18,&nbsp;17,&nbsp;10]<br>&nbsp;&nbsp;&nbsp;&nbsp;][((t&nbsp;&gt;&gt;&nbsp;14&nbsp;&amp;&nbsp;3)&nbsp;&gt;&nbsp;2)&nbsp;&amp;&nbsp;1][t&nbsp;&gt;&gt;&nbsp;10&nbsp;&amp;&nbsp;15])&nbsp;/&nbsp;12))&nbsp;&amp;&nbsp;0)&nbsp;+<br>&nbsp;&nbsp;&nbsp;&nbsp;((h&nbsp;*&nbsp;t&nbsp;&amp;&nbsp;31)&nbsp;+&nbsp;(h&nbsp;*&nbsp;t&nbsp;*&nbsp;1.992&nbsp;&amp;&nbsp;31)&nbsp;+&nbsp;(h&nbsp;*&nbsp;t&nbsp;*&nbsp;.497&nbsp;&amp;&nbsp;31)&nbsp;+&nbsp;(h&nbsp;*&nbsp;t&nbsp;*&nbsp;0.977&nbsp;&amp;&nbsp;31)&nbsp;-&nbsp;64)&nbsp;*<br>&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;*&nbsp;2.0&nbsp;*&nbsp;sb,<br>intro&nbsp;+&nbsp;Math.max(Math.min(instrument&nbsp;+&nbsp;background&nbsp;+&nbsp;drum,&nbsp;127),&nbsp;-128)</code><br><code title="Click to play this code">((sb=t&gt;0xffff)&amp;0)+Math.max(Math.min(((y=Math.pow(2,[15,15,23,8][t&gt;&gt;14&amp;3]/12))&amp;0)+(((y*t*0.241)&amp;127-64)+((y*t*0.25)&amp;127-64))*1.2+(((a=1-(t&amp;0x7ff)/0x7ff)&amp;0)+(((5*t&amp;0x7ff)*a)&amp;255-127)*((0x53232323&gt;&gt;(t&gt;&gt;11&amp;31))&amp;1)*a*1.0+(((d=(14*t*t^t)&amp;0x7ff)*a)&amp;255-128)*((0xa444c444&gt;&gt;(t&gt;&gt;11&amp;31))&amp;1)*a*1.5+((a*a*d*(t&gt;&gt;9&amp;1)&amp;0xff-0x80)*0.1337))*sb+((g=(t&amp;0x7ff)/0x7ff)&amp;0)+((g=1-(g*g))&amp;0)+((h=Math.pow(2,([[15,18,17,17,17,17,999,999,22,22,999,18,999,15,20,22],[20,18,17,17,10,10,999,999,20,22,20,18,17,18,17,10]][((t&gt;&gt;14&amp;3)&gt;2)&amp;1][t&gt;&gt;10&amp;15])/12))&amp;0)+(((h*t&amp;31)+(h*t*1.992&amp;31)+(h*t*.497&amp;31)+(h*t*0.977&amp;31)-64))*g*2.0*sb,127),-128)</code> <span class="yellow">★</span> by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=13#c389287" target="_blank">Mu6k</a><br>
+								<code title="Click to play this code">w=t&gt;&gt;9,k=32,m=2048,a=1-t/m%1,d=(14*t*t^t)%m*a,y=[3,3,4.7,2][p=w/k&amp;3]*t/4,h="IQNNNN!!]]!Q!IW]WQNN??!!W]WQNNN?".charCodeAt(w/2&amp;15|p/3&lt;&lt;4)/33*t-t,s=y*.98%80+y%80+(w&gt;&gt;7&amp;&amp;a*((5*t%m*a&amp;128)*(0x53232323&gt;&gt;w/4&amp;1)+(d&amp;127)*(0xa444c444&gt;&gt;w/4&amp;1)*1.5+(d*w&amp;1)+(h%k+h*1.99%k+h*.49%k+h*.97%k-64)*(4-a-a))),s*s&gt;&gt;14?127:s</code> <span class="yellow">★</span> 300b Information Theory (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=17#c389541" target="_blank">Ryg, Las, Decipher, P01</a>)
+							</li>
+							<li>
+								G minor Bach, non-COS version (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389045" target="_blank">Skurk</a>)<br>
+								<code>30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(t&gt;&gt;9)/12-7)</code> <span class="yellow">★</span>
+							</li>
+							<li>
+								Rabid symphony (by <a href="https://www.reddit.com/r/programming/comments/mbakl/experimental_oneline_algorithmic_music/c2zn7qv/" target="_blank">Rabidcow</a>)<br>
+								<code>t*Math.pow(2,("kotojokohogohotojokohogokokhpmjmjfokhomkjhggcckotojokohogohotojokohogokokhpmjmjfrmorokfjkkkkkkrpomkjkmokmpoprrjjkkoommoottqqhjkkjjhfecebccccccfffhihfdfcdahhhjkjhghegcmjcjmjpjojmjkhchkhohmhkhjhkhmhohphmhoomkjkhhhhhh".charCodeAt((t&gt;&gt;10)&amp;255)-58)/12)*63&gt;&gt;6&amp;132</code>
+							</li>
+							<li>
+								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401817" target="_blank">Yehar</a><br>
+								<code>v=t/2^(t&amp;64?63:0),v=v&gt;&gt;v,v/(1+(v&gt;&gt;7))&amp;t/32|(t&gt;&gt;11)%8%3*t*t&amp;15</code> - No 4<br>
+								<code>u=3*t&gt;&gt;t/4096%4&amp;-t%(t&gt;&gt;16|16)*t&gt;&gt;14&amp;8191,u/(u&gt;&gt;6|1)*4</code> - No 5
+							</li>
+							<li>
+								by Tito<br>
+								<code title="Click to play this code">t&gt;&gt;10&lt;&lt;(t&gt;&gt;4)%([8,9,10,11][(t&gt;&gt;11)%4]-(t&gt;&gt;15)%4)</code>
+							</li>
+							<li>
+								Interleaved major scale with a rest after each note (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=23#c459110" target="_blank">Suborg</a>)<br>
+								<code title="Click to play this code">.35*t*("#\x0B;\x0B&amp;\x0BA\x0B)\x0BG\x0B+\x0BK\x0B/\x0BS\x0B3\x0B[\x0B8\x0Be\x0B;\x0Bk\x0B".charCodeAt(t/1E3%32)-11)</code>
+							</li>
+							<li>
+								Fort Boyard (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=23#c459199" target="_blank">Suborg</a>)<br>
+								<code title="Click to play this code">.17*t*("33AAAAA\x0BAAKKKGGG;;A\x0BAK[KSSSSSSSS\x0B\x0B[\x0B[SSSKKGGG;;;GGA\x0BAK[KAAAAAAAA".charCodeAt(t/1800%64)-11)</code> ★
+							</li>
+						</ul>
+					</div>
+					<div id="button-library-high" class="button-toggle" title=" Both C &amp; JS code in higher rates">
+						&nbsp;-{High rate}-
+					</div>
+					<div id="library-high" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								Last Palette (by <a href="https://battleofthebits.org/arena/Entry/Last+Palette/25369/" target="_blank">Pigdevil2010</a>)<br>
+								<code samplerate="44100" title="Click to play this code">(((t&lt;&lt;(4-(t*3&gt;&gt;13&amp;1)))/("@Lf@DUfD".charCodeAt(t*3&gt;&gt;14&amp;7))|(t*3&gt;&gt;9))&amp;31)+<br>(((t&lt;&lt;(4-(t*3&gt;&gt;13&amp;1)))/("3@L39DU93@L39D+9".charCodeAt(t*3&gt;&gt;14&amp;15))|(t*3&gt;&gt;9))*(254&gt;&gt;(t*3&gt;&gt;20&amp;7)&amp;1)&amp;31)+<br>(((t&lt;&lt;2)/("LL`rLL`U".charCodeAt(t*3&gt;&gt;18&amp;7))|6)*(254&gt;&gt;(t*3&gt;&gt;21&amp;7)&amp;1)&amp;31)+<br>(((t&lt;&lt;2)/("MMasMMaV".charCodeAt(t*3&gt;&gt;18&amp;7))|6)*(254&gt;&gt;(t*3&gt;&gt;21&amp;7)&amp;1)&amp;31)+<br>(((t&lt;&lt;4)/("3@Lf".charCodeAt(t&gt;&gt;11&amp;3))|(-t*3&gt;&gt;12&amp;7))*(22235&gt;&gt;(t*3&gt;&gt;14&amp;15)&amp;1)*(126&gt;&gt;(t*3&gt;&gt;21&amp;7)&amp;1)&amp;15)+<br>((((t*t/21+t&amp;(t&gt;&gt;3))|t*3&gt;&gt;9|t*3&gt;&gt;10)-((t*3&gt;&gt;16&amp;1)*9))*(6&gt;&gt;(t*3&gt;&gt;22&amp;3)&amp;1)&amp;63)+<br>(((t&lt;&lt;5)/("LLLD@DUfLLL3DD+933L3&amp;+39@@f@DDUf".charCodeAt(t*3&gt;&gt;16&amp;31))^(t*3&gt;&gt;11)|(t*3&gt;&gt;14&amp;15))*(104&gt;&gt;(t*3&gt;&gt;21&amp;7)&amp;1)&amp;31)+<br>(((t&lt;&lt;3)/("393+&amp;+3@030&amp;+33+&amp;@3+&nbsp;\"&amp;+03@3+33@".charCodeAt(t*3&gt;&gt;16&amp;31))^(-t*3&gt;&gt;11)|(-t*3&gt;&gt;14&amp;15))*(104&gt;&gt;(t*3&gt;&gt;21&amp;7)&amp;1)&amp;15)</code> <span class="samplerate">44kHz</span> <span class="yellow">★</span>
+							</li>
+							<li>
+								Last Fountain (by <a href="https://battleofthebits.org/arena/Entry/Last+Fountain/27281/" target="_blank">Pigdevil2010</a>)<br>
+								<code samplerate="44100" title="Click to play this code">s=(a,b,c)=&gt;c/a.charCodeAt(b),d=a=&gt;a&amp;1?-1:1,e=(a,b)=&gt;t&gt;&gt;22&amp;1?b:a,b=a=&gt;(s(a,r(t)+p*16,t&lt;&lt;2)*(254&gt;&gt;(t&gt;&gt;20&amp;7)&amp;1))&amp;20,<br>p=178&gt;&gt;(t&gt;&gt;19&amp;7)&amp;1,q=a=&gt;120&gt;&gt;(a&gt;&gt;20&amp;7)&amp;1?1:(-a&gt;&gt;16&amp;1),r=a=&gt;112&gt;&gt;(a&gt;&gt;20&amp;7)&amp;1?t&gt;&gt;14&amp;15:(t&gt;&gt;17&amp;1)*8,<br>l="&nbsp;&nbsp;QQffQQLLLfLLDDQQQfff&nbsp;&nbsp;rrff``UU&nbsp;&nbsp;QQDDQQLLLfLLDD&lt;&lt;f333&nbsp;&nbsp;r\x98rf`r`U&nbsp;&nbsp;&lt;&lt;&lt;9&lt;LUUU\x80U\x80UL[[rLLL&nbsp;&nbsp;rrff`frr&nbsp;&nbsp;&lt;&lt;&lt;93U999`9U3+--9&amp;&amp;&amp;&nbsp;&nbsp;rrff``UU",<br>b("rrLr99rrUUrU99rULLyL&lt;&lt;yy``\x80`@@\x80`")*2+b("qqKq88qqTTqT88qTKKxK;;xx__\x7f_??\x7f_")+<br>(s("rf[&lt;r`L@\x98\x88yQ\x80fUL",(t&amp;3)+(t&gt;&gt;17&amp;1)*4+p*8,t&lt;&lt;2)&amp;7)*(t*d(t&gt;&gt;16)&gt;&gt;12&amp;15^e(0,5))*3/4+<br>((s("rf[L&lt;9-\x1e&amp;-3&amp;-3-3\xab\x98\x90r`UH0+&amp;9+&amp;\x1d&amp;+\x98\x88yfQL&lt;(3&lt;D3&lt;3-(&amp;09HL`ULU`r`UL@9",(t&gt;&gt;13&amp;31)+p*32,t&lt;&lt;5-(t&gt;&gt;11&amp;3))|t&gt;&gt;8)*q(t)&amp;31)+<br>(((s(l,t&gt;&gt;14&amp;127,t&lt;&lt;6)&amp;s(l,t&gt;&gt;14&amp;127,(t*e(89/88,499/498))&lt;&lt;6))*(63486&gt;&gt;(t&gt;&gt;15&amp;15)&amp;1)*(102&gt;&gt;(t&gt;&gt;20&amp;7)&amp;1))&amp;e(42,32))+<br>((((253507989&gt;&gt;(t&gt;&gt;6&amp;31))*(1&gt;&gt;(t&gt;&gt;11&amp;3))*(19593&gt;&gt;(t&gt;&gt;13&amp;15)&amp;1)&amp;1)*50)+<br>((((t*t/21+t&amp;(t&gt;&gt;3))|t&gt;&gt;7|t&gt;&gt;8)-7)*(3&gt;&gt;(t&gt;&gt;11&amp;3)&amp;1)*(2450526224&gt;&gt;(t&gt;&gt;13&amp;31)&amp;1)&amp;31)*5/2)*(112&gt;&gt;(t&gt;&gt;20&amp;7)&amp;1)</code> <span class="samplerate">44kHz</span> <span class="yellow">★</span>
+							</li>
+							<li>
+								HITLER-CHANデートシム (by <a href="https://battleofthebits.org/arena/Entry/HITLER-CHAN%E3%83%87%E3%83%BC%E3%83%88%E3%82%B7%E3%83%A0.txt/25871/" target="_blank">Jimmyoshi</a>)<br>
+								<a class="prettycode-toggle">Toggle pretty code</a><code samplerate="22050">128&nbsp;+&nbsp;a();<br>function&nbsp;a()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;=&nbsp;22050;<br>&nbsp;&nbsp;&nbsp;&nbsp;tk&nbsp;=&nbsp;((t&nbsp;*&nbsp;11.5&nbsp;/&nbsp;k)&nbsp;&amp;&nbsp;0xFFFF)&nbsp;%&nbsp;96;<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;c(tk)&nbsp;+&nbsp;c(tk&nbsp;-&nbsp;4)&nbsp;/&nbsp;10&nbsp;+&nbsp;(6&nbsp;-&nbsp;tk&nbsp;%&nbsp;6)&nbsp;*&nbsp;((tk&nbsp;%&nbsp;6&nbsp;&gt;&nbsp;2&nbsp;&amp;&amp;&nbsp;tk&nbsp;%&nbsp;6&nbsp;&lt;&nbsp;4)&nbsp;?&nbsp;(Math.random()&nbsp;*&nbsp;128)&nbsp;:&nbsp;0)&nbsp;/&nbsp;24<br>}<br>function&nbsp;c(tk)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;o1&nbsp;=&nbsp;d(b("000fffjj0ffhhh0jjjhh0ffff00aa0aa0ccddddff0cc0aa0000mm0mm0kkjjj0hh0ff0hh0000mm0mm0kk0jjjj00hhh000",&nbsp;tk));<br>&nbsp;&nbsp;&nbsp;&nbsp;o2&nbsp;=&nbsp;d(b("NNN000000NNNIII000000IIIKKK000000KKKLLL000000LLLGGG000000GGGHHH000000HHHIII000000IIIAAA000000III",&nbsp;tk));<br>&nbsp;&nbsp;&nbsp;&nbsp;o3&nbsp;=&nbsp;d(b("000R00000R00000P00000P00000N00000N00000R00000R00000N00000N00000R00000R00000P00000P00000M00000M00",&nbsp;tk)&nbsp;+&nbsp;12);<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;o1&nbsp;+&nbsp;o2&nbsp;+&nbsp;o3<br>}<br>function&nbsp;d(n)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;ff&nbsp;=&nbsp;Math.pow(2,&nbsp;n&nbsp;/&nbsp;12)&nbsp;*&nbsp;16.4;<br>&nbsp;&nbsp;&nbsp;&nbsp;q&nbsp;=&nbsp;k&nbsp;/&nbsp;ff;<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(n&nbsp;==&nbsp;8&nbsp;||&nbsp;n&nbsp;==&nbsp;20)&nbsp;?&nbsp;0&nbsp;:&nbsp;(t&nbsp;%&nbsp;q&nbsp;&gt;=&nbsp;q&nbsp;/&nbsp;2)&nbsp;?&nbsp;16&nbsp;:&nbsp;-16<br>}<br>function&nbsp;b(s,&nbsp;p)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;s.charCodeAt(p)&nbsp;-&nbsp;40<br>}</code> <span class="samplerate">22kHz</span><br><code samplerate="22050" title="Click to play this code">128+a();function&nbsp;a(){k=22050;tk=((t*11.5/k)&amp;0xFFFF)%96;return&nbsp;c(tk)+c(tk-4)/10+(6-tk%6)*((tk%6&gt;2&amp;&amp;tk%6&lt;4)?(Math.random()*128):0)/24}function&nbsp;c(tk){o1=d(b("000fffjj0ffhhh0jjjhh0ffff00aa0aa0ccddddff0cc0aa0000mm0mm0kkjjj0hh0ff0hh0000mm0mm0kk0jjjj00hhh000",tk));o2=d(b("NNN000000NNNIII000000IIIKKK000000KKKLLL000000LLLGGG000000GGGHHH000000HHHIII000000IIIAAA000000III",tk));o3=d(b("000R00000R00000P00000P00000N00000N00000R00000R00000N00000N00000R00000R00000P00000P00000M00000M00",tk)+12);return&nbsp;o1+o2+o3}function&nbsp;d(n){ff=Math.pow(2,n/12)*16.4;q=k/ff;return&nbsp;(n==8||n==20)?0:(t%q&gt;=q/2)?16:-16}function&nbsp;b(s,p){return&nbsp;s.charCodeAt(p)-40}</code> <span class="samplerate">22kHz</span> <span class="yellow">★</span>
+							</li>
+							<li>
+								Bytebeat? How about bitbeat? (by <a href="https://battleofthebits.org/arena/Entry/bytebeat_+how+about+bitbeat_/21510/" target="_blank">Funute</a>)<br>
+								<a class="prettycode-toggle prettycode-show">Toggle pretty code</a><code samplerate="44100" title="Click to play this code">S&nbsp;=&nbsp;1.059463094,<br>P&nbsp;=&nbsp;Math.pow,<br>X&nbsp;=&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;function(t)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;t&nbsp;&lt;&nbsp;1e3&nbsp;&amp;&amp;&nbsp;(Math.sin(t&nbsp;*&nbsp;t)&nbsp;*&nbsp;1e8&nbsp;%&nbsp;2&nbsp;|&nbsp;0&nbsp;?&nbsp;1&nbsp;:&nbsp;3)<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;function(k,&nbsp;n,&nbsp;t)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;l&nbsp;=&nbsp;4410&nbsp;/&nbsp;44&nbsp;/&nbsp;P(S,&nbsp;n),&nbsp;t&nbsp;%&nbsp;l&nbsp;&gt;&nbsp;(l&nbsp;/&nbsp;2&nbsp;-&nbsp;t&nbsp;*&nbsp;l&nbsp;*&nbsp;k)&nbsp;?&nbsp;1&nbsp;:&nbsp;3<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;function(f,&nbsp;a,&nbsp;s,&nbsp;n,&nbsp;t)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;m&nbsp;=&nbsp;t&nbsp;%&nbsp;5292&nbsp;/&nbsp;882&nbsp;|&nbsp;0,&nbsp;k&nbsp;=&nbsp;m&nbsp;%&nbsp;3,&nbsp;z&nbsp;=&nbsp;(a&nbsp;&amp;&nbsp;(0xf00&nbsp;&gt;&gt;&nbsp;(4&nbsp;*&nbsp;k)))&nbsp;&gt;&gt;&nbsp;(8&nbsp;-&nbsp;4&nbsp;*&nbsp;k),&nbsp;(!s&nbsp;||&nbsp;m&nbsp;%&nbsp;2)&nbsp;&amp;&amp;&nbsp;f(n&nbsp;+&nbsp;z,&nbsp;t)<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>],<br>Y&nbsp;=&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;function(t)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;t&nbsp;&lt;&nbsp;1e3&nbsp;&amp;&amp;&nbsp;(k&nbsp;=&nbsp;299&nbsp;/&nbsp;(t&nbsp;+&nbsp;1),&nbsp;k&nbsp;-&nbsp;(k&nbsp;|&nbsp;0)&nbsp;&gt;&nbsp;.5&nbsp;?&nbsp;1&nbsp;:&nbsp;3)<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;0,<br>&nbsp;&nbsp;&nbsp;&nbsp;X[0],<br>&nbsp;&nbsp;&nbsp;&nbsp;X[2].bind(this,&nbsp;X[1].bind(this,&nbsp;7e-5)),<br>&nbsp;&nbsp;&nbsp;&nbsp;function(t,&nbsp;f)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;t&nbsp;&lt;&nbsp;2400&nbsp;&amp;&amp;&nbsp;(p&nbsp;=&nbsp;P(t&nbsp;+&nbsp;1,&nbsp;.8),&nbsp;t&nbsp;&lt;&nbsp;200&nbsp;||&nbsp;t&nbsp;&gt;&nbsp;900&nbsp;?&nbsp;X[0](p)&nbsp;:&nbsp;(p&nbsp;/&nbsp;27&nbsp;|&nbsp;0)&nbsp;%&nbsp;2&nbsp;?&nbsp;1&nbsp;:&nbsp;3)<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>],<br>Z&nbsp;=&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;function()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;function(s,&nbsp;n,&nbsp;t)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;l&nbsp;=&nbsp;4410&nbsp;/&nbsp;44&nbsp;/&nbsp;P(S,&nbsp;n),&nbsp;k&nbsp;=&nbsp;(t&nbsp;%&nbsp;(l&nbsp;*&nbsp;8)&nbsp;/&nbsp;l)&nbsp;|&nbsp;0,&nbsp;(!s&nbsp;||&nbsp;t&nbsp;/&nbsp;882&nbsp;%&nbsp;3&nbsp;|&nbsp;0)&nbsp;&amp;&amp;&nbsp;(((k&nbsp;==&nbsp;1)&nbsp;^&nbsp;!!(k&nbsp;&amp;&nbsp;2))&nbsp;?&nbsp;1&nbsp;:&nbsp;3)<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;Y[3].bind(this,&nbsp;89),<br>&nbsp;&nbsp;&nbsp;&nbsp;Y[3].bind(this,&nbsp;71)<br>],<br>A&nbsp;=&nbsp;t&nbsp;%&nbsp;6800,<br>B&nbsp;=&nbsp;t&nbsp;/&nbsp;6800&nbsp;|&nbsp;0,<br>C&nbsp;=&nbsp;B&nbsp;%&nbsp;320,<br>M&nbsp;=&nbsp;parseInt('68a68f00dba0ab0068a68f0hf0fdbdb080868bb0000068b080868d0bdbdf0d0068a68f00dba0ab0068a68f0hf0fdbdb080868bb0000068b080868d0bdbdfdfg0d0dbdg000000bdgdgi0gik0ikigdb86080680400000068b8bd00bdg6600g0dg0d0dbdg000000bdgdgi0gik0ikigdbdg0i0gi0d000000bdg0d0gdbd0gdb8641'[C&nbsp;-&nbsp;66]&nbsp;||&nbsp;0,&nbsp;36),<br>96&nbsp;+&nbsp;16&nbsp;*&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;Y[B&nbsp;&amp;&nbsp;3&nbsp;?&nbsp;2&nbsp;:&nbsp;B&nbsp;&amp;&nbsp;4](A)&nbsp;||<br>&nbsp;&nbsp;&nbsp;&nbsp;Z['1120320312032011'&nbsp;[B&nbsp;%&nbsp;16]](M,&nbsp;'24222222422222420022222222222202'&nbsp;[B&nbsp;%&nbsp;32]&nbsp;-&nbsp;2&nbsp;+&nbsp;5&nbsp;*&nbsp;(C&nbsp;&gt;&nbsp;191)&nbsp;||&nbsp;0,&nbsp;A)&nbsp;||<br>&nbsp;&nbsp;&nbsp;&nbsp;(M&nbsp;?&nbsp;X[1](0,&nbsp;M&nbsp;-&nbsp;6,&nbsp;t)&nbsp;:&nbsp;1)<br>)</code> <span class="samplerate">44kHz</span><br><code samplerate="44100" title="Click to play this code">S=1.059463094,P=Math.pow,X=[function(t){return&nbsp;t&lt;1E3&amp;&amp;(Math.sin(t*t)*1E8%2|0?1:3)},function(k,n,t){return&nbsp;l=4410/44/P(S,n),t%l&gt;l/2-t*l*k?1:3},function(f,a,s,n,t){return&nbsp;m=t%5292/882|0,k=m%3,z=(a&amp;3840&gt;&gt;4*k)&gt;&gt;8-4*k,(!s||m%2)&amp;&amp;f(n+z,t)}],Y=[function(t){return&nbsp;t&lt;1E3&amp;&amp;(k=299/(t+1),k-(k|0)&gt;.5?1:3)},0,X[0],X[2].bind(this,X[1].bind(this,7E-5)),function(t,f){return&nbsp;t&lt;2400&amp;&amp;(p=P(t+1,.8),t&lt;200||t&gt;900?X[0](p):(p/27|0)%2?1:3)}],Z=[function(){return&nbsp;0},function(s,n,t){return&nbsp;l=4410/44/P(S,n),k=t%(l*8)/l|0,(!s||t/882%3|0)&amp;&amp;(k==1^!!(k&amp;2)?1:3)},Y[3].bind(this,89),Y[3].bind(this,71)],A=t%6800,B=t/6800|0,C=B%320,M=parseInt("68a68f00dba0ab0068a68f0hf0fdbdb080868bb0000068b080868d0bdbdf0d0068a68f00dba0ab0068a68f0hf0fdbdb080868bb0000068b080868d0bdbdfdfg0d0dbdg000000bdgdgi0gik0ikigdb86080680400000068b8bd00bdg6600g0dg0d0dbdg000000bdgdgi0gik0ikigdbdg0i0gi0d000000bdg0d0gdbd0gdb8641"[C-66]||0,36),96+16*(Y[B&amp;3?2:B&amp;4](A)||Z["1120320312032011"[B%16]](M,"24222222422222420022222222222202"[B%32]-2+5*(C&gt;191)||0,A)||(M?X[1](0,M-6,t):1));</code> <span class="samplerate">44kHz</span> <span class="yellow">★</span>
+							</li>
+							<li>
+								Bloop factory (by <a href="https://battleofthebits.org/arena/Entry/bloop+factory/20506/" target="_blank">Funute</a>)<br>
+								<code samplerate="44100" title="Click to play this code">Z=Math.floor,P=Math.pow,T=Math.sin,I=parseInt,S=[0,2,4,7,9,5,6,19,12,1],B=[0,4,5,4,0,-4,-5,-7],n=function(c,e){return&nbsp;127*P(T(c*P(1.05946,e)/15.9517),3)},r=function(c){return&nbsp;I(T(c).toString(16).substring(7,9)||0,16)-128},X=function(c){return&nbsp;I(T(c+.1).toFixed(6)[5])},a=function(c,e){return&nbsp;c*e},d=5E3,b=Z(t/d),p=1-t%d/d,W=2*d,Y=Z(b/2),L=Math.max(t-3*d,0),C=Z(L/W),F=1-L%W/W,N=B[Z(Y/16)%8],G=4*d,R=P(1-t%G/G,3),a(r(t),P(p/2,3)+P(2==b%4&amp;&amp;p,.5)/7)+a(n(t,S[X(Y%4+Z(Y/16))]+N),(1-t%W/W)/4)+a(n(L,S[X(C%4+Z(C/16))]+B[Z(C/16)%8]),F/16)+a(0&lt;T(99*R)?19:-19,R)+a(r(Z(t/4)),Z(t/G)%2&amp;&amp;R/4)+a(n(t,N-48),.25)+128</code> <span class="samplerate">44kHz</span> ★
+							</li>
+							<li>
+								ripthisentry.txt (by <a href="https://battleofthebits.org/arena/Entry/ripthisentry.txt/32559/" target="_blank">raphaelgoulart</a>)<br>
+								<code samplerate="44100" title="Click to play this code">t=t/8,b=t/1250,f=Math.floor(b%64),g=Math.floor(b/4%16),d=1.12,n=[1,1,1,d,d,d,d,d,.94,.94,.94,1.26,1.26,1.26,1.26,1.26,.84,.84,.84,.94,.94,.94,.94,1.26,1.26,1.26,1.26,1.26,d,d,d,d,.84,.84,.84,d,d,d,d,d,.94,.94,.94,1.26,1.26,1.26,1.26,1.26,1,1,1,d,d,d,d,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5],n1=[1,1.26,1.89,1.68,1.68,1.5,1.5,1.4,.94,d,1.68,1.5,1.5,1.4,1.26,d,1.26,1.4,1.26,1.19,1.19,1.26,1.4,1.5,1.5,1.5,1.5,1.5,0,1.4,1.26,d,1,1.26,1.89,1.68,1.68,2.24,2.24,2.52,2.38,1.89,1.4,1.5,1.5,1.4,1.26,d,1.26,1.4,1.26,d,d,1.26,1.4,1.5,1.5,1.5,1.5,1.5,1.5,1.5,0,0],n2=[1.5,1.4,1.68,1.5,1.26,1.68,1.5,1.4,1.26,1.41,1.68,1.5,1.26,1.4,1.5,1.5],n3=[1.26,d,d,0.94,.94,1.19,.94,.94,.94,d,1.19,.94,.94,d,.94,.94],f1=n[f]*2,f2=n1[f]*16,f3=n2[g]*8,f13=n3[g]*16,t*f1/(256/32)%32+Math.abs(32-t*(f2/(256/32))%32*2)+t*f3/(256/8)%8+t*f13/(256/8)%8</code> <span class="samplerate">44kHz</span> ★
+							</li>
+							<li>
+								1k dance (by <a href="https://battleofthebits.org/arena/Entry/1k+dance/31132/" target="_blank">raphaelgoulart</a>)<br>
+								<a class="prettycode-toggle prettycode-show">Toggle pretty code</a><code samplerate="11025" title="Click to play this code">z=40.7,b=t/2250,r=Math.floor(b),y=r%16,<br>a=[1,2,1,2,1.2,2.4,1.2,2.4,1.33,2.67,1.33,2.67,1.5,3,1.5,3][y],<br>c=r%64&gt;1&amp;&amp;r%64&lt;33,o=c?1.19:1.5,<br>n=[0,0,2.38,2.67,2.38,0,2,2.24,0,2.38,0,2.24,0,1.78,0,2,2,2,1,1.19,1.5,0,1.19,1.33,0,1.19,0,c?1.12:1.33,0,o,o,o],<br>x=Math.floor(r/4)%4,d=[12,12,10.67,12][x],g=[9.52,9.52,8,8.96][x],h=[8,7.12,6.72,7.52][x],v=(b*2%4)*1.25,<br>w=Math.floor(y/12),u=Math.floor(r/16)%4,<br>j=[[19.04,17.92],[14.24,9.52],[10.64,12],[8,0]],<br>Math.sin(t*(1/(z))+Math.sin(t*(1.125)/z)*7*(1-b*2%4&gt;0?1-b*2%4:0))*(40-b*15%30)+40+<br>(b&lt;16?0:Math.random()*(r%4==2?(32-(b*32%32)):0))+<br>(b&lt;32?0:Math.random()*(16-(b*28%28&lt;16?b*28%28:16)))+<br>(b&lt;64?0:Math.sin(t*(a/z)+Math.sin(t*(a)/z)*4*(1-b%1))*32+32)+<br>(b&lt;96?0:Math.sin(t*d/z+Math.sin(t*d/z)*(0+(b*1.5%3)))*v+5)+<br>(b&lt;96?0:Math.sin(t*g/z+Math.sin(t*g/z)*(0+(b*1.5%3)))*v+5)+<br>(b&lt;96?0:Math.sin(t*h/z+Math.sin(t*h/z)*(0+(b*1.5%3)))*v+5)+<br>(b&lt;128?0:t*n[r%32]*8%256&gt;121+Math.abs(108-(b*56%224))?20:0)+<br>(b&lt;129?0:t*n[(r-1)%32]*7.98%256&gt;121+Math.abs(108-(b*56%224))?7:0)+<br>(b&lt;192?0:Math.sin(t*(j[u][w]/z)+Math.sin(t*(j[u][w]*2)/z)*4*(y&lt;2||y&gt;=12&amp;y&lt;14?1-b/2%1:0))*(5.3-y/3%4)+5.3)</code> <span class="samplerate">11kHz</span><br><code samplerate="11025" title="Click to play this code">z=40.7,b=t/2250,r=Math.floor(b),y=r%16,a=[1,2,1,2,1.2,2.4,1.2,2.4,1.33,2.67,1.33,2.67,1.5,3,1.5,3][y],c=r%64&gt;1&amp;&amp;r%64&lt;33,o=c?1.19:1.5,n=[0,0,2.38,2.67,2.38,0,2,2.24,0,2.38,0,2.24,0,1.78,0,2,2,2,1,1.19,1.5,0,1.19,1.33,0,1.19,0,c?1.12:1.33,0,o,o,o],x=Math.floor(r/4)%4,d=[12,12,10.67,12][x],g=[9.52,9.52,8,8.96][x],h=[8,7.12,6.72,7.52][x],v=(b*2%4)*1.25,w=Math.floor(y/12),u=Math.floor(r/16)%4,j=[[19.04,17.92],[14.24,9.52],[10.64,12],[8,0]],Math.sin(t*(1/(z))+Math.sin(t*(1.125)/z)*7*(1-b*2%4&gt;0?1-b*2%4:0))*(40-b*15%30)+40+(b&lt;16?0:Math.random()*(r%4==2?(32-(b*32%32)):0))+(b&lt;32?0:Math.random()*(16-(b*28%28&lt;16?b*28%28:16)))+(b&lt;64?0:Math.sin(t*(a/z)+Math.sin(t*(a)/z)*4*(1-b%1))*32+32)+(b&lt;96?0:Math.sin(t*d/z+Math.sin(t*d/z)*(0+(b*1.5%3)))*v+5)+(b&lt;96?0:Math.sin(t*g/z+Math.sin(t*g/z)*(0+(b*1.5%3)))*v+5)+(b&lt;96?0:Math.sin(t*h/z+Math.sin(t*h/z)*(0+(b*1.5%3)))*v+5)+(b&lt;128?0:t*n[r%32]*8%256&gt;121+Math.abs(108-(b*56%224))?20:0)+(b&lt;129?0:t*n[(r-1)%32]*7.98%256&gt;121+Math.abs(108-(b*56%224))?7:0)+(b&lt;192?0:Math.sin(t*(j[u][w]/z)+Math.sin(t*(j[u][w]*2)/z)*4*(y&lt;2||y&gt;=12&amp;y&lt;14?1-b/2%1:0))*(5.3-y/3%4)+5.3)</code> <span class="samplerate">11kHz</span> ★
+							</li>
+							<li>
+								happybeat (by <a href="https://battleofthebits.org/arena/Entry/happybeat/31161/" target="_blank">Yung Gotenks</a>)<br>
+								<a class="prettycode-toggle">Toggle pretty code</a><code samplerate="44100">G1=0.75,<br>A1=0.84,<br>B1=0.94,<br>C2=1,<br>D2=1.12,<br>E2=1.26,<br>F2=1.33,<br>G2=1.5,<br>A2=1.68,<br>B2=1.89,<br>C3=2,<br>E3=2.52,<br>RE=0,<br>tfix=t/4,<br>b=tfix/2350,<br>r=Math.floor(b),y=r%16,<br>//a=bass<br>a=[C2,&nbsp;C2,&nbsp;RE,&nbsp;C2,&nbsp;RE,&nbsp;C2,&nbsp;RE,&nbsp;G1,&nbsp;C2,&nbsp;C2,&nbsp;RE,&nbsp;C2,&nbsp;RE,&nbsp;C2,&nbsp;RE,&nbsp;D2,][r%16],<br>//j=arp<br>j=[C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,<br>A2,&nbsp;F2,&nbsp;C2,&nbsp;A1,&nbsp;A2,&nbsp;F2,&nbsp;C2,&nbsp;A1,&nbsp;B2,&nbsp;G2,&nbsp;D2,&nbsp;B1,&nbsp;B2,&nbsp;G2,&nbsp;D2,&nbsp;B1],<br>//je=arp&nbsp;echo<br>je=[B1,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,&nbsp;C3,&nbsp;G2,&nbsp;E2,&nbsp;C2,<br>A2,&nbsp;F2,&nbsp;C2,&nbsp;A1,&nbsp;A2,&nbsp;F2,&nbsp;C2,&nbsp;A1,&nbsp;B2,&nbsp;G2,&nbsp;D2,&nbsp;B1,&nbsp;B2,&nbsp;G2,&nbsp;D2,],<br>//melody<br>mel=[RE,&nbsp;RE,&nbsp;E2,&nbsp;RE,&nbsp;F2,&nbsp;G2,&nbsp;G1,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;<br>RE,&nbsp;RE,&nbsp;G2,&nbsp;F2,&nbsp;G2,&nbsp;A2,&nbsp;RE,&nbsp;G1,&nbsp;C2,&nbsp;C2,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,<br>RE,&nbsp;RE,&nbsp;E2,&nbsp;RE,&nbsp;F2,&nbsp;G2,&nbsp;G1,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,<br>RE,&nbsp;RE,&nbsp;G2,&nbsp;G2,&nbsp;A2,&nbsp;G2,&nbsp;A2,&nbsp;RE,&nbsp;C3,&nbsp;G2,&nbsp;C3,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE],<br>//melody&nbsp;echo<br>melecho=[RE,&nbsp;RE,&nbsp;RE,&nbsp;E2,&nbsp;RE,&nbsp;F2,&nbsp;G2,&nbsp;G1,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;<br>RE,&nbsp;RE,&nbsp;G2,&nbsp;F2,&nbsp;G2,&nbsp;A2,&nbsp;RE,&nbsp;G1,&nbsp;C2,&nbsp;C2,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,<br>RE,&nbsp;RE,&nbsp;E2,&nbsp;RE,&nbsp;F2,&nbsp;G2,&nbsp;G1,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;D2,&nbsp;C2,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE,<br>RE,&nbsp;RE,&nbsp;G2,&nbsp;G2,&nbsp;A2,&nbsp;G2,&nbsp;A2,&nbsp;RE,&nbsp;C3,&nbsp;G2,&nbsp;C3,&nbsp;RE,&nbsp;RE,&nbsp;RE,&nbsp;RE],<br>z=27.1,<br>(b&lt;64?0:Math.sin(tfix*(a/z)+Math.sin(tfix*(a)/z)*4*(2-b%2))*32+32)+<br>(b&lt;0?0:tfix*j[r%32]*8%172&gt;80+Math.abs(05-(b*24%12))?20:0)+<br>(b&lt;0?0:tfix*je[r%32]*8%172&gt;80+Math.abs(05-(b*24%12))?10:0)+<br>(b&lt;32?0:Math.sin(tfix*(1/(z))+Math.sin(tfix*(A1)/z)*7*(1-b*2%4&gt;0?1-b*2%4:0))*(40-b*15%30)+40)+<br>(b&lt;96?0:Math.random()*(24-(b*28%28)))+<br>(b&lt;96?0:Math.random()*(r%4==2?(38-(b*32%32)):0))+<br>(b&lt;128?0:tfix*mel[r%64]*8%172&gt;80+Math.abs(05-(b*84%84))?40:0)+<br>(b&lt;128?0:tfix*melecho[r%64]*8%172&gt;80+Math.abs(05-(b*84%84))?10:0)</code> <span class="samplerate">44kHz</span><br><code samplerate="44100" title="Click to play this code">G1=0.75,A1=0.84,B1=0.94,C2=1,D2=1.12,E2=1.26,F2=1.33,G2=1.5,A2=1.68,B2=1.89,C3=2,E3=2.52,RE=0,tfix=t/4,b=tfix/2350,r=Math.floor(b),y=r%16,a=[C2,C2,RE,C2,RE,C2,RE,G1,C2,C2,RE,C2,RE,C2,RE,D2,][r%16],j=[C3,G2,E2,C2,C3,G2,E2,C2,C3,G2,E2,C2,C3,G2,E2,C2,A2,F2,C2,A1,A2,F2,C2,A1,B2,G2,D2,B1,B2,G2,D2,B1],je=[B1,C3,G2,E2,C2,C3,G2,E2,C2,C3,G2,E2,C2,C3,G2,E2,C2,A2,F2,C2,A1,A2,F2,C2,A1,B2,G2,D2,B1,B2,G2,D2,],mel=[RE,RE,E2,RE,F2,G2,G1,C2,RE,RE,D2,C2,RE,RE,RE,RE,RE,RE,G2,F2,G2,A2,RE,G1,C2,C2,D2,C2,RE,RE,RE,RE,RE,RE,E2,RE,F2,G2,G1,C2,RE,RE,D2,C2,RE,RE,RE,RE,RE,RE,G2,G2,A2,G2,A2,RE,C3,G2,C3,RE,RE,RE,RE],melecho=[RE,RE,RE,E2,RE,F2,G2,G1,C2,RE,RE,D2,C2,RE,RE,RE,RE,RE,RE,G2,F2,G2,A2,RE,G1,C2,C2,D2,C2,RE,RE,RE,RE,RE,RE,E2,RE,F2,G2,G1,C2,RE,RE,D2,C2,RE,RE,RE,RE,RE,RE,G2,G2,A2,G2,A2,RE,C3,G2,C3,RE,RE,RE,RE],z=27.1,(b&lt;64?0:Math.sin(tfix*(a/z)+Math.sin(tfix*(a)/z)*4*(2-b%2))*32+32)+(b&lt;0?0:tfix*j[r%32]*8%172&gt;80+Math.abs(05-(b*24%12))?20:0)+(b&lt;0?0:tfix*je[r%32]*8%172&gt;80+Math.abs(05-(b*24%12))?10:0)+(b&lt;32?0:Math.sin(tfix*(1/(z))+Math.sin(tfix*(A1)/z)*7*(1-b*2%4&gt;0?1-b*2%4:0))*(40-b*15%30)+40)+(b&lt;96?0:Math.random()*(24-(b*28%28)))+(b&lt;96?0:Math.random()*(r%4==2?(38-(b*32%32)):0))+(b&lt;128?0:tfix*mel[r%64]*8%172&gt;80+Math.abs(05-(b*84%84))?40:0)+(b&lt;128?0:tfix*melecho[r%64]*8%172&gt;80+Math.abs(05-(b*84%84))?10:0)</code> <span class="samplerate">44kHz</span> ★
+							</li>
+							<li>
+								347 BEATSTEP INC. (by <a href="https://battleofthebits.org/arena/Entry/347+BEATSTEP+INC./20403/" target="_blank">mega9man</a>)<br>
+								<code samplerate="11025" title="Click to play this code">128+Math.sin(t/24*((t&gt;&gt;10)&amp;42)+1*Math.sin(t/64*(t/1&gt;&gt;15)&amp;21))*24+(Math.sin(t*1/3/4*1+4*Math.sin(t*1/6/4*1))*((t&gt;&gt;11)&amp;1))*16+(Math.sin(t*1/6/4*1+4*Math.sin(t*1/12/4*1))*((t&gt;&gt;10)&amp;1))*16+((3e3/(y=t*4&amp;16383))&amp;1)*56+((3e2/(y=t*32&amp;28600))&amp;1)*56+Math.sin(t/16*((t&gt;&gt;10)&amp;42)+1*Math.sin(t/64*(t/1&gt;&gt;7)&amp;8))*12</code> <span class="samplerate">11kHz</span> ★
+							</li>
+							<li>
+								Drone Choords (by LJ)<br>
+								<code samplerate="32000" title="Click to play this code">((Math.abs(t*(.02+(t*.0001&amp;0x4)*.01)*(1+((t*.0001)%4)&lt;&lt;5)%0xFF-0x80))&amp;0xFF)+<br>(t%100)*.3*Math.abs(Math.sin(t*.00005)*.25+.5)+Math.min(Math.max((t&gt;&gt;16)-2,0)*.5,1)*(t*.1&amp;0xF)*(t*.01&amp;0xFF)/0x70</code> <span class="samplerate">32kHz</span>
+							</li>
+							<li>
+								by <a href="https://youtu.be/tCRPUv8V22o?t=177" target="_blank">Ryg</a><br>
+								<code samplerate="44100" title="Click to play this code">t*("36364689"[t&gt;&gt;13&amp;7]&amp;15)/12&amp;128</code> <span class="samplerate">44kHz</span><br>
+								<code samplerate="44100" title="Click to play this code">(t*("36364689"[t&gt;&gt;13&amp;7]&amp;15)/12&amp;128)+(((t&gt;&gt;12^(t&gt;&gt;12)-2)%11*t/4|t&gt;&gt;13)&amp;127)</code> <span class="samplerate">44kHz</span> ★
+							</li>
+							<li>
+								No Limit (by Mu6k)<br>
+								<code samplerate="32000" title="Click to play this code">35*(3E3/(y=t&amp;16383)&amp;1)+(x=t*"6689"[t&gt;&gt;16&amp;3]/24&amp;127)*y/4E4+((t&gt;&gt;8^t&gt;&gt;10|t&gt;&gt;14|x)&amp;63)</code> <span class="samplerate">32kHz</span>
+							</li>
+							<li>
+								Good old fractal melody (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=12#c389114" target="_blank">Blueberry</a>)<br>
+								<code samplerate="11025">(t&gt;&gt;9^(t&gt;&gt;9)-1^1)%13*t</code> <span class="samplerate">11kHz</span>
+							</li>
+							<li>
+								by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc" target="_blank">Gabriel Miceli</a><br>
+								<code samplerate="11025" title="Click to play this code">i=t&amp;8191,(((t*((t&gt;&gt;9^((t&gt;&gt;9)-1)^1)%13)&amp;255)/2)+((((t&gt;&gt;3|t&lt;&lt;(t&gt;&gt;12&amp;2))*(i&lt;4096)+(t&gt;&gt;4|t*(t^t+t/256))*(i&gt;4095)))&amp;255)/2)*(2+(t&gt;&gt;16))</code> <span class="samplerate">11kHz</span> ★ Noise Maker<br>
+								<code samplerate="11025">(((t/10|0)^(t/10|0)-1280)%11*t/2&amp;127)+(((t/640|0)^(t/640|0)-2)%13*t/2&amp;127)</code> <span class="samplerate">11kHz</span> - Techno<br>
+								<code samplerate="32000">a=t-2048,((t&amp;t&gt;&gt;6)&amp;(t*(t&gt;&gt;((t&amp;65535)&gt;&gt;12))))+((t*3/4&amp;t&gt;&gt;12)&amp;127)+(t*(a&gt;&gt;7&amp;a&gt;&gt;8&amp;a&gt;&gt;9&amp;16)&gt;&gt;t/64)</code> <span class="samplerate">32kHz</span> - Crazy Groovy Beats<br>
+								<code samplerate="44100">d=(t*(t&amp;t&gt;&gt;12)*8/11025)|0,((d&amp;16)/8-1)*(d*(d^15)+d+127)</code> <span class="samplerate">44kHz</span> - Crude Sinevawe Dubstep
+							</li>
+							<li>
+								Chip arpeggio that eats itself (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=8#c388898" target="_blank">Kb_</a>)<br>
+								<code samplerate="44100">((t&gt;&gt;1)*(15&amp;0x234568a0&gt;&gt;(t&gt;&gt;8&amp;28))|t&gt;&gt;1&gt;&gt;(t&gt;&gt;11)^t&gt;&gt;12)+(t&gt;&gt;4&amp;t&amp;24)</code> <span class="samplerate">44kHz</span>
+							</li>
+							<li>
+								Music of Big Chungus<br>
+								<code samplerate="24000">50*sin(t*(t&gt;&gt;11&amp;9)*(t&gt;&gt;15&amp;90)/256)+(40*sin(t/7680))</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">24kHz</span>
+							</li>
+						</ul>
+					</div>
+					<div id="button-library-low" class="button-toggle" title=" Both C &amp; JS code in lower rates">
+						&nbsp;-{Low rate}-
+					</div>
+					<div id="library-low" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								cool 1kHz Beat ( GetDolphinedLOL )<br>
+								<code samplerate="1000">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)</code><span class="samplerate">1kHz</span><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>
+							</li>
+						</ul>
+					</div>
+					<div id="button-library-en" class="button-toggle" title=" Special codes made specifically in this editor">
+						&nbsp;-{Enhanced Bytebeat}-
+					</div>
+					<div id="library-low" class="paragraph" style="display: none;">
+						<p>As of now not all the enhancements are done, so expect new songs with new features to be added.</p>
+						<ul>
+							<li>
+								
+
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="button-library-sthephanshi" class="button-toggle" title="Songs by StephanShi, the creator of the Dollchan player.">-{SthephanShi}-</div>
+				<div id="library-sthephanshi" class="paragraph" style="display: none;">
+					<ul>
+						<li>
+							Explosive beat<br>- Formulas family discovered by experimenting with "Explosions" [<code>(t&gt;&gt;2)*(t&gt;&gt;5)|t&gt;&gt;5</code>]<br>
+							<code>(t&gt;&gt;4)*(t&gt;&gt;3)|t&gt;&gt;2</code><br>
+							<code>(t&gt;&gt;4)*(t&gt;&gt;3)|t&gt;&gt;3</code><br>
+							<code>(t&gt;&gt;4)*(t&gt;&gt;3)|t&gt;&gt;4</code><br>
+							<code>(t&gt;&gt;4)*(t&gt;&gt;3)|t&gt;&gt;(t&amp;4096?3:2)</code> ★ "Explosive beat". Obtained from combining the first two formulas<br>
+							<code>(t&gt;&gt;4)*(t&gt;&gt;2)|t&gt;&gt;(t&gt;&gt;12)%4</code> - "M-m-multiple explosion beat"<br>
+							<code>(t&gt;&gt;5)*(t&gt;&gt;5)|t&gt;&gt;2</code> - "Diesel engine"
+						</li>
+						<li>
+							Robocop<br>- Cool beat discovered by experimenting with [<code>(t&gt;&gt;2)*(t&amp;16)|t&gt;&gt;2</code>]<br>
+							<code>(t&gt;&gt;2)*(t&amp;(t&amp;32768?16:24)|t&gt;&gt;(t&gt;&gt;8&amp;28))|t&gt;&gt;2</code> ★ "Robocop". Very cool sound with biting blows<br>
+							<code>(t&gt;&gt;3)*(t&amp;(t&amp;32768?16:24)|t&gt;&gt;(t&gt;&gt;8&amp;28))|t&gt;&gt;2</code> - Lower bass<br>
+							<code>(t&gt;&gt;2)*(t&amp;(t&amp;32768?16:24)|t&gt;&gt;(t&gt;&gt;8&amp;24))|t&gt;&gt;3</code> - Slower tempo
+						</li>
+						<li>
+							Trance beat<br>- Experiments with t&gt;&gt;N and ternary operations<br>
+							<code>t&gt;&gt;(t%16?4:6)|t&gt;&gt;(t%128?10:4)</code><br>
+							<code>t&gt;&gt;(t%32?4:3)|(t%128?t&gt;&gt;3:t&gt;&gt;3|t&gt;&gt;9)</code>
+						</li>
+						<li>
+							Toy phone<br>- Interesting formulas, sounds very similar to children's toys<br>
+							<code>t*((t&gt;&gt;10|t%16*t&gt;&gt;5)&amp;8*t&gt;&gt;10&amp;18)</code> - Someone is calling by phone<br>
+							<code>t*((t&gt;&gt;10|t%16*t&gt;&gt;5)&amp;8*t&gt;&gt;12&amp;18)</code> ★ Very funny voice :)<br>
+							<code>t*((t&gt;&gt;10|t%16*t&gt;&gt;8)&amp;8*t&gt;&gt;12&amp;18)</code> - I hear the long mewing of a cat :)
+						</li>
+						<li>
+							Cat-girl<br>
+							<code>17*t|(t&gt;&gt;2)+(t&amp;32768?13:14)*t|t&gt;&gt;3|t&gt;&gt;5</code> ★ Nya!
+						</li>
+						<li>
+							Kachelki<br>
+							<code>t&gt;&gt;9&amp;2*t&amp;10*t|t&gt;&gt;5&amp;6*t</code> <span class="yellow">★</span> Cool happy tune
+						</li>
+						<li>
+							Brain burner<br>
+							<code>129*t%(t&gt;&gt;7)</code> - RIP headphone users!
+						</li>
+						<li>
+							Psychedelica<br>
+							<code>t^t%1001+t^t%1002</code> - Experimenting with resonance
+						</li>
+						<li>
+							Protoss engine<br>
+							<code>2*(-t%128|t%130)</code> - Experimenting with resonance, a pretty hypnotic result
+						</li>
+						<li>
+							Harmonics<br>
+							<code>t&lt;&lt;2^t&gt;&gt;4^t&lt;&lt;4&amp;t&gt;&gt;8|t&lt;&lt;1&amp;-t&gt;&gt;4</code>
+						</li>
+						<li>
+							Bass beat + lead<br>
+							<code>15-t%(t&amp;16384?26:29)&amp;t&gt;&gt;4|t&lt;&lt;1&amp;-t&gt;&gt;4</code>
+						</li>
+						<li>
+							Arabic beat<br>
+							<code>t%((t&amp;-16|t&gt;&gt;10)&amp;42)&lt;&lt;2|t&gt;&gt;4</code><br>
+							<code>t%((t&amp;-16|t&gt;&gt;11)&amp;42)&lt;&lt;2|t&gt;&gt;4</code> - Allahu akbar!
+						</li>
+						<li>
+							Boss level / Running aliens<br>- Series of formulas discovered by experimenting with "Running man" <code>t*(3+(1^5&amp;t&gt;&gt;10))*(5+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)</code><br>- Allows to get different interesting chiptune sounds<br><br>
+							<code>t*(2-(1&amp;-t&gt;&gt;11))*(5+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)</code> - Let replace (3+(1^5&amp;t&gt;&gt;10)) with (2-(1&amp;-t&gt;&gt;11))<br>
+							<code>t*(2-(1&amp;-t&gt;&gt;11))*(5+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;2</code> - And just add |t&gt;&gt;2... The tune became cleaner<br>
+							<code>t*(2-(1&amp;-t&gt;&gt;11))*(5+(2&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;2</code> - Replacing 3&amp;t&gt;&gt;14 with 2&amp;t&gt;&gt;14 changes the period and the second tone<br>
+							<code>t*(2-(1&amp;-t&gt;&gt;11))*(5+(2&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;3</code> ★ "Boss level". Slow down |t&gt;&gt;2 rhythm to |t&gt;&gt;3... Sounds dangerous!<br><br>
+							<code>t*(t&amp;16384?6:5)*(1+(1&amp;t&gt;&gt;12))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;3</code> - By playing with the "Boss level" I made a different percussion<br>
+							<code>t*(t&amp;16384?6:5)*(1+(1&amp;t&gt;&gt;12))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;4</code> - "Boss level #2". |t&gt;&gt;4 rhythm sounds cool!<br><br>
+							<code>t*(t&amp;16384?6:5)*(3+(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;4</code> - Replacing (1+(1&amp;t&gt;&gt;12)) with 3+(1&amp;t&gt;&gt;8) adds an awesome harmonics<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;4</code> - Coefficients 4-/3-/2+/3+ can slightly change them<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;(t&amp;4096?3:4)</code> - We can use a ternary operation for more complicated beat<br>
+							<code>t*(t&amp;16384?6:5)*(3-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;4</code> ★ "Aliens on approach". Slow down the explosions to 3&amp;t&gt;&gt;9, get a heavy chiptune beat<br>
+							<code>t*(t&amp;16384?6:5)*(3+(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;5</code> ★ "Aliens are close". t&gt;&gt;5 rhythm<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;6</code> <span class="yellow">★</span> "Aliens are here". t&gt;&gt;6 rhythm - SUPER POWERFUL ECHOES<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;9)|t&gt;&gt;6</code> - Inverted explosions give us mysterious sounds<br><br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;9)|(t|t*3)&gt;&gt;5</code> ★ "Aliens attack". More complicated (t|t*3)&gt;&gt;5 rhythm with explosion drums. Cool!<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;(t&amp;4096?3:4)</code> <span class="yellow">★</span> "Aliens encounter". Replacing the rhythm with a ternary gives an EXTRA HARD BEAT!<br>
+							<code>t*(t&amp;16384?6:5)*(3+(3&amp;t&gt;&gt;7))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;(t&amp;4096?3:4)</code> - Funny inverted sounds :D<br><br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;15)|t&gt;&gt;(t&amp;4096?3:4)</code> ★ "Prepare to fight". Long period formula with increasing from low to high sound<br>
+							<code>2*t*(t&amp;16384?6:5)*(4-(3&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;15)|t&gt;&gt;(t&amp;4096?3:4)</code> ★ "Prepare to fight #2". Previous formula with doubled freqency bass<br><br>Suddenly I discovered that replacing 3&amp;t&gt;&gt;9 with 3&amp;t&gt;&gt;2 in "Aliens encounter" gives a noise sound.<br>This is an excellent instrument for drums. For example, a ternary 3&amp;t&gt;&gt;(t&amp;4096?2:9)<br>
+							<code>t*(t&amp;16384?6:5)*(4-(1&amp;t&gt;&gt;8))&gt;&gt;(3&amp;t&gt;&gt;(t&amp;4096?2:9))|t&gt;&gt;(t&amp;4096?3:4)</code> <span class="yellow">★</span> "Aliens encounter + drums". Impressive sound!<br>
+							<code>2*t*(t&amp;16384?6:5)*(4-(3&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;(t&amp;4096?2:15))|t&gt;&gt;(t&amp;4096?3:4)</code> ★ "Prepare to fight #2 + drums"<br><br>Finally you can use complex ternary operators to create more complex drums:<br>
+							<code>2*t*(t&amp;16384?6:5)*(4-(3&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;(t&amp;4096?2:15))|t&gt;&gt;(t&amp;8192?t&amp;4096?4:5:3)</code> <span class="yellow">★</span> "Ready to fight?". Cool for a fighting game :)<br>
+							<code>t*(t&amp;16384?7:5)*(5-(3&amp;t&gt;&gt;8))&gt;&gt;(3&amp;-t&gt;&gt;(t&amp;4096?2:16))|t&gt;&gt;(t&amp;16384?t&amp;4096?3:4:3)</code> <span class="yellow">★</span> "Aliens won / Hard level". Playing with coefficients. stephanShi's favorite!<br><br>Fantastic! Let's continue our experiments:<br>
+							<code>t*(t&amp;16384?6:5)*(1+(3&amp;t&gt;&gt;10))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;2</code> - "Boss level #2" variation with (1+(3&amp;t&gt;&gt;10)) expression and t&gt;&gt;2 rhythm<br>
+							<code>t*(t&amp;16384?6:5)*(1+(3&amp;t&gt;&gt;(t&amp;2048?4:10)))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;2</code> ★ "Another level". Adding a noise beat by using ternary opertion<br>
+							<code>t*(t&amp;16384?6:5)*(2+(3&amp;t&gt;&gt;(t&amp;2048?4:9)))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;2</code> - "Happy level". Previous formula with slightly changed coefficitnts<br>
+							<code>t*(t&amp;16384?6:5)*(2+(3&amp;t&gt;&gt;9))&gt;&gt;(3&amp;-t&gt;&gt;8)|t&gt;&gt;4</code> - "Happy level #2". Inverted 3&amp;-t&gt;&gt;8 gives a more happy tune :)<br>
+							<code>t*(t&amp;16384?6:5)*(2+(3&amp;-t&gt;&gt;9))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;4</code> ★ "Happy level #3". We can get an awesome harmonics with 3&amp;-t&gt;&gt;9<br>
+							<code>t*(t&amp;16384?6:5)*(2+(3&amp;t&gt;&gt;11))&gt;&gt;(3&amp;-t&gt;&gt;8)|t&gt;&gt;4</code> - "Happy level #2 + t&gt;&gt;11"<br>
+							<code>t*(t&amp;16384?6:5)*(3+(3&amp;t&gt;&gt;(t&amp;2048?7:14)))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;2</code> <span class="yellow">★</span> "Awesome level". We can get a cool cartoon-game melody!<br>
+							<code>t*(t&amp;16384?7:5)*(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;6</code> ★ "Alien dungeon". So sinister.. t&gt;&gt;6 gives a fading effect<br>
+							<code>t*(t&amp;16384?7:5)*(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|(t|t*3)&gt;&gt;5</code> - "Alien dungeon" with a complicated rhytm (t|t*3)&gt;&gt;5<br>
+							<code>t*(t&amp;16384?7:5)*(4-(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|(t|t*3)&gt;&gt;5</code> - Previous with a slightly different tune<br><br>Other "Boss level" variations:<br>
+							<code>t*(6+(1&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;(t&amp;4096?3:4)</code><br>
+							<code>t*(6+(1&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|2*t&gt;&gt;(t&amp;4096?3:4)</code> ★ Previous tune with doubled drums<br>
+							<code>t*(16+(1&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;4</code><br>
+							<code>t*((t&amp;4096?6:16)+(1&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;(t&amp;4096?3:4)</code> ★ Previous tune with a ternary magic
+						</li>
+					</ul>
+				</div>
+				<div id="button-library-C" class="button-toggle" title="My Code, Enhacned or not.">
+					&nbsp;/Chasyxx\
+				</div>
+				<div id="library-C" class="paragraph" style="display: none;">
+					<div id="button-C-A" class="button-toggle" title="My Code, Enhacned or not.">
+						&nbsp;-{The First Pack}-
+					</div>
+					<div id="C-A" class="paragraph" style="display: none;">
+						<div id="button-C-A-W" class="button-toggle" title="My Code, Enhacned or not.">
+							&nbsp;-{Warping Timeline}-
+						</div>
+						<div id="C-A-W" class="paragraph" style="display: none;">
+							<ul>
+								<li>
+									8kHz<br>
+									<code>
+										a=(30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(t&gt;&gt;10)/12-7))%256,
+										a&gt;([(Math.abs(((t&gt;&gt;8)%256)-128))+64])?Math.random()*16:~(Math.random()*16)
+									</code>
+								</li>
+								<li>
+									44kHz<br>
+									<code samplerate="44100">
+										a=(15*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(t&gt;&gt;11)/12-7))%256,
+										a&gt;([(Math.abs(((t&gt;&gt;9)%256)-128))+64])?Math.random()*16:~(Math.random()*16)
+									</code>
+								</li>
+								<li>
+									Looping<br>
+									<code>
+										a=(30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt((t&gt;&gt;10)%509)/12-7))%256,
+										a&gt;([(Math.abs(((t&gt;&gt;8)%256)-128))+64])?Math.random()*16:~(Math.random()*16)
+									</code>
+								</li>
+								<li>
+									Echoing<br>
+									<code>
+										f = function(q){return a=30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt((t&gt;&gt;10)-q)/12-7)%256,(a&gt;[Math.abs((t&gt;&gt;8)%256-128)+64]?(16*Math.random())-128:((16*Math.random())+112))+128},
+										(f(0)/2)+(f(1)/4)+(f(2)/8)+(f(3)/16)
+									</code>
+								</li>
+								<li>
+									Echoing &amp; Looping<br>
+									<code>
+										f = function(q){return a=30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(((t&gt;&gt;10)-q)%510)/12-7)%256,(a&gt;[Math.abs((t&gt;&gt;8)%256-128)+64]?(16*Math.random())-128:((16*Math.random())+112))+128},
+										(f(0)/2)+(f(1)/4)+(f(2)/8)+(f(3)/16)
+									</code>
+								</li>
+							</ul>
+						</div>
+						<ul>
+							<li>
+								Explosive (From " <a href="https://www.youtube.com/watch?v=V4GfkFbDojc&amp;t=406s">Deep Tones</a> " by Gabriel Micheli)<br>
+								<code>a=0,tri=(((t&lt;&lt;a)^-(t&gt;&gt;(a-8)&amp;1))%256),(t*(t*287/256&amp;t&gt;&gt;11))</code>
+							</li>
+							<li>
+								Drifing Electricity ( from "electrohouse" by unknown )
+								<code>t&gt;&gt;t%(t%2?[61,51,31,41][(t&gt;&gt;14)%4]:34)+(t&gt;&gt;6)|Math.cos((t&gt;&gt;1)/314.159)*128+128</code>
+							</li>
+							<li>
+								Expect Aliens ( from "Alien Dungeon" by StephanShi )
+								<code>
+									((t*(t&amp;[16384,8192,12288][(t&gt;&gt;16)%3]?7:5)*(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;6)
+									&gt;&gt;[2,2,1,3,5,0,1,3,2,1,2][(t&gt;&gt;16)%11])&lt;&lt;2
+								</code>
+							</li>
+							<li>
+								Electrohouse 2<br>
+								<code>t&gt;&gt;t%(t%2?t&amp;32768?41:t&amp;16384?51:61:34)&amp;(t/9&amp;t/7|t/5&amp;t/3|t|t*3&amp;t*5|t*7&amp;t*9)&gt;&gt;4</code>
+							</li>
+							<li>
+								Alien Dungeon 2<br>
+								<code>
+									t&amp;16384?t*(t&amp;16384?7:5)*(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;(t&amp;32768?3:2):(-t&amp;8192?t*(t&amp;16384?7:5)*
+									(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|t&gt;&gt;(t&amp;32768?6:7):t*(t&amp;16384?7:5)*(3+(3&amp;t&gt;&gt;14))&gt;&gt;(3&amp;t&gt;&gt;9)|
+									(t|t*(t&amp;32768?2:3))&gt;&gt;6)
+								</code>
+							</li>
+							<li>
+								A New Dimension Chassic<br>
+								<code samplerate="22050">
+									wv=function(t){return&nbsp;y=t%256,y&lt;127?y:2*(256-y)},ms=int(t/1e4),p=t/1e4%16,b=p%4,qn=p%1,<br>
+									rh=function(t){for(m=0,i=0;i&lt;t.length;i++)b&gt;t[i]&amp;&amp;(m=b-t[i]);return&nbsp;m},<br>
+									sc=ms%256&lt;32?1:min(1,max(0,3*qn-.3))*(ms%32&gt;0),<br>
+									c=t*(p&lt;12?2:2.4),
+									//                                                    VVVV Music code VVVV <br>
+
+									max(0,min(255,sc*(wv((t/32)-(<br>
+									((t/2+qn*(t*(ms&gt;&gt;2&amp;15))+(2*t*(1+(ms&gt;&gt;5&amp;3)))))&amp;64)*1.5)*(1-rh([0,1,1.5,2,2.75,3.5]))*(ms%256&gt;63)-<br>
+									(t/2+(3*pow(7-qn*(2+(ms&gt;&gt;2&amp;3))%1,5))&amp;128)*(ms%64&gt;47)+(((<br>
+									(wv(c)-128)*2)+128)))-qn*pow(1-qn*(ms%128&lt;80?2:4)%1,4)*80*random()*(ms%256&gt;63)+wv(2*t+60*sin(25*b))*(ms%256&gt;31)*(ms%32&lt;1)+wv(2e3*pow(1-qn,9))*(ms%256&gt;31)+128))/*,min(wv(t*2)*2,255)*/
+								</code><span class="samplerate">22kHz</span>
+							</li>
+							<li>
+								Too smooth<br>
+								<code>y=(t==0?0:y),a=1,b=8,x=t&amp;t&gt;&gt;8,y=((y*b)+((x&amp;255)*a))/(a+b)</code>
+							</li>
+							<li>
+
+							</li>
+							<li>
+								The Bytebeat Beat<br>
+								<code>t*(t&amp;t&gt;&gt;12)|t&gt;&gt;(t&amp;65536?t&amp;32768?(t&amp;16384?t&amp;8192?t&amp;4096?4:5:3:t&amp;8192?t&amp;4096?4:3:5):6:(t&amp;4096?t:t&amp;8192?t*.01:t&amp;2048?2:1))</code><br>
+
+							</li>
+							<li>
+								PWM World<br>
+								<code samplerate="32000">max(0,(t%256)-abs(((t&gt;&gt;8)%512)-256))&gt;0?255:0</code><span class="samplerate"> 32kHz</span>
+							</li>
+							<li>
+								Ultimate<br>
+								<code>(((1-(t/(t&amp;t^t&gt;&gt;6)))*64)+(1+(1/64)))*127.5</code>
+							</li>
+							<li>
+								Warping Beat<br>
+								<code>(((((((((1-(t/(t&amp;t^t&gt;&gt;8)))*64)+(1+(1/64)))*128)%256)-128)*3.7)+128)^(((t&amp;t&gt;&gt;8)/(t&gt;&gt;8))*255))</code>
+							</li>
+							<li>
+								bytebeat has broken<br>
+								<code>t=t/(t%256),((t^t+(t&gt;&gt;8))^(t^t+(t&gt;&gt;7))^(t^t+(t&gt;&gt;6))^(t^t+(t&gt;&gt;5))^(t^t+(t&gt;&gt;4))^(t^t+(t&gt;&gt;3))^(t^t+(t&gt;&gt;2))+(t^t+(t&gt;&gt;1))^(t^t+t))</code>
+							</li>
+							<li>
+								Spooky.<br>
+								<code samplerate="32000">(t/4&amp;0xbeef) &gt;&gt; t / ((t&gt;&gt;14&amp;3) +8 )</code><span class="samplerate">32kHz</span>
+							</li>
+							<li>
+								Entering the Nowhere World<br>
+								<code>a=((t&amp;t+(t&gt;&gt;8))&amp;128)+((t&amp;t+(t&gt;&gt;7))&amp;64)+((t&amp;t+(t&gt;&gt;6))&amp;32)+((t&amp;t+(t&gt;&gt;5))&amp;16)+((t&amp;t+(t&gt;&gt;4))&amp;8)+((t&amp;t+(t&gt;&gt;3))&amp;4)+((t&amp;t+(t&gt;&gt;2))&amp;2)+((t&amp;t+(t&gt;&gt;1))&amp;1),(a^(a+(a&gt;&gt;(7-(t&gt;&gt;16)))))</code>
+							</li>
+							<li>
+								The World of Tonic<br>
+								<code>((t/4&amp;244)&gt;&gt;t/((t&gt;&gt;14&amp;3)+4))^(t/8&gt;&gt;(t&gt;&gt;9)*t/((t&gt;&gt;14&amp;3)+4))^((.25*t&amp;255)*(t&gt;&gt;8&amp;255)&gt;&gt;8)</code>
+							</li>
+						</ul>
+					</div>
+					<div id="button-C-B" class="button-toggle" title="My Code, Enhacned or not.">
+						&nbsp;-{The Second Pack}-
+					</div>
+					<div id="C-B" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								Mirro's Factory Collapse<br>
+								<code>tan((5*t&amp;t&gt;&gt;7|3*t&amp;4*t&gt;&gt;10)/(256*22.5))*5760</code>
+							</li>
+							<li>
+								Welcome to Robot Town ( Fork of Running Man )<br>
+								<code>t*(2-(3^5&amp;t&gt;&gt;11))*(5.5+(3&amp;t&gt;&gt;15))&gt;&gt;(3&amp;t&gt;&gt;8)|t&gt;&gt;7</code>
+							</li>
+							<li>
+								Robotic Alarm Siren<br>
+								<code samplerate="128000">(t&gt;&gt;4)*(t&gt;&gt;4)|(t&lt;&lt;14)&gt;&gt;(t&gt;&gt;15)+((t&gt;&gt;12)%8)</code><span class="samplerate">128kHz</span>
+							</li>
+							<li>
+								Sirpinski crumble<br>
+								<code>sin((t*(t&amp;t&gt;&gt;6)*31.41592)/100000000)*128+128</code>
+							</li>
+							<li>
+								Oceanic Rythmic Terror<br>
+								<code>t&amp;16384?(t*(t/(t&amp;(t&gt;&gt;((t&gt;&gt;3)&amp;t&gt;&gt;(t&amp;t&gt;&gt;12))))))|t&gt;&gt;4:(((t*(t/(3+(t/(1&lt;&lt;13)))))%256)+(t&amp;t&gt;&gt;8)%256)/2|t&gt;&gt;4</code>
+							</li>
+							<li>
+								Glitchy Boy<br>
+								<code>tt=t/32,a=2,b=tt*((int((sin(tt)+1)*a))/a),(t*((b&amp;0b11000000)/64))+((t&amp;64|t&gt;&gt;5)^(t&amp;33|t&gt;&gt;9)&gt;&gt;(t&gt;&gt;6&amp;t&lt;&lt;2))</code>
+							</li>
+							<li>
+								The Fire<br>
+								<code>(((((t^(t*1.1&amp;t&gt;&gt;8))+t)^t)-t)^t)&amp;((t*1.5)&amp;(t*1/1.5)&gt;&gt;8)</code>
+							</li>
+							<li>
+								Scaratchy <br>
+										  <code>
+										  	a=((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14)),
+
+
+										  	((t&gt;&gt;2)%256)&gt;(((int(a)%256)+256)%256)?192:64
+										  </code>
+							</li>
+							<li>
+								Double Scratchy<br>
+											   <code>a=12,b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
+							</li>
+							<li>
+								Power<br>
+									 <code>a=((t&gt;&gt;4)%64),b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
+							</li>
+							<li>
+								REV EM UP<br>
+										 <code samplerate="64000">t*=(65536/64000),(((((((t/(4E4&gt;t?(2E4&gt;t?t%(t&gt;&gt;9)*10|t/2&amp;t:t*(t&gt;&gt;9)*10&amp;t/2)|t%(t&gt;&gt;9)*3&amp;t/16:t*(t&gt;&gt;9)^t))*(t&gt;&gt;4))-33)%256)+256)%256)+2)*8192</code><span class="samplerate">64kHz</span>
+							</li>
+							<li>
+								Falling Apart ( From "Harmony" )<br>
+											 <code>wave = (a) =&gt; (a%50.01+a%40.1+a%30.1+a%60.01),wave(t&amp;(pow(2,(t/(1&lt;&lt;12)))-1))</code>
+							</li>
+							<li>
+								Bit Reversial<br>
+											 <code>
+											 	a=(t&gt;&gt;2),b = (c,d,e) =&gt; ((e&amp;c)?d:0),br = (u) =&gt; b(128,1,u)+b(64,2,u)+b(32,4,u)+b(16,8,u)+b(8,16,u)+b(4,32,u)+b(2,64,u)+b(1,128,u),
+											 	br(a)
+											 </code>
+							</li>
+							<li>
+								Pulsator<br>
+										<code>
+											br(br(t)^br(t)+(br(t&gt;&gt;8)))
+										</code>
+							</li>
+							<li>
+								ddCr&amp;/<br>
+										  <code>(t/(t&amp;t&gt;&gt;10))*256</code>
+							</li>
+							<li>
+								The Castle<br>
+										  <code samplerate="44100">
+										  	time = t / 32000,
+										  	fract = function(x) {
+										  	return x % 1
+										  	},
+										  	main = function(time) {
+										  	speed = 1.5;
+										  	pitch = 0;
+										  	melody_notes = [
+										  	[0, 4, 7, 4, 0, 4, 7, 4, -1, 4, 7, 4, -1, 4, 7, 9],
+										  	[-12, -8, -12, -8, -12, -8, -12, -8, -13, -8, -13, -8, -13, -8, -13, -8],
+										  	[12 + 12, 11 + 12, 9 + 12, 7 + 12, 4 + 12, 9 + 12, 11 + 12, 14 + 12]
+										  	];
+										  	melody = 0;
+										  	for (i = 0; i &lt; melody_notes.length; i++) {
+										  	melody_tune = pow(pow(2, 1 / 12), (melody_notes[i][floor(time * speed) % melody_notes[i].length] + pitch) - 49) * 44000;
+										  	melody += tan(time / 8* melody_tune) * (1 - fract(time * speed)) * .25;
+										  	}
+										  	return (melody / melody_notes.length);
+										  	},
+										  	main(time)
+										  </code><span class="samplerate">44kHz</span>
+							</li>
+							<li>
+								The Destructor<br>
+											  <code samplerate="24000">(t&gt;&gt;7)*((((((((((t&amp;t/256)&amp;t/255)&amp;t/254)&amp;t/253)&amp;t/252)&amp;t/251)&amp;t/250)|(t&gt;&gt;4))^(t&gt;&gt;10))&amp;240)</code><span class="samplerate">24kHz</span>
+							</li>
+							<li>
+								Computing...<br>
+											<code samplerate="20000">((t&gt;&gt;2)*(((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262))/(t&gt;&gt;8)^(t&gt;&gt;2)</code><span class="samplerate">20kHz</span>
+							</li>
+							<li>
+								Chaos<br>
+									 <code samplerate="64000">((t&gt;&gt;2)*(((((((((((((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262)|t/263)&amp;t/264)|t/265)&amp;t/266)|t/267)&amp;t/268)|t/269)&amp;t/270)|t/271)&amp;t/272))/(t&gt;&gt;8)^(t&gt;&gt;7)^(t&gt;&gt;6)^(t&gt;&gt;5)^(t&gt;&gt;4)^(t&gt;&gt;3)^(t&gt;&gt;2)^(t&gt;&gt;1)^t </code><span class="samplerate">64kHz</span>
+							</li>
+						</ul>
+						</div>
+					</div>
+				</div>
+			<div id="button-origin" class="button-toggle">[Original app]</div>
+			<div id="origin" class="paragraph" style="display: none;">
+				This application is the fork of <a href="http://entropedia.co.uk/generative_music/" target="_blank">8-bit Generative Composer</a> by <a href="http://twitter.com/paul_hayes/" target="_blank">@paul_hayes</a><br>
+				<br>
+				Original Fork by SthephanShi. This is an old version of  <a href="https://dollchan.net/bytebeat/" target="_blank">His Dolchan Composer</a> Forked by kOLbOSa_exe and then Chase aka Chasyxx.
+			</div>
+			<a class="link-home" href="https://dollchan.net/" title="Home">&lt;--</a>
+		</div>
+
+
+		<a href="blob:null/3dc2ce8e-3c6d-425e-8731-3e0f6b68aa90" download="track.webm" style="display: none;"></a>
+		<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+<!--<div id="library-low" class="paragraph" style="display: none;">
+	<ul>
+		<li>
+
+		</li>
+	</ul>
+</div>--></body></html>

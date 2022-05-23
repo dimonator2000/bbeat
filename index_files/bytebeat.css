@@ -1,0 +1,150 @@
+html {
+	background-color: #000;
+	color: #fff;
+	font-size: 16px;
+	font-family: Courier, Sans, sans-serif;
+}
+
+body {
+	margin: 0 auto;
+	width: 1028px;
+}
+
+a, a:visited {
+	color: #88d2fb;
+}
+
+a.link-home {
+	text-decoration: none;
+}
+
+a.link-home:not(:hover) {
+	color: #fff;
+}
+
+.buttons-control {
+	margin: 5px 0;
+}
+
+.buttons-control > button {
+	display: inline-block;
+	font-family: Courier, Sans, sans-serif;
+	margin-right: 3px;
+}
+
+.button-toggle {
+	cursor: pointer;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.button-toggle:hover, code:hover {
+	color: #88d2fb;
+}
+
+#canvas-container {
+	position: relative;
+	width: 1028px;
+	height: 258px;
+}
+
+#canvas-main {
+	width: 1024px;
+	height: 256px;
+	border: 2px solid #fcc33d;
+}
+
+code {
+	color: #ffcc53;
+	word-wrap: break-word;
+	cursor: pointer;
+}
+
+.container-scroll {
+	overflow-y: auto;
+}
+
+#error {
+	color: #f92672;
+}
+
+#input {
+	border: 2px solid white;
+	max-height: 140px;
+	padding: 5px;
+	width: 1014px;
+	word-wrap: break-word;
+	overflow-y: auto;
+}
+
+li {
+	padding-bottom: 7px;
+}
+
+.middle {
+	margin-top: 10px;
+}
+
+.paragraph {
+	margin-bottom: 10px;
+	max-height: 999999px;
+	font-size: 12px;
+}
+
+.prettycode-toggle {
+	cursor: pointer;
+}
+
+.prettycode-toggle + code, .prettycode-toggle + code + .samplerate {
+	display: none;
+}
+
+.prettycode-toggle.prettycode-show + code {
+	display: block;
+}
+
+.samplerate {
+	font-size: 11px;
+	color: #47d738;
+	cursor: default;
+}
+
+select {
+	vertical-align: -2px;
+}
+
+#timecursor {
+	top: 0;
+	bottom: 0;
+	border-left: 2px solid red;
+	position: absolute;
+	left: 20px;
+}
+
+.yellow {
+	color: yellow;
+}
+
+/* ==[ Mobile devices ]==================================================================================== */
+
+@media (max-width: 1080px) {
+	body {
+		font-size: 1.7rem;
+	}
+
+	.buttons-control > button, #samplerate-change {
+		font-size: 2.2rem;
+	}
+
+	#input {
+		font-size: 1rem;
+	}
+
+	.paragraph {
+		font-size: 1.5rem;
+	}
+
+	.samplerate {
+		font-size: 18px;
+	}
+}
