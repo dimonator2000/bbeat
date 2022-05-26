@@ -20,7 +20,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 1.1<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
+	<p align="center">Version 1.2<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
 	<div class="middle container-fixed">
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 3px solid #00FF00 ; background-color:#007F00">
@@ -41,10 +41,11 @@
 		<option value="true">Constant Update</option>
 	</select>-->
 				<select id="mode-change" onchange="byteBeat.setMode(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
-					<option value="0">Diagram</option>
-					<option value="1">Points</option>
-					<option value="2">Grid</option>
-					<option value="10">Anti-Lag (none)</option>
+					<option value="0" title="Creates a diagram based off of visnut's videos.">Diagram</option>
+					<option value="1" title="A plot is created based off of the samples">Points</option>
+					<option value="2" title="For every sample, Red is S, green is S>>8, and blue is S>>16.">Grid</option>
+					<option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option>
+					<option value="10"title="Turnes off the visualizer entirely if the song lags as it loads a new page.">Anti-Lag (none)</option>
 				</select>
 
 				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
@@ -117,6 +118,7 @@
 				( polarity does not invert brightness, only change the color. ) <br><br>
 
 				SR is the samplerate. Useful to bump songs to higher quality when appiicable, but songs will be bumped back to original quality before going in the library.<br>
+				SR can also be used to change the song depending on the samplerate too, which can be intresting.<br />
 				br() bit reverses it's input.<br>
 			</p>
 			<p align="center" style="border: 3px dashed #808080">
@@ -178,7 +180,8 @@
 							</li>
 							<li>
 								By Tejeez:<br>
-								Noisy Beats:<br> <code>((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14))</code><br>
+								Noisy Beats: <code>((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14))</code><br>
+								Bassline: 	<code>(-t&gt;&gt;2)*((127&amp;t*(7&amp;t&gt;&gt;10))&lt;(245&amp;t*(2+(5&amp;t&gt;&gt;14))))</code> ★
 							</li>
 							<li>
 								Viznut-like<br>
@@ -204,8 +207,8 @@
 								<code title="Click to play this code">(t&amp;4096?(t*(t^t%255)|t&gt;&gt;4)&gt;&gt;1:t&gt;&gt;3|(t&amp;8192?t&lt;&lt;2:t))^((t&amp;8192?t&amp;4096?t&amp;1024?2*t:4*t:t&amp;512?4*t:4.2*t:(t&amp;4096?t&amp;1024?2*t:10*t:t&amp;512?2*t:8*t)&gt;&gt;2)*(t&amp;16384?3:2)|t*(t&amp;16384?.125:1/(.01*t))&gt;&gt;1)</code> ★
 							</li>
 							<li>
-								by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=6#c388670" target="_blank">Paralax</a><br>
-								<code>10*(t&amp;5*t|t&gt;&gt;6|(t&amp;32768?-6*t/7:(t&amp;65536?-9*t&amp;100:-9*(t&amp;100))/11))</code> <span class="yellow">★</span>
+								A quite complex one using conditionals by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=6#c388670" target="_blank">Paralax</a><br>
+								<code>10*(t&amp;5*t|t&gt;&gt;6|(t&amp;32768?-6*t/7:(t&amp;65536?-9*t&amp;100:-9*(t&amp;100))/11))</code> <span class="yellow" title="Ultra-Starred by StephanShi">★</span><span style="color: #00ff3f" title="Starred by Chasyxx"> ★</span>
 							</li>
 							<li>
 								Electrohouse<br>
@@ -223,13 +226,9 @@
 								<code>9*t&amp;t&gt;&gt;4|5*t&amp;t&gt;&gt;7|(3*t&amp;t&gt;&gt;10)-1</code> - by <a href="https://github.com/radavis/bytebeat/blob/master/errie_error.c" target="_blank">Radavis</a>
 							</li>
 							<li>
-								CA98 (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388902" target="_blank">Rrola</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388929" target="_blank">Ryg</a>)<br>
+								CA98 / Melody (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388902" target="_blank">Rrola</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388929" target="_blank">Ryg</a>)<br>
 								<code title="Click to play this code">t*(0xCA98CA98&gt;&gt;(t&gt;&gt;9&amp;30)&amp;15)|t&gt;&gt;8</code><br>
 								<code title="Click to play this code">t*(0xCA98&gt;&gt;(t&gt;&gt;9&amp;14)&amp;15)|t&gt;&gt;8</code> ★
-							</li>
-							<li>
-								Bassline (by Tejeez)<br>
-								<code>(-t&gt;&gt;2)*((127&amp;t*(7&amp;t&gt;&gt;10))&lt;(245&amp;t*(2+(5&amp;t&gt;&gt;14))))</code> ★
 							</li>
 							<li>
 								Crowd (by <a href="https://github.com/erlehmann/algorithmic-symphonies/blob/master/crowd/" target="_blank">Erlehmann</a>)<br>
@@ -310,10 +309,6 @@
 							<li>
 								Sneezing modem<br>
 								<code>100*((t&lt;&lt;2|t&gt;&gt;5|t^63)&amp;(t&lt;&lt;10|t&gt;&gt;11))</code>
-							</li>
-							<li>
-								Noisy beats (by <a href="https://youtu.be/GtQdIYUtAHg?t=2m55s" target="_blank">Tejeez</a>)<br>
-								<code>((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14))</code>
 							</li>
 							<li>
 								8-bit Atari inspired sounds (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=13#c389250" target="_blank">Visy</a>)<br>
@@ -969,6 +964,13 @@
 						&nbsp;-{Common}-
 					</div>
 					<div id="C-C" class="paragraph" style="display: none;">
+						<ul>
+							<li>
+								Sirpinski's Concert<br />
+		                        <code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*SR</code><span class="samplerate">5/2kHz</span>
+
+							</li>
+						</ul>
 						</div>
 					</div>
 				</div>

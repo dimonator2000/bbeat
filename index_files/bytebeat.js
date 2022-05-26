@@ -152,13 +152,29 @@ ByteBeatClass.prototype = {
 			for (var i = 0; i < arrLen; i++) {
 				var pos = (i * (1048576 / arrLen));
 				data[pos++] = parr[i] & 255;
-				data[pos++] = (parr[i] >> 8) & 255;
-				data[pos++] = (parr[i] >> 16) & 255;
+				data[pos++] = parr[i] >> 8 & 255;
+				data[pos++] = parr[i] >> 16 & 255;
 				data[pos++] = 255;
-				for (var j = 0; j < (1028576 / arrLen)-1; j++) {
+				for (var j = 0; j < (1048576 / arrLen) - 1; j++) {
 					data[pos++] = parr[i] & 255;
-					data[pos++] = (parr[i] >> 8) & 255;
-					data[pos++] = (parr[i] >> 16) & 255;
+					data[pos++] = parr[i] >> 8 & 255;
+					data[pos++] = parr[i] >> 16 & 255;
+					data[pos++] = 128;
+				}
+			}
+
+		} else if (this.mode === 3) {
+			var arrLen = arr.length;
+			for (var i = 0; i < arrLen; i++) {
+				var pos = (i * (1048576 / arrLen));
+				data[pos++] = parr[i++] & 255;
+				data[pos++] = parr[i++] & 255;
+				data[pos++] = parr[i -= 2] & 255;
+				data[pos++] = 255;
+				for (var j = 0; j < (1048576 / arrLen) - 1; j++) {
+					data[pos++] = parr[i++] & 255;
+					data[pos++] = parr[i++] & 255;
+					data[pos++] = parr[i -= 2] & 255;
 					data[pos++] = 128;
 				}
 			}
@@ -398,11 +414,11 @@ ByteBeatClass.prototype = {
 			if (this.type === 0) {
 				eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
 			} else if (this.type === 1) {
-				eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + ' +128; }');
+				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') +128; }');
 			} else if (this.type === 2) {
-				eval('byteBeat.func = function(' + funcvars + ') { return max(min((' + formula + '* 128 + 128),255),0); }');
+				eval('byteBeat.func = function(' + funcvars + ') { return max(min(((' + formula + ')* 128 + 128),255),0); }');
 			} else {
-				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + '&1)*255; }');
+				eval('byteBeat.func = function(' + funcvars + ') { return ((' + formula + ')&1)*255; }');
             }
 			this.func(0);
 		} catch(err) {
