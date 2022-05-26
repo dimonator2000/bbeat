@@ -7,9 +7,9 @@
 	<link rel="canonical" href="https://dollchan.net/bytebeat/index.html">
 	<link rel="shortcut icon" href="https://dollchan.net/bytebeat/favicon.png">
 	<link rel="stylesheet" type="text/css" href="./index_files/bytebeat.css">
-	<script type="text/javascript" async="" src="./index_files/analytics.js.download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script type="text/javascript" async="" src="./index_files/analytics.js(1).download"></script><script src="./index_files/pako.min.js.download"></script>
-	<script src="./index_files/bytebeat.js.download"></script>
-	<script src="./index_files/playlist.js.download"></script>
+	<script type="text/javascript" async="" src="./index_files/analytics.js"></script><script type="text/javascript" async="" src="./index_files/analytics.js"></script><script type="text/javascript" async="" src="./index_files/analytics.js"></script><script type="text/javascript" async="" src="./index_files/analytics.js"></script><script src="./index_files/pako.min.js"></script>
+	<script src="./index_files/bytebeat.js"></script>
+	<script src="./index_files/playlist.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async="" src="./index_files/js"></script>
 	<script>
@@ -20,7 +20,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="left"> Version 1.0 </p>
+	<p align="center">Version 1.1<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
 	<div class="middle container-fixed">
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 3px solid #00FF00 ; background-color:#007F00">
@@ -104,16 +104,11 @@
 	<div class="middle container-scroll" align="center" style="max-height: 604px;">
 		<div id="button-info" class="button-toggle" style="border: 1px dotted #00C0ff">/Enhancements &amp; Update Log\</div>
 		<div id="info" class="paragraph" style="display: none;">
-			<p style="color: #FFFF00">⚠WARNING: When using grid mode, zoom out to the highest length. in V1.1, i plan to fix this bug.⚠</p>
 			<p align="center" style="border: 1px solid white">
 				UPDATE LOG<br>
-				Beta 1.0 [1]: "Basic" additions, First publicly released version<br>
-				Beta 1.1 [2]: Finished library.<br>
-				Beta 2.0 [3]: added SR variable and br() function (bit reversial function) <br>
-				Beta 3.0 [4]: Button speed controls ( -4, -2, -1, 0, 1, 2 ,4 ) <br>
-				Beta 3.1 [5]: Button speed controls 2 ( -1, speed-. 0, speed+, 1) + sinf, etc.<br>
-				Beta 4.0 [6]: Additon of BitBeat and other smaller changes. <br>
-				V1.0     [7]: Grid Mode was aded. everything is mostly complete! As a result, we left beta stages after only 6. This is moving quick!
+				Betas [1 - 6]: "Basic" additions, Library, SR, Button control tests, BitBeat, Grid Mode.<br>
+				V1.0  [7]: Grid Mode was aded. everything is mostly complete! As a result, we left beta stages after only 6. This is moving quick!
+				V1.1  [8]: First version to properly use github commits, fixed grid mode bug and some other smaller bugs.
 			</p>
 			<p align="center" style="border: 5px solid #00C0ff ; background-color: #00607f">
 				Super-Important<br>
@@ -163,7 +158,12 @@
 					<a href="http://www.pouet.net/topic.php?which=8357&amp;page=1" target="_blank">4</a>) and which I discovered through experimentation, trial-and-error testing and piece-by-piece constructing.<br>
 				</p>
 			</div>
-			<div id="button-library" class="button-toggle" title="Songs from verious scources">/Library\</div>
+			
+		
+		
+		
+		
+		<div id="button-library" class="button-toggle" title="Songs from verious scources">/Library\</div>
 			<div id="library" class="paragraph">
 				<div id="button-library-common" class="button-toggle" title="Fourmulas found on the internet">/Common\</div>
 				<div id="library-common" class="paragraph">
@@ -555,8 +555,37 @@
 								<code samplerate="44100">((t&gt;&gt;1)*(15&amp;0x234568a0&gt;&gt;(t&gt;&gt;8&amp;28))|t&gt;&gt;1&gt;&gt;(t&gt;&gt;11)^t&gt;&gt;12)+(t&gt;&gt;4&amp;t&amp;24)</code> <span class="samplerate">44kHz</span>
 							</li>
 							<li>
-								Music of Big Chungus<br>
+								Music of Big Chungus by GetDolphinedLol<br>
 								<code samplerate="24000">50*sin(t*(t&gt;&gt;11&amp;9)*(t&gt;&gt;15&amp;90)/256)+(40*sin(t/7680))</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">24kHz</span>
+							</li>
+							<li>
+								Classix by kolBOSa <br />
+								<code samplerate="44100">t&amp;t&gt;&gt;8|(t&amp;t&gt;&gt;8|(t^t-t/256)+(4e4/(t&amp;1638))*t)/10000000</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">44kHz</span>
+							</li>
+							<li>
+								Hardcore music eeee by GtDolphinedLOL <br />
+								<code samplerate="48000">(t&amp;96)*(4e3/(t&amp;([16383,16383,16383,8191,16383,16383,16383,12287][(t&gt;&gt;15)&amp;7])))+(t&amp;t&gt;&gt;10&amp;63)</code><span class="samplerate">48kHz</span>
+							</li>
+							<li>
+								Polish Hamster by GetDolphinedLOL <br />
+								<code samplerate="96000">(t*(t&amp;t&gt;&gt;9)/(t&gt;&gt;18&amp;255)&amp;96)*(4e4/(t&amp;32767))</code><span class="samplerate">96kHz</span>
+							</li>
+							<li>
+								baen by BaenHoHoHo <br />
+								<code samplerate="44100">t&gt;&gt;t/10243|t*t/44</code><span class="samplerate">44kHz</span>
+							</li>
+							<li>
+								Eld but there's a pattern by kolBOSa<br />
+								<code samplerate="32000">(sin(((2**18)/(t&amp;t&gt;&gt;10)))*32+sin(4e3/(t/4&amp;4095))*64+sin(4e1/(t&amp;4095))*64)+128</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span>
+							</li>
+							<li>
+								<!-- <code samplerate="32000"></code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span> -->
+								DJ PAvel Volya by kolBOSa<br />
+								<code samplerate="10000">(((((t&gt;&gt;16^t&gt;&gt;20)&lt;&lt;2)%8)^t&gt;&gt;12+(t^t-t/255/2))&amp;~t)*4</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">10kHz</span>
+							</li>
+							<li>
+								Bad Remix by BaenHoHoHo<br />
+								<code samplerate="11025">(((t&gt;&gt;9^(t&gt;&gt;9)-1^1)%13*t/2&amp;127)+(3e5/(t&amp;8191)/4%128)+((sin(t|t/1.5)*32+32)*(-t&gt;&gt;4&amp;255)&gt;&gt;8)*[0,1][t&gt;&gt;12&amp;1]+(((t&gt;&gt;10^(t&gt;&gt;10)-1^1)%13*t&amp;63)))/1.4</code><span style="color: #00ff3f" title="It's not that bad. Starred!'"> ★ </span><span class="samplerate">11kHz</span>
 							</li>
 						</ul>
 					</div>
@@ -566,7 +595,7 @@
 					<div id="library-low" class="paragraph" style="display: none;">
 						<ul>
 							<li>
-								cool 1kHz Beat ( GetDolphinedLOL )<br>
+								cool beat ( GetDolphinedLOL )<br>
 								<code samplerate="1000">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)</code><span class="samplerate">1kHz</span><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>
 							</li>
 						</ul>
@@ -575,7 +604,7 @@
 						&nbsp;-{Enhanced Bytebeat}-
 					</div>
 					<div id="library-low" class="paragraph" style="display: none;">
-						<p>As of now not all the enhancements are done, so expect new songs with new features to be added.</p>
+						<p>This is empty. Make something for this!</p>
 						<ul>
 							<li>
 								
@@ -691,11 +720,11 @@
 					&nbsp;/Chasyxx\
 				</div>
 				<div id="library-C" class="paragraph" style="display: none;">
-					<div id="button-C-A" class="button-toggle" title="My Code, Enhacned or not.">
+					<div id="button-C-A" class="button-toggle" title="My first bookmarks Library.">
 						&nbsp;-{The First Pack}-
 					</div>
 					<div id="C-A" class="paragraph" style="display: none;">
-						<div id="button-C-A-W" class="button-toggle" title="My Code, Enhacned or not.">
+						<div id="button-C-A-W" class="button-toggle" title="From G minor Bach. Multiple versions.">
 							&nbsp;-{Warping Timeline}-
 						</div>
 						<div id="C-A-W" class="paragraph" style="display: none;">
@@ -822,7 +851,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="button-C-B" class="button-toggle" title="My Code, Enhacned or not.">
+					<div id="button-C-B" class="button-toggle" title="My second bookmarks library.">
 						&nbsp;-{The Second Pack}-
 					</div>
 					<div id="C-B" class="paragraph" style="display: none;">
@@ -857,87 +886,98 @@
 							</li>
 							<li>
 								Scaratchy <br>
-										  <code>
-										  	a=((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14)),
+								<code>
+									a=((-t&amp;4095)*(255&amp;t*(t&amp;t&gt;&gt;13))&gt;&gt;12)+(127&amp;t*(234&amp;t&gt;&gt;8&amp;t&gt;&gt;3)&gt;&gt;(3&amp;t&gt;&gt;14)),
 
 
-										  	((t&gt;&gt;2)%256)&gt;(((int(a)%256)+256)%256)?192:64
-										  </code>
+									((t&gt;&gt;2)%256)&gt;(((int(a)%256)+256)%256)?192:64
+								</code>
 							</li>
 							<li>
 								Double Scratchy<br>
-											   <code>a=12,b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
+								<code>a=12,b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
 							</li>
 							<li>
 								Power<br>
-									 <code>a=((t&gt;&gt;4)%64),b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
+								<code>a=((t&gt;&gt;4)%64),b=(((t**a)*(t&gt;&gt;6&amp;127))/(t**a))^(t&gt;&gt;6&amp;127),(b&gt;128?8:b&gt;64?7:b&gt;32?6:b&gt;16?5:b&gt;8?4:b&gt;4?3:b&gt;2?2:b&gt;1?1:0)*32</code>
 							</li>
 							<li>
 								REV EM UP<br>
-										 <code samplerate="64000">t*=(65536/64000),(((((((t/(4E4&gt;t?(2E4&gt;t?t%(t&gt;&gt;9)*10|t/2&amp;t:t*(t&gt;&gt;9)*10&amp;t/2)|t%(t&gt;&gt;9)*3&amp;t/16:t*(t&gt;&gt;9)^t))*(t&gt;&gt;4))-33)%256)+256)%256)+2)*8192</code><span class="samplerate">64kHz</span>
+								<code samplerate="64000">t*=(65536/64000),(((((((t/(4E4&gt;t?(2E4&gt;t?t%(t&gt;&gt;9)*10|t/2&amp;t:t*(t&gt;&gt;9)*10&amp;t/2)|t%(t&gt;&gt;9)*3&amp;t/16:t*(t&gt;&gt;9)^t))*(t&gt;&gt;4))-33)%256)+256)%256)+2)*8192</code><span class="samplerate">64kHz</span>
 							</li>
 							<li>
 								Falling Apart ( From "Harmony" )<br>
-											 <code>wave = (a) =&gt; (a%50.01+a%40.1+a%30.1+a%60.01),wave(t&amp;(pow(2,(t/(1&lt;&lt;12)))-1))</code>
+								<code>wave = (a) =&gt; (a%50.01+a%40.1+a%30.1+a%60.01),wave(t&amp;(pow(2,(t/(1&lt;&lt;12)))-1))</code>
 							</li>
 							<li>
 								Bit Reversial<br>
-											 <code>
-											 	a=(t&gt;&gt;2),b = (c,d,e) =&gt; ((e&amp;c)?d:0),br = (u) =&gt; b(128,1,u)+b(64,2,u)+b(32,4,u)+b(16,8,u)+b(8,16,u)+b(4,32,u)+b(2,64,u)+b(1,128,u),
-											 	br(a)
-											 </code>
+								<code>
+									a=(t&gt;&gt;2),b = (c,d,e) =&gt; ((e&amp;c)?d:0),br = (u) =&gt; b(128,1,u)+b(64,2,u)+b(32,4,u)+b(16,8,u)+b(8,16,u)+b(4,32,u)+b(2,64,u)+b(1,128,u),
+									br(a)
+								</code>
 							</li>
 							<li>
 								Pulsator<br>
-										<code>
-											br(br(t)^br(t)+(br(t&gt;&gt;8)))
-										</code>
+								<code>
+									br(br(t)^br(t)+(br(t&gt;&gt;8)))
+								</code>
 							</li>
 							<li>
 								ddCr&amp;/<br>
-										  <code>(t/(t&amp;t&gt;&gt;10))*256</code>
+								<code>(t/(t&amp;t&gt;&gt;10))*256</code>
 							</li>
 							<li>
 								The Castle<br>
-										  <code samplerate="44100">
-										  	time = t / 32000,
-										  	fract = function(x) {
-										  	return x % 1
-										  	},
-										  	main = function(time) {
-										  	speed = 1.5;
-										  	pitch = 0;
-										  	melody_notes = [
-										  	[0, 4, 7, 4, 0, 4, 7, 4, -1, 4, 7, 4, -1, 4, 7, 9],
-										  	[-12, -8, -12, -8, -12, -8, -12, -8, -13, -8, -13, -8, -13, -8, -13, -8],
-										  	[12 + 12, 11 + 12, 9 + 12, 7 + 12, 4 + 12, 9 + 12, 11 + 12, 14 + 12]
-										  	];
-										  	melody = 0;
-										  	for (i = 0; i &lt; melody_notes.length; i++) {
-										  	melody_tune = pow(pow(2, 1 / 12), (melody_notes[i][floor(time * speed) % melody_notes[i].length] + pitch) - 49) * 44000;
-										  	melody += tan(time / 8* melody_tune) * (1 - fract(time * speed)) * .25;
-										  	}
-										  	return (melody / melody_notes.length);
-										  	},
-										  	main(time)
-										  </code><span class="samplerate">44kHz</span>
+								<code samplerate="44100">
+									time = t / 32000,
+									fract = function(x) {
+									return x % 1
+									},
+									main = function(time) {
+									speed = 1.5;
+									pitch = 0;
+									melody_notes = [
+									[0, 4, 7, 4, 0, 4, 7, 4, -1, 4, 7, 4, -1, 4, 7, 9],
+									[-12, -8, -12, -8, -12, -8, -12, -8, -13, -8, -13, -8, -13, -8, -13, -8],
+									[12 + 12, 11 + 12, 9 + 12, 7 + 12, 4 + 12, 9 + 12, 11 + 12, 14 + 12]
+									];
+									melody = 0;
+									for (i = 0; i &lt; melody_notes.length; i++) {
+									melody_tune = pow(pow(2, 1 / 12), (melody_notes[i][floor(time * speed) % melody_notes[i].length] + pitch) - 49) * 44000;
+									melody += tan(time / 8* melody_tune) * (1 - fract(time * speed)) * .25;
+									}
+									return (melody / melody_notes.length);
+									},
+									main(time)
+								</code><span class="samplerate">44kHz</span>
 							</li>
 							<li>
 								The Destructor<br>
-											  <code samplerate="24000">(t&gt;&gt;7)*((((((((((t&amp;t/256)&amp;t/255)&amp;t/254)&amp;t/253)&amp;t/252)&amp;t/251)&amp;t/250)|(t&gt;&gt;4))^(t&gt;&gt;10))&amp;240)</code><span class="samplerate">24kHz</span>
+								<code samplerate="24000">(t&gt;&gt;7)*((((((((((t&amp;t/256)&amp;t/255)&amp;t/254)&amp;t/253)&amp;t/252)&amp;t/251)&amp;t/250)|(t&gt;&gt;4))^(t&gt;&gt;10))&amp;240)</code><span class="samplerate">24kHz</span>
 							</li>
 							<li>
 								Computing...<br>
-											<code samplerate="20000">((t&gt;&gt;2)*(((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262))/(t&gt;&gt;8)^(t&gt;&gt;2)</code><span class="samplerate">20kHz</span>
+								<code samplerate="20000">((t&gt;&gt;2)*(((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262))/(t&gt;&gt;8)^(t&gt;&gt;2)</code><span class="samplerate">20kHz</span>
 							</li>
 							<li>
 								Chaos<br>
-									 <code samplerate="64000">((t&gt;&gt;2)*(((((((((((((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262)|t/263)&amp;t/264)|t/265)&amp;t/266)|t/267)&amp;t/268)|t/269)&amp;t/270)|t/271)&amp;t/272))/(t&gt;&gt;8)^(t&gt;&gt;7)^(t&gt;&gt;6)^(t&gt;&gt;5)^(t&gt;&gt;4)^(t&gt;&gt;3)^(t&gt;&gt;2)^(t&gt;&gt;1)^t </code><span class="samplerate">64kHz</span>
+								<code samplerate="64000">((t&gt;&gt;2)*(((((((((((((((((t&amp;t/256)|t/257)&amp;t/258)|t/259)&amp;t/260)|t/261)&amp;t/262)|t/263)&amp;t/264)|t/265)&amp;t/266)|t/267)&amp;t/268)|t/269)&amp;t/270)|t/271)&amp;t/272))/(t&gt;&gt;8)^(t&gt;&gt;7)^(t&gt;&gt;6)^(t&gt;&gt;5)^(t&gt;&gt;4)^(t&gt;&gt;3)^(t&gt;&gt;2)^(t&gt;&gt;1)^t </code><span class="samplerate">64kHz</span>
 							</li>
 						</ul>
+					</div>
+					<div id="button-C-C" class="button-toggle" title="Songs made on this player after the Second Pack.">
+						&nbsp;-{Common}-
+					</div>
+					<div id="C-C" class="paragraph" style="display: none;">
 						</div>
 					</div>
 				</div>
+
+
+
+
+
+
 			<div id="button-origin" class="button-toggle">[Original app]</div>
 			<div id="origin" class="paragraph" style="display: none;">
 				This application is the fork of <a href="http://entropedia.co.uk/generative_music/" target="_blank">8-bit Generative Composer</a> by <a href="http://twitter.com/paul_hayes/" target="_blank">@paul_hayes</a><br>
