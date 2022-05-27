@@ -110,7 +110,7 @@ ByteBeatClass.prototype = {
 		var page = graphSizeInSamples * ((currentSample / graphSizeInSamples) | 0);
 		var width = this.canvWidth;
 		var height = this.canvHeight;
-		this.timeCursor.style.cssText = this.scale > 5 || this.mode == 2 ? 'display: none;' : 'display: block; left: ' +
+		this.timeCursor.style.cssText = this.scale > 5 || this.mode == 2 || this.mode == 3 ? 'display: none;' : 'display: block; left: ' +
 			(((page ? currentSample % page : currentSample) * width / graphSizeInSamples) | 0) + 'px';
 		this.prev = this.inputEl.innerText
 		if(!this.needUpdate && page === this.timePage || this.mode == 10) {
@@ -167,14 +167,14 @@ ByteBeatClass.prototype = {
 			var arrLen = arr.length;
 			for (var i = 0; i < arrLen; i++) {
 				var pos = (i * (1048576 / arrLen));
-				data[pos++] = parr[i++] & 255;
-				data[pos++] = parr[i++] & 255;
-				data[pos++] = parr[i -= 2] & 255;
+				data[pos++] = parr[i] & 255;
+				data[pos++] = parr[i+1] & 255;
+				data[pos++] = parr[i+2] & 255;
 				data[pos++] = 255;
 				for (var j = 0; j < (1048576 / arrLen) - 1; j++) {
-					data[pos++] = parr[i++] & 255;
-					data[pos++] = parr[i++] & 255;
-					data[pos++] = parr[i -= 2] & 255;
+					data[pos++] = parr[i] & 255;
+					data[pos++] = parr[i+1] & 255;
+					data[pos++] = parr[i+2] & 255;
 					data[pos++] = 128;
 				}
 			}
@@ -417,9 +417,14 @@ ByteBeatClass.prototype = {
 				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') +128; }');
 			} else if (this.type === 2) {
 				eval('byteBeat.func = function(' + funcvars + ') { return max(min(((' + formula + ')* 128 + 128),255),0); }');
-			} else {
+			} else if (this.type === 3) {
 				eval('byteBeat.func = function(' + funcvars + ') { return ((' + formula + ')&1)*255; }');
+			} else if (this.type === 4) {
+				eval('byteBeat.func = function(' + funcvars + ') { return sin((' + formula + ')%256-128)*128+128; }');
+			} else {
+				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') / 4; }');
             }
+
 			this.func(0);
 		} catch(err) {
 			this.func = oldF;

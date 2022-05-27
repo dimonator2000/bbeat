@@ -20,7 +20,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 1.2<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
+	<p align="center">Version 2.0<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
 	<div class="middle container-fixed">
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 3px solid #00FF00 ; background-color:#007F00">
@@ -53,6 +53,8 @@
 					<option value="1">Signed</option>
 					<option value="2">Floatbeat</option>
 					<option value="3">BitBeat</option>
+					<option value="4">Logmode</option>
+					<option value="5">2048</option>
 				</select>
 				<select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="1000">1kHz</option>
@@ -103,15 +105,9 @@
 			</div>
 		</div>
 	<div class="middle container-scroll" align="center" style="max-height: 604px;">
-		<div id="button-info" class="button-toggle" style="border: 1px dotted #00C0ff">/Enhancements &amp; Update Log\</div>
+		<div id="button-info" class="button-toggle" style="border: 8px ridge #00C0ff">/Enhancements &amp; Update Log\</div>
 		<div id="info" class="paragraph" style="display: none;">
-			<p align="center" style="border: 1px solid white">
-				UPDATE LOG<br>
-				Betas [1 - 6]: "Basic" additions, Library, SR, Button control tests, BitBeat, Grid Mode.<br>
-				V1.0  [7]: Grid Mode was aded. everything is mostly complete! As a result, we left beta stages after only 6. This is moving quick!
-				V1.1  [8]: First version to properly use github commits, fixed grid mode bug and some other smaller bugs.
-			</p>
-			<p align="center" style="border: 5px solid #00C0ff ; background-color: #00607f">
+			<p align="center" style="border: 8px ridge #00FFc0 ; background-color: #007f60">
 				Super-Important<br>
 				Green/cyan = Positive Values <br>
 				Red/pink = Negative Values  <br>
@@ -121,16 +117,28 @@
 				SR can also be used to change the song depending on the samplerate too, which can be intresting.<br />
 				br() bit reverses it's input.<br>
 			</p>
-			<p align="center" style="border: 3px dashed #808080">
+			<p align="center" style="border: 8px ridge #007f60 ; background-color: #003f30">
 				Important<br>
 				The Advanced Freqency Options are added from the start of <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out! it's where the codes on here are!<br>
 				The blue reprsents the output divided by 256.<br>
 				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the freqency
 			</p>
-			<p align="center" style="border:1px dotted #3F3F3F">
+			<p align="center" style="border: 8px ridge #003f30 ; background-color: #001f18">
 				General<br>
 				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
 				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
+				the SR variable can also create tracks that change using the sample rate.<br>
+
+				Library version: 1
+			</p>
+			<p align="left" style="border: 1px solid white">
+				UPDATE LOG<br>
+				Betas 1-4 -[1 - 6]: "Basic" additions, Library, SR, Button control tests, BitBeat.<br>
+				V1.0 ----- [7]: --- Grid Mode was adedd. everything is mostly complete! As a result, we left beta after 6 builds.. we're moving quick!<br />
+				V1.1, v1.2 [8 - 9]: First version to properly use github commits, fixed grid mode bug and some other smaller bugs, and RGB_ v1.<br />
+				v2.0 ----- [10]: -- Celebrating build 10, and v2! RGB_ vTWO was made, 2048 and logmode were added in memorial of kolBOSa's deleted player,<br />
+				------- [10] ------ And more expansion is done. And it came after 3 builds. That says something about the speed of devlopment.
+
 			</p>
 		</div>
 			<div id="button-info" class="button-toggle">/Info\</div>
