@@ -42,8 +42,10 @@ function getEntryHTML(entry, isChildren) {
 	descrHTML += authorHTML;
 	var starredHTML = '';
 	switch(entry.starred) {
-	case 1: starredHTML = ' &#9733;'; break;
-	case 2: starredHTML = ' <span class="yellow">&#9733;</span>';
+	    case 1: starredHTML = '<!--                 --> &#9733; <!---->'; break;
+		case 2: starredHTML = ' <span class= "yellow" > &#9733; </span>'; break;
+		case 3: starredHTML = ' <span color= "green1" > &#9733; </span>'; break;
+		case 4: starredHTML = ' <span color= "green2" > &#9733; </span>'
 	}
 	var codeHTML = '';
 	if(entry.code) {
@@ -78,10 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState === 4 && xhr.status === 200) {
 			var obj = JSON.parse(xhr.responseText);
-			addPlaylist(obj, 'classic8k');
-			addPlaylist(obj, 'js8k');
+			addPlaylist(obj, 'C');
+			addPlaylist(obj, 'JS8');
 			addPlaylist(obj, 'high');
+			addPlaylist(obj, 'low');
+			addPlaylist(obj, 'new');
 			addPlaylist(obj, 'sthephanshi');
+			addPlaylist(obj, 'chasyxx');
 		}
 	};
 	xhr.open('GET', 'playlist.json', true);

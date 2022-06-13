@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0209)file:///D:/chase's/stuff/ByteBeat/Chasyxx%20Player.html#v3b64q1YqTswtyEkNSixJVbIyNDAw0FFKyy/KLc1JVLJS0ijR0tAtsbMzVzPV1NIAMizUDIEsQzM1MxNNbZCAkZqhkblmTJ6+loJzfn6OgmG2R5WCU2piiYJTpYJ7aklKfk5BRmZeaoqPv4+Clr5SLQA= -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<meta name="description" content="Bytebeat music is a very short single-line JS expressions generating musical output. Bytebeat composer is an algorhithmic music generator.">
@@ -20,10 +19,12 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 2.0<br /><br />See enhancements for info about what's diffrent<br /> between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a></p>
+	<p align="center">Version 2.0<br /><br />See enhancements for info about what's diffrent<br />
+	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
+	Example: the br() function bit reverses the input.</p>
 	<div class="middle container-fixed">
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
-		<div align="center" style="border: 3px solid #00FF00 ; background-color:#007F00">
+		<div align="center" style="border: 6px ridge #00FF00 ; background-color:#007F00">
 			<div class="buttons-control">
 
 				<button onclick="byteBeat.rev()">◀</button>
@@ -44,7 +45,7 @@
 					<option value="0" title="Creates a diagram based off of visnut's videos.">Diagram</option>
 					<option value="1" title="A plot is created based off of the samples">Points</option>
 					<option value="2" title="For every sample, Red is S, green is S>>8, and blue is S>>16.">Grid</option>
-					<option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option>
+					<!--option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option-->
 					<option value="10"title="Turnes off the visualizer entirely if the song lags as it loads a new page.">Anti-Lag (none)</option>
 				</select>
 
@@ -56,7 +57,8 @@
 					<option value="4">Logmode</option>
 					<option value="5">2048</option>
 				</select>
-				<select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
+				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate()" value="1000"/>
+				<!--select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="1000">1kHz</option>
 					<option value="1250">5/4kHz</option>
 					<option value="1378.225">1378.225Hz</option>
@@ -95,7 +97,7 @@
 					<option value="32768000">32MHz</option>
 					<option value="65536000">65MHz</option>
 
-				</select>
+				</select-->
 			</div>
 		</div>
 			<div id="error"></div>
@@ -119,7 +121,8 @@
 			</p>
 			<p align="center" style="border: 8px ridge #007f60 ; background-color: #003f30">
 				Important<br>
-				The Advanced Freqency Options are added from the start of <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out! it's where the codes on here are!<br>
+				<!--The Advanced Freqency Options are added from the start of <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out! it's where the codes on here are!<br>-->
+				Subreddit: <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out!
 				The blue reprsents the output divided by 256.<br>
 				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the freqency
 			</p>
@@ -127,9 +130,8 @@
 				General<br>
 				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
 				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
-				the SR variable can also create tracks that change using the sample rate.<br>
 
-				Library version: 1
+				Library version: 2
 			</p>
 			<p align="left" style="border: 1px solid white">
 				UPDATE LOG<br>
@@ -173,8 +175,9 @@
 		
 		
 		
-		<div id="button-library" class="button-toggle" title="Songs from verious scources">/Library\</div>
-			<div id="library" class="paragraph">
+		 <div id="button-library" class="button-toggle" title="Songs from verious scources">/Library\</div>
+		<div id="library" class="paragraph">
+			<!---->
 				<div id="button-library-common" class="button-toggle" title="Fourmulas found on the internet">/Common\</div>
 				<div id="library-common" class="paragraph">
 					<div id="button-library-classic8k" class="button-toggle" title="8kHz rate songs in C">
@@ -320,6 +323,7 @@
 							</li>
 							<li>
 								8-bit Atari inspired sounds (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=13#c389250" target="_blank">Visy</a>)<br>
+								<code>t%25-(t&gt;&gt;2|15*t|t%227)-t&gt;&gt;3|(t&gt;&gt;5&amp;1663*(t&lt;&lt;5)|(t&gt;&gt;3)%1544)/(t%17|t%2048)</code><br />
 								<code>t%25+(t&gt;&gt;2|15*t)+t&gt;&gt;3</code> - simplified version
 							</li>
 							<li>
@@ -582,7 +586,7 @@
 								<code samplerate="32000">(sin(((2**18)/(t&amp;t&gt;&gt;10)))*32+sin(4e3/(t/4&amp;4095))*64+sin(4e1/(t&amp;4095))*64)+128</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span>
 							</li>
 							<li>
-								<!-- <code samplerate="32000"></code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span> -->
+								<!- <code samplerate="32000"></code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span> ->
 								DJ PAvel Volya by kolBOSa<br />
 								<code samplerate="10000">(((((t&gt;&gt;16^t&gt;&gt;20)&lt;&lt;2)%8)^t&gt;&gt;12+(t^t-t/255/2))&amp;~t)*4</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">10kHz</span>
 							</li>
@@ -607,7 +611,8 @@
 						&nbsp;-{Enhanced Bytebeat}-
 					</div>
 					<div id="library-low" class="paragraph" style="display: none;">
-						<p>This is empty. Make something for this!</p>
+						<p>This includes songs made with new features (SR,BR(),sinf().)
+						<br />This is empty. Make something for this!</p>
 						<ul>
 							<li>
 								
@@ -981,6 +986,7 @@
 						</ul>
 						</div>
 					</div>
+				<!---->
 				</div>
 
 

@@ -75,14 +75,10 @@ ByteBeatClass.prototype = {
 		Object.defineProperty(this, 'saveData', { value: fn });
 		return fn;
 	},
-	applySampleRate: function(rate) {
-		this.setSampleRate(rate);
-		var selectBox = $id('samplerate-change');
-		selectBox.childNodes.forEach(function(el, index) {
-			if(+el.value === this.sampleRate) {
-				selectBox.selectedIndex = index;
-			}
-		}.bind(this));
+	applySampleRate: function (rate) {
+		var what_bridgett_likes = $id('input_freq');
+		what_bridgett_likes.value = rate
+		this.setSampleRate();
 	},
 /*	changeMode: function() {
 		this.mode = +!this.mode;
@@ -438,8 +434,8 @@ ByteBeatClass.prototype = {
 		this.draw(this.imageData.data);
 		this.setScrollHeight();
 	},
-	setSampleRate: function(rate) {
-		this.sampleRate = rate;
+	setSampleRate: function() {
+		this.sampleRate = ($id('input_freq').value);
 		this.sampleSize = this.sampleRate / this.context.sampleRate;
 		this.needUpdate = true;
 	},

@@ -69,10 +69,10 @@ code {
 }
 
 #input {
-	border: 2px solid white;
+	border: 6px ridge white;
 	max-height: 140px;
 	padding: 5px;
-	width: 1014px;
+	width: 1006px;
 	word-wrap: break-word;
 	overflow-y: auto;
 }
@@ -116,13 +116,21 @@ select {
 #timecursor {
 	top: 0;
 	bottom: 0;
-	border-left: 2px solid red;
+	border-left: 4px ridge red;
 	position: absolute;
 	left: 20px;
 }
 
 .yellow {
-	color: yellow;
+	color: #FFFF00;
+}
+
+.green1 {
+	color: #007F00;
+}
+
+.green2 {
+	color: #00FF00;
 }
 
 /* ==[ Mobile devices ]==================================================================================== */
