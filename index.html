@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 2.0<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version 2.1<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input.</p>
 	<div class="middle container-fixed">
@@ -57,7 +57,7 @@
 					<option value="4">Logmode</option>
 					<option value="5">2048</option>
 				</select>
-				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate()" value="1000"/>
+				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate();" value="1000"/>
 				<!--select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="1000">1kHz</option>
 					<option value="1250">5/4kHz</option>
@@ -131,7 +131,7 @@
 				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
 				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
 
-				Library version: 2
+				Library version: 1
 			</p>
 			<p align="left" style="border: 1px solid white">
 				UPDATE LOG<br>
@@ -139,7 +139,8 @@
 				V1.0 ----- [7]: --- Grid Mode was adedd. everything is mostly complete! As a result, we left beta after 6 builds.. we're moving quick!<br />
 				V1.1, v1.2 [8 - 9]: First version to properly use github commits, fixed grid mode bug and some other smaller bugs, and RGB_ v1.<br />
 				v2.0 ----- [10]: -- Celebrating build 10, and v2! RGB_ vTWO was made, 2048 and logmode were added in memorial of kolBOSa's deleted player,<br />
-				------- [10] ------ And more expansion is done. And it came after 3 builds. That says something about the speed of devlopment.
+				---------- [10] --- And more expansion is done. And it came after 3 builds. That says something about the speed of devlopment.<br />
+				v2.1 ----- [11]: -- Made links store the beat type.
 
 			</p>
 		</div>
@@ -604,12 +605,11 @@
 						&nbsp;-{Enhanced Bytebeat}-
 					</div>
 					<div id="library-low" class="paragraph" style="display: none;">
-						<p>This includes songs made with new features (SR,BR(),sinf().)
-						<br />This is empty. Make something for this!</p>
+						<p>This includes songs made with new features (SR,br(),sinf().)
 						<ul>
 							<li>
-								
-
+								Example: Serpinski's Concert<br />
+								<code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*SR</code>
 							</li>
 						</ul>
 					</div>

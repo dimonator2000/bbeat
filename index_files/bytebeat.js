@@ -75,10 +75,14 @@ ByteBeatClass.prototype = {
 		Object.defineProperty(this, 'saveData', { value: fn });
 		return fn;
 	},
-	applySampleRate: function (rate) {
-		var what_bridgett_likes = $id('input_freq');
-		what_bridgett_likes.value = rate
-		this.setSampleRate();
+	applySettings: function (settings, useContext) {
+		//alert(JSON.stringify(settings));
+		var freqBox = $id('input_freq');
+		var typeBox = $id('beatType-change');
+		freqBox.value = settings.sampleRate;
+		typeBox.selectedIndex = settings.type;
+		this.setBeatType(settings.type);
+		this.setSampleRate(useContext);
 	},
 /*	changeMode: function() {
 		this.mode = +!this.mode;
@@ -233,6 +237,7 @@ ByteBeatClass.prototype = {
 			while((file = files.pop()) && !check(type = types.pop())) {
 				if(types.length === 0) {
 					console.error('Saving not supported in this browser!');
+					alert("save failed: not supported");
 					break;
 				}
 			}
@@ -243,26 +248,19 @@ ByteBeatClass.prototype = {
 	initInput() {
 		this.errorEl = $id('error');
 		this.inputEl = $id('input');
+		this.freqEl = $id('input_freq');
 		this.inputEl.addEventListener('onchange', this.refeshCalc.bind(this));
 		this.inputEl.addEventListener('onkeyup', this.refeshCalc.bind(this));
 		this.inputEl.addEventListener('input', this.refeshCalc.bind(this));
-		if(window.location.hash.indexOf('#b64') === 0) {
+		if (window.location.hash.indexOf('#b64') === 0) {
 			this.inputEl.innerText = pako.inflateRaw(
 				atob(decodeURIComponent(window.location.hash.substr(4))),
 				{ to: 'string' }) + ';';
 		} else if(window.location.hash.indexOf('#v3b64') === 0) {
-			var pData = pako.inflateRaw(
-				atob(decodeURIComponent(window.location.hash.substr(6))),
-				{ to: 'string' });
-			formula = pData;
-			if(pData.startsWith('{')) {
-				try {
-					pData = JSON.parse(pData);
-					formula = pData.formula;
-					this.applySampleRate(+pData.sampleRate);
-				} catch(err) {}
-			}
-			this.inputEl.innerText = formula;
+			var dataObj = JSON.parse(pako.inflateRaw(atob(decodeURIComponent(window.location.hash.substr(6))), { to: 'string' }))
+			//alert(JSON.stringify(dataObj))
+			this.inputEl.innerText = dataObj.formula;
+			this.applySettings(dataObj,false);
 		}
 	},
 	initCanvas: function() {
@@ -282,12 +280,12 @@ ByteBeatClass.prototype = {
 		var libraryEl = $id('library');
 		libraryEl.onclick = function(e) {
 			var el = e.target;
-			if(el.tagName === 'CODE') {
-				if(!this.context) {
+			if (el.tagName === 'CODE') {
+				if (!this.context) {
 					this.initAudioContext();
 				}
 				this.inputEl.innerText = el.innerText.trim();
-				this.applySampleRate(+el.getAttribute('samplerate') || 8000);
+				this.applySettings({ "sampleRate": + el.getAttribute('samplerate') || 8000, "type": +el.getAttribute('type') || 0 }, false);
 				this.time = 0;
 				this.needUpdate = true;
 				this.refeshCalc();
@@ -300,7 +298,7 @@ ByteBeatClass.prototype = {
 		libraryEl.onmouseover = function(e) {
 			var el = e.target;
 			if(el.tagName === 'CODE') {
-				el.title = 'Click to play this code';
+				el.title = 'Click to hear the music the code generates.';
 			}
 		};
 	},
@@ -428,15 +426,14 @@ ByteBeatClass.prototype = {
 			return;
 		}
 		this.errorEl.innerText = '';
-		var pData = (this.sampleRate === 8000 ? formula :
-			JSON.stringify({ sampleRate: this.sampleRate, formula: formula }));
+		var pData = (JSON.stringify({ sampleRate: this.sampleRate, formula: formula, type: this.type }));
 		window.location.hash = '#v3b64' + btoa(pako.deflateRaw(pData, { to: 'string' }));
 		this.draw(this.imageData.data);
 		this.setScrollHeight();
 	},
-	setSampleRate: function() {
+	setSampleRate: function(useContext) {
 		this.sampleRate = ($id('input_freq').value);
-		this.sampleSize = this.sampleRate / this.context.sampleRate;
+		this.sampleSize = this.sampleRate / (useContext? this.context.sampleRate : 48000);
 		this.needUpdate = true;
 	},
 	setMode: function (selectedmode) {
