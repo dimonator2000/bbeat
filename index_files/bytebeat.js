@@ -252,15 +252,16 @@ ByteBeatClass.prototype = {
 		this.inputEl.addEventListener('onchange', this.refeshCalc.bind(this));
 		this.inputEl.addEventListener('onkeyup', this.refeshCalc.bind(this));
 		this.inputEl.addEventListener('input', this.refeshCalc.bind(this));
-		if (window.location.hash.indexOf('#b64') === 0) {
-			this.inputEl.innerText = pako.inflateRaw(
-				atob(decodeURIComponent(window.location.hash.substr(4))),
-				{ to: 'string' }) + ';';
-		} else if(window.location.hash.indexOf('#v3b64') === 0) {
-			var dataObj = JSON.parse(pako.inflateRaw(atob(decodeURIComponent(window.location.hash.substr(6))), { to: 'string' }))
+		if (window.location.hash.indexOf('#enBeat-') === 0) {
+			var dataObj = JSON.parse(pako.inflateRaw(atob(decodeURIComponent(window.location.hash.substr(8))), { to: 'string' }))
 			//alert(JSON.stringify(dataObj))
 			this.inputEl.innerText = dataObj.formula;
 			this.applySettings(dataObj,false);
+		} else if (window.location.hash.indexOf('#v3b64') === 0) {
+			var dataObj = JSON.parse(pako.inflateRaw(atob(decodeURIComponent(window.location.hash.substr(6))), { to: 'string' }))
+			//alert(JSON.stringify(dataObj))
+			this.inputEl.innerText = dataObj.formula;
+			this.applySettings(dataObj, false);
 		}
 	},
 	initCanvas: function() {
@@ -427,7 +428,7 @@ ByteBeatClass.prototype = {
 		}
 		this.errorEl.innerText = '';
 		var pData = (JSON.stringify({ sampleRate: this.sampleRate, formula: formula, type: this.type }));
-		window.location.hash = '#v3b64' + btoa(pako.deflateRaw(pData, { to: 'string' }));
+		window.location.hash = '#enBeat-' + btoa(pako.deflateRaw(pData, { to: 'string' }));
 		this.draw(this.imageData.data);
 		this.setScrollHeight();
 	},
