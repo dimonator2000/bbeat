@@ -131,7 +131,7 @@
 				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
 				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
 
-				Library version: 2
+				Library version: 3
 			</p>
 			<p align="left" style="border: 1px solid white">
 				UPDATE LOG<br>
@@ -421,6 +421,23 @@
 				<div id="library-js8k" class="paragraph" style="display: none;">
 					<ul>
 						<li>
+							by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc">Gabrirl Miceli</a><br />
+							Crazy Groovy Beats 2: <code>d=t&gt;&gt;12&amp;1,h=(t&gt;&gt;9)+4,t*t*(t&amp;255)*d/156+(t*(t^15)+t)*((h|t/2048+1&amp;127)-h)/64&amp;127-d*(2*(t&gt;&gt;5&amp;127)/3+32)</code><br />
+							The Rythm: <code>a=t-256,((44*(t/256-28|3)|t*8&amp;t&gt;&gt;11&amp;t&gt;&gt;5|t*(a&gt;&gt;3&amp;a&gt;&gt;4&amp;a&gt;&gt;5&amp;64)&gt;&gt;t/16)/2&amp;127)+(((t^t+t/256)&amp;255)/(5-(t&gt;&gt;17&amp;3))/2&amp;127)</code><br />
+							New Sawtooth Music Again: <code>j=(t-41024&amp;t+1024)&gt;&gt;11&amp;255,k=t&amp;16383,(t*(j&amp;255)/2&amp;127)+(1E5/(t&amp;4095)/4&amp;63)+(int(k/(k&gt;&gt;7)-136)/8&amp;32*(1+(7&lt;j))-1)</code><br />
+							Now this actually sounds pretty cool: <code>d=t*465/(43+6*(t&gt;&gt;15&amp;3^1)),((d/4&amp;t&gt;&gt;6)+d/2&amp;127)+(d/6&amp;127)</code> <span class="yellow">★</span>
+						</li>
+						<li>
+							All `board the ole steam boat by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc">Noah Lovotti</a><br />
+															 <code>v=&quot;4568&quot;[t&gt;&gt;11&amp;3],w=(t&gt;&gt;5|t&gt;&gt;v^sin(t/8/(v/(((t&gt;&gt;12&amp;t&gt;&gt;14)&amp;8)+((t&gt;&gt;14|t&gt;&gt;11)&amp;1))))*29-100),w+(v*((t*v/7*4&amp;t&gt;&gt;11)|w))</code>
+						</li>
+						<li>
+							By sARpnt:
+							          <!--                                               V 8 control chars. before the ć --><br />
+							Menacing: <code samplerate="44100">r=11e3,s=int(t/r+1)%32,b='ć&oacute;&oacute;&oacute;ć&Icirc;&Icirc;&Icirc;&Icirc;&Atilde;&Atilde;&Atilde;&Atilde;&Atilde;&Atilde;&Icirc;&deg;&deg;&deg;&deg;&brvbar;&brvbar;&brvbar;&brvbar;'.charCodeAt(s)/300*t%512,160/3*(sin(t%r/(t%r/100+8))+1)*(s%2+.6*!(s%16))+b%(400+128*sin(b/(21+sin(t/r))))%256/3+(.999*(0xDBC97749&amp;2**s?2*b:b)%128&gt;64+15*sin(t/1e4)?64-t/r%1*32:0)</code> <span class="samplerate">44kHz</span><br />
+							Arpeggiator fun<span style="color: #fffddf; background-color: #e4e51d; color: black "> Laggy visualization </span>:<code samplerate="44100">i=int,c='charCodeAt',b=t/441e3*16,q=b%.5,h=x=&gt;t/2210*2**((x-36)/12)%1,w=(x,y=0)=&gt;(h(x)-sin(y*2+b*PI)/8&gt;.5)*30,s=i(b*2)%32,a=abs(8-i(b*8)%16),t||(v=.5),v=3.65*v*(1-v),sin(q/(q/100+3e-4))*40*!(54878&amp;1&lt;&lt;s%16)+(v-.5)*70*max(0,1-(b+1)%2*.77)+w(s==6&amp;&amp;i(b*6%6)==1?85:s==14&amp;&amp;q&lt;.25?78:'SSSSSSSQOOONNOLJLLLLLNLJIIIGGGGG'[c](s),s==5)+w('@@@@@@BCEEECCBCCEEEEECEEBBB@@@@@'[c](s))+h('pnkgrnkipmigpnkg'[c](a%4+i(s/8)*4)+12*-i(a/4))*27+99</code> <span class="samplerate">44kHz</span>
+						</li>
+						<li>
 							No Limit (non-SIN version) (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388931" target="_blank">Mu6k</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=10#c388986" target="_blank">Ryg</a>)<br>
 							<code>128/(y=t&amp;4095)*25+(x=t*(15&amp;0x9866&gt;&gt;(t&gt;&gt;12&amp;12))/6&amp;127)*y/1E4+((t&gt;&gt;6^t&gt;&gt;8|t&gt;&gt;12|x)&amp;63)</code> ★
 						</li>
@@ -434,11 +451,7 @@
 							by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401841" target="_blank">Mu6k</a><br>
 							<code>u=10^(t&gt;&gt;15&amp;7),u+=3,y=(t&gt;&gt;11&amp;7)/u,f=t*8*y,z=(t*16/u)&amp;0x63|f|f*1.01,z*2</code> ★
 						</li>
-						<li>
-							by <a href="https://www.youtube.com/watch?v=V4GfkFbDojc" target="_blank">Gabriel Miceli</a><br>
-							<code>d=t*465/(43+6*(t&gt;&gt;15&amp;3^1)),((d/4&amp;t&gt;&gt;6)+d/2&amp;127)+(d/6&amp;127)</code> <span class="yellow">★</span> Now this actually sounds pretty cool<br>
-							<code title="Click to play this code">d=t&gt;&gt;12&amp;1,h=(t&gt;&gt;9)+4,(t*t*(t&amp;255)*d/156+(t*(t^15)+t)*((h|t/2048+1&amp;127)-h)/64&amp;127-d*((t&gt;&gt;5&amp;127)*2/3+32))</code> ★ Crazy Groovy Beats 2
-						</li>
+
 						<li>
 							Industrial chiptune (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389003" target="_blank">Rez</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389005" target="_blank">Ryg</a>)<br>
 							<code>t*(1+"4451"[t&gt;&gt;13&amp;3]/10)&amp;t&gt;&gt;9+(.003*t&amp;3)</code>
@@ -554,15 +567,15 @@
 							<code samplerate="11025" title="Click to play this code">i=t&amp;8191,(((t*((t&gt;&gt;9^((t&gt;&gt;9)-1)^1)%13)&amp;255)/2)+((((t&gt;&gt;3|t&lt;&lt;(t&gt;&gt;12&amp;2))*(i&lt;4096)+(t&gt;&gt;4|t*(t^t+t/256))*(i&gt;4095)))&amp;255)/2)*(2+(t&gt;&gt;16))</code> ★ Noise Maker <span class="samplerate">11kHz</span> <br>
 							<code samplerate="11025">(((t/10|0)^(t/10|0)-1280)%11*t/2&amp;127)+(((t/640|0)^(t/640|0)-2)%13*t/2&amp;127)</code> <span class="samplerate">11kHz</span> - Techno<br>
 							<code samplerate="32000">a=t-2048,((t&amp;t&gt;&gt;6)&amp;(t*(t&gt;&gt;((t&amp;65535)&gt;&gt;12))))+((t*3/4&amp;t&gt;&gt;12)&amp;127)+(t*(a&gt;&gt;7&amp;a&gt;&gt;8&amp;a&gt;&gt;9&amp;16)&gt;&gt;t/64)</code> <span class="samplerate">32kHz</span> - Crazy Groovy Beats<br>
-							<code samplerate="44100">d=(t*(t&amp;t&gt;&gt;12)*8/11025)|0,((d&amp;16)/8-1)*(d*(d^15)+d+127)</code> <span class="samplerate">44kHz</span> - Crude Sinevawe Dubstep
+							<code samplerate="44100" type="1">d=(t*(t&amp;t&gt;&gt;12)*8/11025)|0,((d&amp;16)/8-1)*(d*(d^15)+d)</code> <span style="color: #dfefff; background-color: #5f677f ">Signed</span> <span class="samplerate">44kHz</span> - Crude Sinevawe Dubstep
 						</li>
 						<li>
 							Chip arpeggio that eats itself (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=8#c388898" target="_blank">Kb_</a>)<br>
 							<code samplerate="44100">((t&gt;&gt;1)*(15&amp;0x234568a0&gt;&gt;(t&gt;&gt;8&amp;28))|t&gt;&gt;1&gt;&gt;(t&gt;&gt;11)^t&gt;&gt;12)+(t&gt;&gt;4&amp;t&amp;24)</code> <span class="samplerate">44kHz</span>
 						</li>
 						<li>
-							Music of Big Chungus by GetDolphinedLol <span style="color: #dfefff; background-color: #5f677f ">Signed</span> <br />
-							<code samplerate="24000" type="1">50*sin(t*(t&gt;&gt;11&amp;9)*(t&gt;&gt;15&amp;90)/256)+(40*sin(t/7680))</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">24kHz</span>
+							Music of Big Chungus by GetDolphinedLol <br />
+							<code samplerate="24000">50*sin(t*(t&gt;&gt;11&amp;9)*(t&gt;&gt;15&amp;90)/256)+(40*sin(t/7680))</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">24kHz</span>
 						</li>
 						<li>
 							Classix by kolBOSa <br />
@@ -578,7 +591,7 @@
 						</li>
 						<li>
 							Eld but there's a pattern by kolBOSa<br />
-							<code samplerate="32000">(sin(((2**18)/(t&amp;t&gt;&gt;10)))*32+sin(4e3/(t/4&amp;4095))*64+sin(4e1/(t&amp;4095))*64)+128</code><span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span><span class="samplerate">32kHz</span>
+							<code samplerate="32000" type="1">(sin(((2**18)/(t&amp;t&gt;&gt;10)))*32+sin(4e3/(t/4&amp;4095))*64+sin(4e1/(t&amp;4095))*64)</code> <span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span> <span style="color: #dfefff; background-color: #5f677f ">Signed</span> <span class="samplerate">32kHz</span>
 						</li>
 						<li>
 							DJ PAvel Volya by kolBOSa<br />

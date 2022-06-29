@@ -236,8 +236,8 @@ ByteBeatClass.prototype = {
 			});
 			while((file = files.pop()) && !check(type = types.pop())) {
 				if(types.length === 0) {
-					console.error('Saving not supported in this browser!');
-					alert("save failed: not supported");
+					console.error('save failed: not supported');
+					alert("Saving not supported in this browser!");
 					break;
 				}
 			}

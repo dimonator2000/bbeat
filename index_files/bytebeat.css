@@ -109,6 +109,11 @@ li {
 	cursor: default;
 }
 
+.signed {
+	color: #dfefff;
+	background-color: #5f677f
+}
+
 select {
 	vertical-align: -2px;
 }
