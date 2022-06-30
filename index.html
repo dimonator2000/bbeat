@@ -52,10 +52,10 @@
 				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="0">ByteBeat</option>
 					<option value="1">Signed</option>
-					<option value="2">Floatbeat</option>
+					<option value="2" title="Notice: numbers are rounded.">Floatbeat</option>
 					<option value="3">BitBeat</option>
 					<option value="4">Logmode</option>
-					<option value="5">2048</option>
+					<option value="5">div4</option>
 				</select>
 				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate();" value="1000"/>
 				<!--select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">

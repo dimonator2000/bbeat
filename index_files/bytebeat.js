@@ -80,8 +80,8 @@ ByteBeatClass.prototype = {
 		var freqBox = $id('input_freq');
 		var typeBox = $id('beatType-change');
 		freqBox.value = settings.sampleRate;
-		typeBox.selectedIndex = settings.type;
-		this.setBeatType(settings.type);
+		typeBox.selectedIndex = settings.type || 0;
+		this.setBeatType(settings.type || 0);
 		this.setSampleRate(useContext);
 	},
 /*	changeMode: function() {
