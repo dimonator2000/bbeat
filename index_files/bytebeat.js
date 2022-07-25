@@ -20,8 +20,12 @@ function $toggle(el) {
 }
 
 function ByteBeatClass() {
+	this.scaleUp = $id('scaleUp')
+	this.scaleDown = $id('scaleDown')
+
+
 	this.audioRecorder = null;
-	this.bufferSize = 8192;
+	this.bufferSize = 2048;
 	this.canvas = null;
 	this.canvWidth = 0;
 	this.canvHeight = 0;
@@ -32,9 +36,9 @@ function ByteBeatClass() {
 	this.ctx = null;
 	this.errorEl = null;
 	this.imageData = null;
-	this.sampletime = 0;
+	this.sampleTime = 0;
 	this.mode = 0;
-	this.needUpdate = false;
+	this.pageIdx = 0;
 	this.prev = null;
 	this.playing = false;
 	this.isff = false;
@@ -43,10 +47,11 @@ function ByteBeatClass() {
 	this.recording = false;
 	this.sampleRate = 1000;
 	this.sampleSize = 1;
-	this.scale = 3;
+	this.scaleMax = 9;
+	this.scale = 6;
 	this.time = 0;
-	this.timePage = -1;
 	this.type = 0;
+	this.visuals = null;
 	document.addEventListener('DOMContentLoaded', function() {
 		this.contScrollEl = $q('.container-scroll');
 		this.contFixedEl = $q('.container-fixed');
@@ -92,95 +97,39 @@ ByteBeatClass.prototype = {
 		}
 	},*/
 	changeScale: function(isIncrement) {
-		if(!isIncrement && this.scale > 0 || isIncrement && this.scale < 11) {
+		if(!isIncrement && this.scale > 0 || isIncrement && this.scale < this.scaleMax) {
 			this.scale += isIncrement ? 1 : -1;
-			this.needUpdate = true;
-			if (this.sampletime == 0) {
-				this.refeshCalc();
-			}
+			this.pageIdx = 0;
+			this.clearCanvas();
 		}
 	},
-	draw: function(data) {
+	clearCanvas: function () {
+		this.ctx.clearRect(0, 0, this.canvWidth, this.canvHeight)
+		this.imageData = this.ctx.getImageData(0, 0, this.canvWidth, this.canvHeight);
+	},
+	handleGraphics: function (sampleData) {
 		// | 0 is faster than Math.floor
-		if (this.inputEl.innerText != this.prev) {
-			this.needUpdate = true;
-        }
-		var graphSizeInSamples = (data.length >> 2) >> this.scale;
-		var currentSample = this.sampleSize * this.time;
-		var page = graphSizeInSamples * ((currentSample / graphSizeInSamples) | 0);
 		var width = this.canvWidth;
 		var height = this.canvHeight;
-		this.timeCursor.style.cssText = this.scale > 5 || this.mode == 2 || this.mode == 3 ? 'display: none;' : 'display: block; left: ' +
-			(((page ? currentSample % page : currentSample) * width / graphSizeInSamples) | 0) + 'px';
-		this.prev = this.inputEl.innerText
-		if(!this.needUpdate && page === this.timePage || this.mode == 10) {
-			return;
-		}
-		this.timePage = page;
-		var arr = [];
-		var parr = [];
-			var dataLen = data.length >> 2;
-			for (var t = 0; t < dataLen; ++t) {
-				var ts = (t >> this.scale);
-				var preresult = this.func(ts + page, this.sampleRate)
-				var result = preresult & 255;
-				if (this.mode != 0) {
-					parr[ts] = preresult;
-					arr[ts] = result;
-				}
-				var pos = (width * (t % height) + ((t / height) | 0)) << 2;
-				// data[pos++] = data[pos++] = data[pos++] = this.mode ? 0 : result; // R, G, B
-				var initpos = pos;
-				data[pos++] = this.mode || preresult > 0  ? 0 : result;
-				data[pos++] = this.mode || preresult < 0  ? 0 : result;
-				data[pos++] = this.type == 2 || this.mode ? 0 : (Math.abs(preresult>>8))&255;
-				data[pos] = 255; // Alpha
-			}
-		if (this.mode === 1) {
-			var arrLen = arr.length;
-			for (var i = 0; i < arrLen; i++) {
-				var pos = ((256 - arr[i]) * width + (((i * width / arrLen) | 0) || 1)) << 2;
-				data[pos++] = parr[i] > 0 ? 0 : 255;
-				data[pos++] = parr[i] < 0 ? 0 : 255;
-				data[pos++] = 0;
-				data[pos--] = 255;
-				pos = 2 + (((256 - (parr[i] >> 8) & 255) * width + (((i * width / arrLen) | 0) || 1)) << 2);
-				data[pos] = this.type == 2 ? 0 : 255;
-			}
-		} else if (this.mode === 2) {
-			var arrLen = arr.length;
-			for (var i = 0; i < arrLen; i++) {
-				var pos = (i * (1048576 / arrLen));
-				data[pos++] = parr[i] & 255;
-				data[pos++] = parr[i] >> 8 & 255;
-				data[pos++] = parr[i] >> 16 & 255;
-				data[pos++] = 255;
-				for (var j = 0; j < (1048576 / arrLen) - 1; j++) {
-					data[pos++] = parr[i] & 255;
-					data[pos++] = parr[i] >> 8 & 255;
-					data[pos++] = parr[i] >> 16 & 255;
-					data[pos++] = 128;
-				}
-			}
+		var scale = this.scale;
+		var pageWidth = width >> scale;
+		var pageIdx = this.pageIdx
+		var x = pageWidth * pageIdx;
+		this.ctx.clearRect(x, 0, pageWidth, height);
+		this.imageData = this.ctx.getImageData(0, 0, width, height);
+		var imageData = this.imageData.data;
+		var bufLen = sampleData.length;
+		for (var i = 0; i < bufLen; i++) { 
+			var pos = (width * (256-sampleData[i]) +
+				(pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) << 2;
+			imageData[pos++] = imageData[pos++] = imageData[pos++] = imageData[pos] = 255;
+			if (scale !== 0) {
+				this.pageIdx = pageIdx === (1 << scale) - 1 ? 0 : pageIdx + 1
+            }
 
-		} else if (this.mode === 3) {
-			var arrLen = arr.length;
-			for (var i = 0; i < arrLen; i++) {
-				var pos = (i * (1048576 / arrLen));
-				data[pos++] = parr[i] & 255;
-				data[pos++] = parr[i+1] & 255;
-				data[pos++] = parr[i+2] & 255;
-				data[pos++] = 255;
-				for (var j = 0; j < (1048576 / arrLen) - 1; j++) {
-					data[pos++] = parr[i] & 255;
-					data[pos++] = parr[i+1] & 255;
-					data[pos++] = parr[i+2] & 255;
-					data[pos++] = 128;
-				}
-			}
-		}
+	}
 		this.ctx.putImageData(this.imageData, 0, 0);
-		this.needUpdate = false;
+
 	},
 	func: function() {
 		return 0;
@@ -199,26 +148,32 @@ ByteBeatClass.prototype = {
 		}
 		this.sampleSize = this.sampleRate / context.sampleRate;
 		var processor = context.createScriptProcessor(this.bufferSize, 1, 1);
-		processor.onaudioprocess = function(e) {
-			this.draw(this.imageData.data);
-			var data = e.outputBuffer.getChannelData(/* channel = */ 0);
-			var dataLen = data.length;
+		processor.onaudioprocess = function (e) {
+			var chData = e.outputBuffer.getChannelData(/* Read from  channel */ 0);
+			var dataLen = chData.length;
+			var sampleData = [];
 			var lastSample = -1;
 			var lastOutput = 0;
 			for(var i = 0; i < dataLen; ++i) {
 				var resampledTime = (this.sampleSize * this.time) | 0;
-				if (this.sampletime == 0) {
-					data[i] = 0;
+				if (this.sampleTime == 0) {
+					chData[i] = sampleData[i] = 0;
 				} else if(lastSample !== resampledTime) {
-					data[i] = lastOutput = (this.func(resampledTime,this.sampleRate) & 255) / 127 - 1;
+					var value = this.func(resampledTime) & 255;
+					sampleData[i] = value;
+					chData[i] = lastOutput = value / 127 - 1;
 				} else {
-					data[i] = lastOutput;
+					sampleData[i] = 0;
+					chData[i] = lastOutput;
 				}
 				lastSample = resampledTime;
-				if (this.time + this.sampletime >= 0) {
-					this.time += this.sampletime
+				if (this.time + this.sampleTime >= 0) {
+					this.time += this.sampleTime
 				}
 			}
+			if (this.sampleTime != 0) {
+				this.handleGraphics(sampleData);
+            }
 		}.bind(this);
 		processor.connect(context.destination);
 
@@ -265,7 +220,7 @@ ByteBeatClass.prototype = {
 		}
 	},
 	initCanvas: function() {
-		this.timeCursor = $id('timecursor');
+		
 		this.canvas = $id('canvas-main');
 		this.ctx = this.canvas.getContext('2d');
 		this.canvWidth = this.canvas.width;
@@ -288,7 +243,6 @@ ByteBeatClass.prototype = {
 				this.inputEl.innerText = el.innerText.trim();
 				this.applySettings({ "sampleRate": + el.getAttribute('samplerate') || 8000, "type": +el.getAttribute('type') || 0 }, false);
 				this.time = 0;
-				this.needUpdate = true;
 				this.refeshCalc();
 				this.play();
 			}
@@ -307,7 +261,7 @@ ByteBeatClass.prototype = {
 		if(!this.context) {
 			this.initAudioContext();
 		}
-		this.sampletime = 1;
+		this.sampleTime = 1;
 	},/*
 	ff: function() {
 		if(!this.context) {
@@ -325,7 +279,7 @@ ByteBeatClass.prototype = {
 		if (!this.context) {
 			this.initAudioContext();
 		}
-		this.sampletime = -1;
+		this.sampleTime = -1;
 	},/*
 	fr: function () {
 		if (!this.context) {
@@ -343,16 +297,16 @@ ByteBeatClass.prototype = {
 		if (!this.context) {
 			this.initAudioContext();
 		}
-		this.sampletime++
+		this.sampleTime++
 	},
 	down: function () {
 		if (!this.context) {
 			this.initAudioContext();
 		}
-		this.sampletime--
+		this.sampleTime--
 	},
 	pause: function () {
-		this.sampletime = 0;
+		this.sampleTime = 0;
 	},
 	gotostart: function () {
 		this.time = 0;
@@ -404,8 +358,32 @@ ByteBeatClass.prototype = {
 			max = function (v, w) { return Math.max(v, w) };
 			min = function (v, w) { return Math.min(v, w) };
 			pow = function (v, w) { return Math.pow(v, w) };
-			b = (c, d, e) => ((e & c) ? d : 0), br = (u) => b(128, 1, u) + b(64, 2, u) + b(32, 4, u) + b(16, 8, u) + b(8, 16, u) + b(4, 32, u) + b(2, 64, u) + b(1, 128, u);
+			b = (c, d, e) => ((e & c) ? d : 0),
+			br = (u) => b(128, 1, u) + b(64, 2, u) + b(32, 4, u) + b(16, 8, u) + b(8, 16, u) + b(4, 32, u) + b(2, 64, u) + b(1, 128, u);
+			bre = function (u) {
+				var sum = 0
+				for (var i = 0; i < 32; i++) {
+					sum += b((1<<(31-i)),(1<<i), u);
+				}
+				return sum;
+			} 
 		
+
+			/*switch(this.type) { // planned to simplify things, need to fix div4 bug
+				default:
+					console.error("Error: beat type not found!");
+					eval('byteBeat.func = function( t ) { return t&t>>8 ; }');
+
+				case 0: eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
+				case 1: eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') +128; }');
+				case 2: eval('byteBeat.func = function(' + funcvars + ') { return max(min(((' + formula + ')* 128 + 128),255),0); }');0
+				case 3: eval('byteBeat.func = function(' + funcvars + ') { return ((' + formula + ')&1)*255; }');
+				case 4: eval('byteBeat.func = function(' + funcvars + ') { return sin((' + formula + ')%256-128)*128+128; }');
+				case 5: eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') / 4; }');
+
+
+            }*/
+
 			if (this.type === 0) {
 				eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
 			} else if (this.type === 1) {
@@ -429,26 +407,27 @@ ByteBeatClass.prototype = {
 		this.errorEl.innerText = '';
 		var pData = (JSON.stringify({ sampleRate: this.sampleRate, formula: formula, type: this.type }));
 		window.location.hash = '#enBeat-' + btoa(pako.deflateRaw(pData, { to: 'string' }));
-		this.draw(this.imageData.data);
 		this.setScrollHeight();
+		this.pageIdx = 0;
+		this.clearCanvas();
 	},
 	setSampleRate: function(useContext) {
 		this.sampleRate = ($id('input_freq').value);
 		this.sampleSize = this.sampleRate / (useContext? this.context.sampleRate : 48000);
-		this.needUpdate = true;
+
 	},
 	setMode: function (selectedmode) {
 		this.mode = selectedmode;
-		this.needUpdate = true;
+
 	},
 	setBeatType: function (selectedmode) {
 		this.type = selectedmode;
-		this.needUpdate = true;
+
 	},
 	setScrollHeight: function() {
 		if(this.contScrollEl) {
 			this.contScrollEl.style.maxHeight =
-				(document.documentElement.clientHeight - this.contFixedEl.offsetHeight - 20) + 'px';
+				(document.documentElement.clientHeight - this.contFixedEl.offsetHeight - 4) + 'px';
 		}
 	},
 	stop: function() {
@@ -459,7 +438,8 @@ ByteBeatClass.prototype = {
 			this.audioRecorder.stop();
 			this.recording = false;
 		}
-		this.sampletime = 0;
+		this.sampleTime = 0;
+		this.clearCanvas();
 		this.time = 0;
 	}
 };

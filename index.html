@@ -19,9 +19,9 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 2.1<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version 2.2<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
-	Example: the br() function bit reverses the input.</p>
+	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 6px ridge #00FF00 ; background-color:#007F00">
@@ -34,20 +34,20 @@
 				<button onclick="byteBeat.play()">▶</button>
 				<button onclick="byteBeat.stop()">■</button>
 				<button onclick="byteBeat.gotostart()">▩</button>
-				<button onclick="byteBeat.changeScale(true);">+</button>
-				<button onclick="byteBeat.changeScale(false);">-</button>
+				<button id="scaleUp" onclick="byteBeat.changeScale(false);">+</button>
+				<button id="scaleDown" onclick="byteBeat.changeScale(true);">-</button>
 				<button onclick="byteBeat.rec()">●</button>
 				<!--<select id="cons-change" onchange="byteBeat.setConstant(+this.selectedOptions[0].value); byteBeat.refeshCalc();"> <span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>
 		<option value="false">Non-Consant Update (less lag)</option>
 		<option value="true">Constant Update</option>
 	</select>-->
-				<select id="mode-change" onchange="byteBeat.setMode(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
+				<!--select id="mode-change" onchange="byteBeat.setMode(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="0" title="Creates a diagram based off of visnut's videos.">Diagram</option>
 					<option value="1" title="A plot is created based off of the samples">Points</option>
 					<option value="2" title="For every sample, Red is S, green is S>>8, and blue is S>>16.">Grid</option>
-					<!--option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option-->
+					option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option
 					<option value="10"title="Turnes off the visualizer entirely if the song lags as it loads a new page.">Anti-Lag (none)</option>
-				</select>
+				</select-->
 
 				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
 					<option value="0">ByteBeat</option>
@@ -103,7 +103,7 @@
 			<div id="error"></div>
 			<div id="canvas-container">
 				<canvas id="canvas-main" width="1024" height="256"></canvas>
-				<div id="timecursor" style="display: block; left: 0px;"></div>
+				<!---div id="timecursor" style="display: block; left: 0px;"></div-->
 			</div>
 		</div>
 	<div class="middle container-scroll" align="left" style="max-height: 604px;">
