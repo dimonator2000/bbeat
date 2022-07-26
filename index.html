@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version 2.2<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version b13<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
@@ -37,67 +37,24 @@
 				<button id="scaleUp" onclick="byteBeat.changeScale(false);">+</button>
 				<button id="scaleDown" onclick="byteBeat.changeScale(true);">-</button>
 				<button onclick="byteBeat.rec()">●</button>
-				<!--<select id="cons-change" onchange="byteBeat.setConstant(+this.selectedOptions[0].value); byteBeat.refeshCalc();"> <span style="color: #00ff3f" title="Starred by Chasyxx"> ★ </span>
-		<option value="false">Non-Consant Update (less lag)</option>
-		<option value="true">Constant Update</option>
-	</select>-->
-				<!--select id="mode-change" onchange="byteBeat.setMode(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
-					<option value="0" title="Creates a diagram based off of visnut's videos.">Diagram</option>
-					<option value="1" title="A plot is created based off of the samples">Points</option>
-					<option value="2" title="For every sample, Red is S, green is S>>8, and blue is S>>16.">Grid</option>
-					option value="3" title="Every 4th sample is ignored. The other three follow 8-bit RGB.">RGB_</option
-					<option value="10"title="Turnes off the visualizer entirely if the song lags as it loads a new page.">Anti-Lag (none)</option>
-				</select-->
+
 
 				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
-					<option value="0">ByteBeat</option>
-					<option value="1">Signed</option>
-					<option value="2" title="Notice: numbers are rounded.">Floatbeat</option>
-					<option value="3">BitBeat</option>
-					<option value="4">Logmode</option>
-					<option value="5">div4</option>
+					<option value="0" title="Standard bytebeat.">ByteBeat</option>
+					<option value="1" title="&quot;Standard&quot; bytebeat.">Signed</option>
+					<option value="2" title="Between -1 and 1.">Floatbeat</option>
+					<option value="3" title="uses the first bit. ( other colors are visulizer only. )">BitBeat</option>
+					<option value="4" title="rounds and puts through sin()">Sinmode</option>
+					<option value="5" title="Roolers over at 2048 rather than 256.">2048</option>
+					<option value="6" title="Like Sinmode, but not round and freqency is matched.">SinFreq</option>
+					<option value="7" title="puts through log2()*32">Logmode</option>
+					<option value="8" title="puts through log10()*106.301699">Logmode10</option>
+
 				</select>
 				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate();" value="1000"/>
-				<!--select id="samplerate-change" onchange="byteBeat.setSampleRate(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
-					<option value="1000">1kHz</option>
-					<option value="1250">5/4kHz</option>
-					<option value="1378.225">1378.225Hz</option>
-					<option value="2000">2kHz</option>
-					<option value="2500">5/2kHz</option>
-					<option value="2756.25">2756.25Hz</option>
-					<option value="3000">3kHz</option>
-					<option value="4000">4kHz</option>
-					<option value="5000">5kHz</option>
-					<option value="5512.5">5512.5Hz</option>
-					<option value="6000">6kHz</option>
-					<option value="7000">7kHz</option>
-					<option value="8000">8kHz</option>
-					<option value="10000">10kHz</option>
-					<option value="11025">11kHz</option>
-					<option value="12000">12kHz</option>
-					<option value="16000">16kHz</option>
-					<option value="20000">20kHz</option>
-					<option value="22050">22kHz</option>
-					<option value="24000">24kHz</option>
-					<option value="32000">32kHz</option>
-					<option value="40000">40kHz</option>
-					<option value="44100">44kHz</option>
-					<option value="48000">48kHz</option>
-					<option value="64000">64kHz</option>
-					<option value="88200">88kHz</option>
-					<option value="96000">96kHz</option>
-					<option value="128000">128kHz</option>
-					<option value="256000">256kHz</option>
-					<option value="512000">512kHz</option>
-					<option value="1024000">1MHz</option>
-					<option value="2048000">2MHz</option>
-					<option value="4096000">4MHz</option>
-					<option value="8192000">8MHz</option>
-					<option value="16384000">16MHz</option>
-					<option value="32768000">32MHz</option>
-					<option value="65536000">65MHz</option>
 
-				</select-->
+
+				
 			</div>
 		</div>
 			<div id="error"></div>
@@ -110,10 +67,7 @@
 		<div id="button-info" class="button-toggle" style="border: 8px ridge #00C0ff ; width : 270px">/Enhancements &amp; Update Log\</div>
 		<div id="info" class="paragraph" style="display: none;">
 			<p align="center" style="border: 8px ridge #00FFc0 ; background-color: #007f60">
-				Super-Important<br>
-				Green/cyan = Positive Values <br>
-				Red/pink = Negative Values  <br>
-				( polarity does not invert brightness, only change the color. ) <br><br>
+				Super-Important<br><br>
 
 				SR is the samplerate. Useful to bump songs to higher quality when appiicable, but songs will be bumped back to original quality before going in the library.<br>
 				SR can also be used to change the song depending on the samplerate too, which can be intresting.<br />
@@ -124,6 +78,7 @@
 				<!--The Advanced Freqency Options are added from the start of <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out! it's where the codes on here are!<br>-->
 				Subreddit: <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out!
 				The blue reprsents the output divided by 256.<br>
+				The red reprsents the output divided by 65536.<br>
 				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the freqency
 			</p>
 			<p align="center" style="border: 8px ridge #003f30 ; background-color: #001f18">
@@ -141,6 +96,8 @@
 				v2.0 ----- [10]: -- Celebrating build 10, and v2! RGB_ vTWO was made, 2048 and logmode were added in memorial of kolBOSa's deleted player,<br />
 				---------- [10] --- And more expansion is done. And it came after 3 builds. That says something about the speed of devlopment.<br />
 				v2.1 ----- [11]: -- Made links store the beat type.
+				v2.2 ----- [12]: -- Revamped the visualizer.
+				b13 ------ [13]: -- v3 is b13, and the player version is now based off the build. Enhanced the visualizer.
 
 			</p>
 		</div>
@@ -327,7 +284,7 @@
 						</li>
 						<li>
 							by <a href="http://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html?showComment=1318368575135#c8615755234789420078" target="_blank">Ola</a><br>
-							<code>2*(1-(t+10&gt;&gt;(t&gt;&gt;9&amp;t&gt;&gt;14)&amp;t&gt;&gt;4&amp;-2))*((t&gt;&gt;10^t+(t&gt;&gt;6&amp;127)&gt;&gt;10)&amp;1)*32+128</code>
+							<code type="1">2*(1-(t+10&gt;&gt;(t&gt;&gt;9&amp;t&gt;&gt;14)&amp;t&gt;&gt;4&amp;-2))*((t&gt;&gt;10^t+(t&gt;&gt;6&amp;127)&gt;&gt;10)&amp;1)*32</code> <span style="color: #dfefff; background-color: #5f677f ">Signed</span><br />
 						</li>
 						<li>
 							Robot out of control (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=6#c388680" target="_blank">Frenzy</a>)<br>
@@ -411,7 +368,7 @@
 						</li>
 						<li>
 							SIN non-math (by <a href="https://github.com/erlehmann/algorithmic-symphonies/blob/master/sine-nomath/" target="_blank">Erlehmann</a>)<br>
-							<code>(t&amp;15)*(0-t&amp;15)*(((t&amp;16)&gt;&gt;3)-1)*128/65+128</code>
+							<code type="1">(t&amp;15)*(0-t&amp;15)*(((t&amp;16)&gt;&gt;3)-1)*128/65</code><span style="color: #dfefff; background-color: #5f677f ">Signed</span>
 						</li>
 					</ul>
 				</div>
@@ -435,7 +392,7 @@
 							By sARpnt:
 							          <!--                                               V 8 control chars. before the ć --><br />
 							Menacing: <code samplerate="44100">r=11e3,s=int(t/r+1)%32,b='ć&oacute;&oacute;&oacute;ć&Icirc;&Icirc;&Icirc;&Icirc;&Atilde;&Atilde;&Atilde;&Atilde;&Atilde;&Atilde;&Icirc;&deg;&deg;&deg;&deg;&brvbar;&brvbar;&brvbar;&brvbar;'.charCodeAt(s)/300*t%512,160/3*(sin(t%r/(t%r/100+8))+1)*(s%2+.6*!(s%16))+b%(400+128*sin(b/(21+sin(t/r))))%256/3+(.999*(0xDBC97749&amp;2**s?2*b:b)%128&gt;64+15*sin(t/1e4)?64-t/r%1*32:0)</code> <span class="samplerate">44kHz</span><br />
-							Arpeggiator fun<span style="color: #fffddf; background-color: #e4e51d; color: black "> Laggy visualization </span>:<code samplerate="44100">i=int,c='charCodeAt',b=t/441e3*16,q=b%.5,h=x=&gt;t/2210*2**((x-36)/12)%1,w=(x,y=0)=&gt;(h(x)-sin(y*2+b*PI)/8&gt;.5)*30,s=i(b*2)%32,a=abs(8-i(b*8)%16),t||(v=.5),v=3.65*v*(1-v),sin(q/(q/100+3e-4))*40*!(54878&amp;1&lt;&lt;s%16)+(v-.5)*70*max(0,1-(b+1)%2*.77)+w(s==6&amp;&amp;i(b*6%6)==1?85:s==14&amp;&amp;q&lt;.25?78:'SSSSSSSQOOONNOLJLLLLLNLJIIIGGGGG'[c](s),s==5)+w('@@@@@@BCEEECCBCCEEEEECEEBBB@@@@@'[c](s))+h('pnkgrnkipmigpnkg'[c](a%4+i(s/8)*4)+12*-i(a/4))*27+99</code> <span class="samplerate">44kHz</span>
+							Arpeggiator fun:<code samplerate="44100">i=int,c='charCodeAt',b=t/441e3*16,q=b%.5,h=x=&gt;t/2210*2**((x-36)/12)%1,w=(x,y=0)=&gt;(h(x)-sin(y*2+b*PI)/8&gt;.5)*30,s=i(b*2)%32,a=abs(8-i(b*8)%16),t||(v=.5),v=3.65*v*(1-v),sin(q/(q/100+3e-4))*40*!(54878&amp;1&lt;&lt;s%16)+(v-.5)*70*max(0,1-(b+1)%2*.77)+w(s==6&amp;&amp;i(b*6%6)==1?85:s==14&amp;&amp;q&lt;.25?78:'SSSSSSSQOOONNOLJLLLLLNLJIIIGGGGG'[c](s),s==5)+w('@@@@@@BCEEECCBCCEEEEECEEBBB@@@@@'[c](s))+h('pnkgrnkipmigpnkg'[c](a%4+i(s/8)*4)+12*-i(a/4))*27+99</code> <span class="samplerate">44kHz</span>
 						</li>
 						<li>
 							No Limit (non-SIN version) (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=9#c388931" target="_blank">Mu6k</a>, <a href="http://www.pouet.net/topic.php?which=8357&amp;page=10#c388986" target="_blank">Ryg</a>)<br>
@@ -445,7 +402,7 @@
 							by <a href="https://www.reddit.com/r/bytebeat/comments/20km9l/cool_equations/" target="_blank">[Deleted]</a><br>
 							<code>w=[1,2,3,4,3,4,1][(t&gt;&gt;13)%7]*t,(w%50.01+w%40.1+w%30.1+w%60.01)</code> <span class="yellow">★</span> "Harmony v2". Based off of mu6k's "Long Line Theory"<br>
 							<code>a=[1,1,2,3,1,1,2,3,1,1,2,4,4,4,5,5,5][(t&gt;&gt;12)%17],b=[5,4,3,2][(t&gt;&gt;16)%4],(t*b/a)%50.1+(t*b/a)%50</code> - Array song<br>
-							<code>Math.sin(Math.sin(t/100)-t/((2+(t&gt;&gt;10&amp;t&gt;&gt;12)%9)))*64+128</code> - Trill
+							<code type="2">Math.sin(Math.sin(t/100)-t/((2+(t&gt;&gt;10&amp;t&gt;&gt;12)%9)))</code> - Trill <span style="color: #158aff; background-color: #0d2b85 ">Floatbeat</span>
 						</li>
 						<li>
 							by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=21#c401841" target="_blank">Mu6k</a><br>
@@ -457,8 +414,8 @@
 							<code>t*(1+"4451"[t&gt;&gt;13&amp;3]/10)&amp;t&gt;&gt;9+(.003*t&amp;3)</code>
 						</li>
 						<li>
-							ripthisentry.txt, tune#3 (by <a href="https://battleofthebits.org/arena/Entry/ripthisentry.txt/32559/" target="_blank">raphaelgoulart</a>)<br>
-							<code title="Click to play this code">n=[1,0,1,0,2,2,1,0,1,0,2,2,1,0,2,2],freq=n[Math.floor(t/500)%16]*2,mod=t/15e3,Math.sin(t*freq/40.7+Math.sin(t*freq/40.7)*mod)*64+64</code>
+							ripthisentry.txt, tune#3 (by <a href="https://battleofthebits.org/arena/Entry/ripthisentry.txt/32559/" target="_blank">raphaelgoulart</a>)<br><!-- <span style="color: #dfefff; background-color: #5f677f ">Signed</span>-->
+							<code type="2" title="Click to play this code">n=[1,0,1,0,2,2,1,0,1,0,2,2,1,0,2,2],freq=n[Math.floor(t/500)%16]*2,mod=t/15e3,Math.sin(t*freq/40.7+Math.sin(t*freq/40.7)*mod)</code><span style="color: #158aff; background-color: #0d2b85 ">Floatbeat</span>
 						</li>
 						<li>
 							Never Gonna Give You Up (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=12#c389109" target="_blank">Gasman</a>)<br>
@@ -479,7 +436,7 @@
 						</li>
 						<li>
 							G minor Bach, non-COS version (by <a href="http://www.pouet.net/topic.php?which=8357&amp;page=11#c389045" target="_blank">Skurk</a>)<br>
-							<code>30*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(t&gt;&gt;9)/12-7)</code> <span class="yellow">★</span>
+									<code>40.7436654*t*Math.pow(2,"B*918/916-918/91B*918/916-918/91&gt;*;2:1;26/;2:1;2&gt;*;2:1;26/;2:1;2A*;291;28/;291;2A*;291;28/;291;2B*=-;,=-91=-;,=-B*=-;,=-91=-;,=-E*&gt;6=4&gt;692&gt;6=4&gt;6E*&gt;6=4&gt;692&gt;6=4&gt;6D*&lt;3:1&lt;380&lt;3:1&lt;3D*&lt;3:1&lt;380&lt;3:1&lt;3D(=4&lt;3=481=4&lt;3=4D(=4&lt;3=481=4&lt;3=4B(:18/:16.:18/:1B(:18/:16.:18/:1B&amp;;2:1;26/;2:1;2B&amp;;2:1;26/;2:1;2@&amp;;,9*;,8/;,9*;,@&amp;;,9*;,8/;,9*;,@%=-;,=-91=-;,=-@%=-;,=-91=-;,=-&gt;*=-;,=-92=-;,=-&gt;*=-;,=-92=-;,=-&gt;,8/6-8/428/6-8/&gt;,8/6-8/428/6-8/=-412/4192412141=-412/4192412141;-6341613/634163;-6341613/634163;,8/6-8/528/6-8/;,8/6-8/528/6".charCodeAt(t&gt;&gt;9)/12-7)</code> <span class="yellow">★</span>
 						</li>
 						<li>
 							Rabid symphony (by <a href="https://www.reddit.com/r/programming/comments/mbakl/experimental_oneline_algorithmic_music/c2zn7qv/" target="_blank">Rabidcow</a>)<br>

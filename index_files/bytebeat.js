@@ -113,21 +113,32 @@ ByteBeatClass.prototype = {
 		var height = this.canvHeight;
 		var scale = this.scale;
 		var pageWidth = width >> scale;
-		var pageIdx = this.pageIdx
+		var pageIdx = this.pageIdx;
 		var x = pageWidth * pageIdx;
 		this.ctx.clearRect(x, 0, pageWidth, height);
 		this.imageData = this.ctx.getImageData(0, 0, width, height);
 		var imageData = this.imageData.data;
 		var bufLen = sampleData.length;
-		for (var i = 0; i < bufLen; i++) { 
-			var pos = (width * (256-sampleData[i]) +
-				(pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) << 2;
-			imageData[pos++] = imageData[pos++] = imageData[pos++] = imageData[pos] = 255;
-			if (scale !== 0) {
-				this.pageIdx = pageIdx === (1 << scale) - 1 ? 0 : pageIdx + 1
-            }
 
-	}
+				for (var i = 0; i < bufLen; i++) {
+					var pos1 = /*vert*/(width * (256 - (sampleData[i]) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
+					var pos2 = /*vert*/(width * (256 - (sampleData[i] >> 8) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
+					var pos3 = /*vert*/(width * (256 - (sampleData[i] >> 16) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
+
+					imageData[pos3 + 0] = 255;
+					imageData[pos1 + 1] = 255;
+					imageData[pos2 + 2] = 255;
+					imageData[pos1 + 3] = imageData[pos2 + 3] = imageData[pos3 + 3] = 255;
+
+					if (scale !== 0) {
+						this.pageIdx = pageIdx === (1 << scale) - 1 ? 0 : pageIdx + 1
+					}
+
+
+				}
+
+
+
 		this.ctx.putImageData(this.imageData, 0, 0);
 
 	},
@@ -158,9 +169,49 @@ ByteBeatClass.prototype = {
 				var resampledTime = (this.sampleSize * this.time) | 0;
 				if (this.sampleTime == 0) {
 					chData[i] = sampleData[i] = 0;
-				} else if(lastSample !== resampledTime) {
-					var value = this.func(resampledTime) & 255;
-					sampleData[i] = value;
+				} else if (lastSample !== resampledTime) {
+					var value = this.func(resampledTime);
+					switch (this.type) { 
+						default: case 0:
+							sampleData[i] = value;
+
+							value &= 255; break;
+						case 1:
+							sampleData[i] = value+128;
+
+							value = (value + 128) & 255; break;
+						case 2:
+							sampleData[i] = value * 128 + 128;
+
+							value = value * 128 + 128; break;
+						case 3:
+							sampleData[i] = ((value & 1 ? 192 : 64) << 16) + ((value & 2 ? 192 : 64) << 0) + ((value & 4 ? 192 : 64) << 8)
+
+							value = (value & 1) * 255; break;
+						case 4:
+							sampleData[i] = Math.sin(value | 0) *128 + 128;
+
+							value = Math.sin(value | 0) * 128 + 128; break;
+						case 5:
+							sampleData[i] = value>>2;
+
+							value = value>>2 & 255; break;
+						case 6:
+							sampleData[i] = Math.sin((value * Math.PI)/128) *128 + 128;
+
+							value = Math.sin((value * Math.PI) / 128) * 128 + 128; break;
+						
+						case 7:
+							sampleData[i] = Math.log2(value)*32;
+
+							value = Math.log2(value) * 32 & 255; break;
+						case 8:
+							sampleData[i] = Math.log2(value) * 32;
+
+							value = Math.log10(value) * 106.301699 & 255; break;
+					}
+
+
 					chData[i] = lastOutput = value / 127 - 1;
 				} else {
 					sampleData[i] = 0;
@@ -328,6 +379,7 @@ ByteBeatClass.prototype = {
 		var oldF = this.func;
 		try {
 			var PI = Math.PI;
+			
 			int = floor = function (v) { return Math.floor(v) };
 			sin = function (v) { return Math.sin(v) };
 			cos = function (v) { return Math.cos(v) };
@@ -367,36 +419,12 @@ ByteBeatClass.prototype = {
 				}
 				return sum;
 			} 
-		
 
-			/*switch(this.type) { // planned to simplify things, need to fix div4 bug
-				default:
-					console.error("Error: beat type not found!");
-					eval('byteBeat.func = function( t ) { return t&t>>8 ; }');
-
-				case 0: eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
-				case 1: eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') +128; }');
-				case 2: eval('byteBeat.func = function(' + funcvars + ') { return max(min(((' + formula + ')* 128 + 128),255),0); }');0
-				case 3: eval('byteBeat.func = function(' + funcvars + ') { return ((' + formula + ')&1)*255; }');
-				case 4: eval('byteBeat.func = function(' + funcvars + ') { return sin((' + formula + ')%256-128)*128+128; }');
-				case 5: eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') / 4; }');
+			
 
 
-            }*/
 
-			if (this.type === 0) {
-				eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
-			} else if (this.type === 1) {
-				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') +128; }');
-			} else if (this.type === 2) {
-				eval('byteBeat.func = function(' + funcvars + ') { return max(min(((' + formula + ')* 128 + 128),255),0); }');
-			} else if (this.type === 3) {
-				eval('byteBeat.func = function(' + funcvars + ') { return ((' + formula + ')&1)*255; }');
-			} else if (this.type === 4) {
-				eval('byteBeat.func = function(' + funcvars + ') { return sin((' + formula + ')%256-128)*128+128; }');
-			} else {
-				eval('byteBeat.func = function(' + funcvars + ') { return (' + formula + ') / 4; }');
-            }
+			eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
 
 			this.func(0);
 		} catch(err) {
@@ -439,6 +467,7 @@ ByteBeatClass.prototype = {
 			this.recording = false;
 		}
 		this.sampleTime = 0;
+		this.pageIdx = 0;
 		this.clearCanvas();
 		this.time = 0;
 	}
