@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version b13<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version b14<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
@@ -69,9 +69,9 @@
 			<p align="center" style="border: 8px ridge #00FFc0 ; background-color: #007f60">
 				Super-Important<br><br>
 
-				SR is the samplerate. Useful to bump songs to higher quality when appiicable, but songs will be bumped back to original quality before going in the library.<br>
-				SR can also be used to change the song depending on the samplerate too, which can be intresting.<br />
-				br() bit reverses it's input.<br>
+				
+				br() bit reverses it's input (8-BITS ONLY).<br>
+				bre() bit reverses it's input. (32BIT)
 			</p>
 			<p align="center" style="border: 8px ridge #007f60 ; background-color: #003f30">
 				Important<br>
@@ -83,10 +83,10 @@
 			</p>
 			<p align="center" style="border: 8px ridge #003f30 ; background-color: #001f18">
 				General<br>
-				If Lag happens when the player reaches the aend of the page, change the mode to Anti-Lag.<br>
-				the SR variable can help fix laggy songs quickly ( if any lag is from the audio. )<br>
+				
+				
 
-				Library version: 3
+				Library version: 1
 			</p>
 			<p align="left" style="border: 1px solid white">
 				UPDATE LOG<br>
@@ -97,7 +97,8 @@
 				---------- [10] --- And more expansion is done. And it came after 3 builds. That says something about the speed of devlopment.<br />
 				v2.1 ----- [11]: -- Made links store the beat type.
 				v2.2 ----- [12]: -- Revamped the visualizer.
-				b13 ------ [13]: -- v3 is b13, and the player version is now based off the build. Enhanced the visualizer.
+				------ [b13] ------ v3 is b13, and the player version is now based off the build. Enhanced the visualizer.
+				------ [b14] ------ The visualizer enhancement broke SR, and since it isn't used, it has been removed.
 
 			</p>
 		</div>
@@ -576,11 +577,11 @@
 				</div>
 				<div id="library-low" class="paragraph" style="display: none;">
 					<p>
-						This includes songs made with new features (SR,br(),sinf().)
+						This includes songs made with new features (br(),sinf().)
 						<ul>
 							<li>
-								Example: Serpinski's Concert<br />
-								<code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*SR</code>
+								Empty. make something for this!<br />
+								
 							</li>
 						</ul>
 				</div>
@@ -916,7 +917,7 @@
 					<ul>
 						<li>
 							Sirpinski's Concert<br />
-							<code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*SR</code><span class="samplerate">5/2kHz</span>
+							<code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*1250</code><span class="samplerate">5/2kHz</span>
 
 						</li>
 					</ul>

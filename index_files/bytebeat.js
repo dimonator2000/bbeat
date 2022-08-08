@@ -10,6 +10,7 @@ function $id(id) {
 	return document.getElementById(id);
 }
 
+
 function $toggle(el) {
 	var isHidden = el.style.display;
 	if(isHidden) {
@@ -63,10 +64,11 @@ function ByteBeatClass() {
 		this.refeshCalc();
 	}.bind(this));
 
-	//potentally set functions early
 
 
 	int = floor = function (v) { return Math.floor(v) };
+	ceiling = function (v) { return Math.ceiling(v) };
+	round = function (v) { return Math.round(v) };
 	sin = function (v) { return Math.sin(v) };
 	cos = function (v) { return Math.cos(v) };
 	tan = function (v) { return Math.tan(v) };
@@ -428,7 +430,7 @@ ByteBeatClass.prototype = {
 
 
 			var PI = Math.PI;
-			var SR = this.sampleRate;
+			// var SR = this.sampleRate;
 			eval('byteBeat.func = function( t ) { return ' + formula + '; }');
 
 			this.func(0);
