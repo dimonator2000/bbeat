@@ -62,6 +62,40 @@ function ByteBeatClass() {
 		this.initCanvas();
 		this.refeshCalc();
 	}.bind(this));
+
+	//potentally set functions early
+
+
+	int = floor = function (v) { return Math.floor(v) };
+	sin = function (v) { return Math.sin(v) };
+	cos = function (v) { return Math.cos(v) };
+	tan = function (v) { return Math.tan(v) };
+	abs = function (v) { return Math.abs(v) };
+
+	sinh = function (v) { return Math.sinh(v) };
+	cosh = function (v) { return Math.cosh(v) };
+	tanh = function (v) { return Math.tanh(v) };
+
+	asin = function (v) { return Math.asin(v) };
+	acos = function (v) { return Math.acos(v) };
+	atan = function (v) { return Math.atan(v) };
+
+	sinf = function (v) { return Math.sin(v / (128 / Math.PI)) };
+	cosf = function (v) { return Math.cos(v / (128 / Math.PI)) };
+	tanf = function (v) { return Math.tan(v / (256 / Math.PI)) };
+
+	asinf = function (v) { return Math.asin(v / (128 / Math.PI)) };
+	acosf = function (v) { return Math.acos(v / (128 / Math.PI)) };
+	atanf = function (v) { return Math.atan(v / (256 / Math.PI)) };
+
+	sinhf = function (v) { return Math.sinh(v / (128 / Math.PI)) };
+	coshf = function (v) { return Math.cosh(v / (128 / Math.PI)) };
+	tanhf = function (v) { return Math.tanh(v / (256 / Math.PI)) };
+
+	random = function (v) { return Math.random(v) };
+	max = function (v, w) { return Math.max(v, w) };
+	min = function (v, w) { return Math.min(v, w) };
+	pow = function (v, w) { return Math.pow(v, w) };
 }
 ByteBeatClass.prototype = {
 	get saveData() {
@@ -375,41 +409,11 @@ ByteBeatClass.prototype = {
 	},
 	refeshCalc: function() {
 		var formula = this.inputEl.innerText;
-		var funcvars="t, SR"
 		var oldF = this.func;
 		try {
-			var PI = Math.PI;
+
 			
-			int = floor = function (v) { return Math.floor(v) };
-			sin = function (v) { return Math.sin(v) };
-			cos = function (v) { return Math.cos(v) };
-			tan = function (v) { return Math.tan(v) };
-			abs = function (v) { return Math.abs(v) };
 
-			sinh = function (v) { return Math.sinh(v) };
-			cosh = function (v) { return Math.cosh(v) };
-			tanh = function (v) { return Math.tanh(v) };
-
-			asin = function (v) { return Math.asin(v) };
-			acos = function (v) { return Math.acos(v) };
-			atan = function (v) { return Math.atan(v) };
-
-			sinf = function (v) { return Math.sin(v / (128 / Math.PI)) };
-			cosf = function (v) { return Math.cos(v / (128 / Math.PI)) };
-			tanf = function (v) { return Math.tan(v / (256 / Math.PI)) };
-
-			asinf = function (v) { return Math.asin(v / (128 / Math.PI)) };
-			acosf = function (v) { return Math.acos(v / (128 / Math.PI)) };
-			atanf = function (v) { return Math.atan(v / (256 / Math.PI)) };
-
-			sinhf = function (v) { return Math.sinh(v / (128 / Math.PI)) };
-			coshf = function (v) { return Math.cosh(v / (128 / Math.PI)) };
-			tanhf = function (v) { return Math.tanh(v / (256 / Math.PI)) };
-
-			random = function (v) { return Math.random(v) };
-			max = function (v, w) { return Math.max(v, w) };
-			min = function (v, w) { return Math.min(v, w) };
-			pow = function (v, w) { return Math.pow(v, w) };
 			b = (c, d, e) => ((e & c) ? d : 0),
 			br = (u) => b(128, 1, u) + b(64, 2, u) + b(32, 4, u) + b(16, 8, u) + b(8, 16, u) + b(4, 32, u) + b(2, 64, u) + b(1, 128, u);
 			bre = function (u) {
@@ -423,8 +427,9 @@ ByteBeatClass.prototype = {
 			
 
 
-
-			eval('byteBeat.func = function(' + funcvars + ') { return ' + formula + '; }');
+			var PI = Math.PI;
+			var SR = this.sampleRate;
+			eval('byteBeat.func = function( t ) { return ' + formula + '; }');
 
 			this.func(0);
 		} catch(err) {

@@ -896,31 +896,6 @@
 							<code>(t/(t&amp;t&gt;&gt;10))*256</code>
 						</li>
 						<li>
-							The Castle<br>
-							<code samplerate="44100">
-								time = t / 32000,
-								fract = function(x) {
-								return x % 1
-								},
-								main = function(time) {
-								speed = 1.5;
-								pitch = 0;
-								melody_notes = [
-								[0, 4, 7, 4, 0, 4, 7, 4, -1, 4, 7, 4, -1, 4, 7, 9],
-								[-12, -8, -12, -8, -12, -8, -12, -8, -13, -8, -13, -8, -13, -8, -13, -8],
-								[12 + 12, 11 + 12, 9 + 12, 7 + 12, 4 + 12, 9 + 12, 11 + 12, 14 + 12]
-								];
-								melody = 0;
-								for (i = 0; i &lt; melody_notes.length; i++) {
-								melody_tune = pow(pow(2, 1 / 12), (melody_notes[i][floor(time * speed) % melody_notes[i].length] + pitch) - 49) * 44000;
-								melody += tan(time / 8* melody_tune) * (1 - fract(time * speed)) * .25;
-								}
-								return (melody / melody_notes.length);
-								},
-								main(time)
-							</code><span class="samplerate">44kHz</span>
-						</li>
-						<li>
 							The Destructor<br>
 							<code samplerate="24000">(t&gt;&gt;7)*((((((((((t&amp;t/256)&amp;t/255)&amp;t/254)&amp;t/253)&amp;t/252)&amp;t/251)&amp;t/250)|(t&gt;&gt;4))^(t&gt;&gt;10))&amp;240)</code><span class="samplerate">24kHz</span>
 						</li>
