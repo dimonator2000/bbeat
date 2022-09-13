@@ -19,10 +19,14 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version b14<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version b15<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
+				<br>
+				<div id="RAW-warning", style="color:#ff8b06", align="center"></div>
+				<br>
+				<br>
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 6px ridge #00FF00 ; background-color:#007F00">
 			<div class="buttons-control">
@@ -49,6 +53,7 @@
 					<option value="6" title="Like Sinmode, but not round and freqency is matched.">SinFreq</option>
 					<option value="7" title="puts through log2()*32">Logmode</option>
 					<option value="8" title="puts through log10()*106.301699">Logmode10</option>
+					<option value="9" title="Pure eval() function, otherwise normal bytebeat.">RAW</option>
 
 				</select>
 				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate();" value="1000"/>
@@ -70,7 +75,7 @@
 				Super-Important<br><br>
 
 				
-				br() bit reverses it's input (8-BITS ONLY).<br>
+				br() bit reverses it's input (8BIT).<br>
 				bre() bit reverses it's input. (32BIT)
 			</p>
 			<p align="center" style="border: 8px ridge #007f60 ; background-color: #003f30">
@@ -99,6 +104,7 @@
 				v2.2 ----- [12]: -- Revamped the visualizer.
 				------ [b13] ------ v3 is b13, and the player version is now based off the build. Enhanced the visualizer.
 				------ [b14] ------ The visualizer enhancement broke SR, and since it isn't used, it has been removed.
+				------ [b15] ------ Added RAW mode, and added QOL sqrt() and cbrt().
 
 			</p>
 		</div>

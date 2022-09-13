@@ -67,6 +67,8 @@ function ByteBeatClass() {
 
 
 	int = floor = function (v) { return Math.floor(v) };
+	sqrt = function (v) { return Math.floor(v) };
+	cbrt = function (v) { return Math.floor(v) };
 	ceiling = function (v) { return Math.ceiling(v) };
 	round = function (v) { return Math.round(v) };
 	sin = function (v) { return Math.sin(v) };
@@ -150,16 +152,18 @@ ByteBeatClass.prototype = {
 		var scale = this.scale;
 		var pageWidth = width >> scale;
 		var pageIdx = this.pageIdx;
-		var x = pageWidth * pageIdx;
-		this.ctx.clearRect(x, 0, pageWidth, height);
+		var sampleTime = this.sampleTime;
+		var x = () => (pageWidth * pageIdx);
+		this.ctx.clearRect(x(), 0, pageWidth * sampleTime, height);
 		this.imageData = this.ctx.getImageData(0, 0, width, height);
 		var imageData = this.imageData.data;
 		var bufLen = sampleData.length;
 
-				for (var i = 0; i < bufLen; i++) {
-					var pos1 = /*vert*/(width * (256 - (sampleData[i]) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
-					var pos2 = /*vert*/(width * (256 - (sampleData[i] >> 8) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
-					var pos3 = /*vert*/(width * (256 - (sampleData[i] >> 16) & 255) + /*horiz*/ (pageWidth * pageIdx + ((pageWidth * i / bufLen) | 0))) /*Split colors*/ << 2;
+				for (var i = 0; i < (bufLen / sampleTime); i++) {
+					var horiz = (pageWidth * (pageIdx | 0) + ((pageWidth * (i * sampleTime) / (bufLen / sampleTime)) | 0));
+					var pos1 = /*vert*/(width * (256 - (sampleData[i]) & 255) + /*horiz*/ horiz) /*Split colors*/ << 2;
+					var pos2 = /*vert*/(width * (256 - (sampleData[i] >> 8) & 255) + /*horiz*/ horiz) /*Split colors*/ << 2;
+					var pos3 = /*vert*/(width * (256 - (sampleData[i] >> 16) & 255) + /*horiz*/ horiz) /*Split colors*/ << 2;
 
 					imageData[pos3 + 0] = 255;
 					imageData[pos1 + 1] = 255;
@@ -167,7 +171,8 @@ ByteBeatClass.prototype = {
 					imageData[pos1 + 3] = imageData[pos2 + 3] = imageData[pos3 + 3] = 255;
 
 					if (scale !== 0) {
-						this.pageIdx = pageIdx === (1 << scale) - 1 ? 0 : pageIdx + 1
+						this.pageIdx = pageIdx === (1 << scale) - 1 ? 0 : pageIdx + sampleTime
+						this.ctx.clearRect(x(), 0, pageWidth * sampleTime, height);
 					}
 
 
@@ -208,7 +213,7 @@ ByteBeatClass.prototype = {
 				} else if (lastSample !== resampledTime) {
 					var value = this.func(resampledTime);
 					switch (this.type) { 
-						default: case 0:
+						default: case 0: case 9:
 							sampleData[i] = value;
 
 							value &= 255; break;
@@ -404,13 +409,14 @@ ByteBeatClass.prototype = {
 			this.audioRecorder.start();
 			this.recording = true;
 			this.chunks = [];
-			if (this.sampletime = 0) {
+			if (this.sampletime != 1) {
 				this.play();
 			}
 		}
 	},
 	refeshCalc: function() {
 		var formula = this.inputEl.innerText;
+		var warning = $id('RAW-warning');
 		var oldF = this.func;
 		try {
 
@@ -431,7 +437,13 @@ ByteBeatClass.prototype = {
 
 			var PI = Math.PI;
 			// var SR = this.sampleRate;
+			if ( this.type != 9) {
 			eval('byteBeat.func = function( t ) { return ' + formula + '; }');
+			warning.innerHTML='<br>'
+			} else {
+				eval('byteBeat.func = function( t ) { ' + formula + ' }');
+				warning.innerHTML='Notice: in RAW mode, you will need to add your own return command.'
+			}
 
 			this.func(0);
 		} catch(err) {
