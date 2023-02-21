@@ -69,7 +69,7 @@ function ByteBeatClass() {
 	int = floor = function (v) { return Math.floor(v) };
 	sqrt = function (v) { return Math.floor(v) };
 	cbrt = function (v) { return Math.floor(v) };
-	ceiling = function (v) { return Math.ceiling(v) };
+	ceiling = ceil = function (v) { return Math.ceiling(v) };
 	round = function (v) { return Math.round(v) };
 	sin = function (v) { return Math.sin(v) };
 	cos = function (v) { return Math.cos(v) };
@@ -226,7 +226,7 @@ ByteBeatClass.prototype = {
 
 							value = value * 128 + 128; break;
 						case 3:
-							sampleData[i] = ((value & 1 ? 192 : 64) << 16) + ((value & 2 ? 192 : 64) << 0) + ((value & 4 ? 192 : 64) << 8)
+							sampleData[i] = ((value & 1 ? 192 : 0) << 16) + ((value & 2 ? 224 : 0) << 0) + ((value & 4 ? 240 : 0) << 8)
 
 							value = (value & 1) * 255; break;
 						case 4:
@@ -439,10 +439,10 @@ ByteBeatClass.prototype = {
 			// var SR = this.sampleRate;
 			if ( this.type != 9) {
 			eval('byteBeat.func = function( t ) { return ' + formula + '; }');
-			warning.innerHTML='<br>'
+			warning.innerHTML=''
 			} else {
 				eval('byteBeat.func = function( t ) { ' + formula + ' }');
-				warning.innerHTML='Notice: in RAW mode, you will need to add your own return command.'
+				warning.innerHTML='Notice: in RAW mode, you will need to add your own return command.<br>'
 			}
 
 			this.func(0);

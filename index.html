@@ -19,13 +19,11 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version b15<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Version b16<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
-				<br>
 				<div id="RAW-warning", style="color:#ff8b06", align="center"></div>
-				<br>
 				<br>
 		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
 		<div align="center" style="border: 6px ridge #00FF00 ; background-color:#007F00">
@@ -37,23 +35,23 @@
 				<button onclick="byteBeat.up()">speed ▲</button>
 				<button onclick="byteBeat.play()">▶</button>
 				<button onclick="byteBeat.stop()">■</button>
-				<button onclick="byteBeat.gotostart()">▩</button>
+				<button onclick="byteBeat.gotostart()">|&lt;</button>
 				<button id="scaleUp" onclick="byteBeat.changeScale(false);">+</button>
 				<button id="scaleDown" onclick="byteBeat.changeScale(true);">-</button>
-				<button onclick="byteBeat.rec()">●</button>
+				<!--button onclick="byteBeat.rec()">●</button-->
 
 
 				<select id="beatType-change" onchange="byteBeat.setBeatType(+this.selectedOptions[0].value); byteBeat.refeshCalc();">
-					<option value="0" title="Standard bytebeat.">ByteBeat</option>
-					<option value="1" title="&quot;Standard&quot; bytebeat.">Signed</option>
+					<option value="0" title="Standard bytebeat. (x)">ByteBeat</option>
+					<option value="1" title="&quot;Standard&quot; bytebeat. (x-127)">Signed</option>
 					<option value="2" title="Between -1 and 1.">Floatbeat</option>
-					<option value="3" title="uses the first bit. ( other colors are visulizer only. )">BitBeat</option>
+					<option value="3" title="uses the first bit. ( Red is the heard bit, green and blue are just colors )">BitBeat</option>
 					<option value="4" title="rounds and puts through sin()">Sinmode</option>
-					<option value="5" title="Roolers over at 2048 rather than 256.">2048</option>
-					<option value="6" title="Like Sinmode, but not round and freqency is matched.">SinFreq</option>
+					<option value="5" title="Rolls over at 2048 rather than 256.">2048</option>
+					<option value="6" title="Like Sinmode, but not rounded and freqency is matched.">SinFreq</option>
 					<option value="7" title="puts through log2()*32">Logmode</option>
 					<option value="8" title="puts through log10()*106.301699">Logmode10</option>
-					<option value="9" title="Pure eval() function, otherwise normal bytebeat.">RAW</option>
+					<option value="9" title="Pure eval() function, without a return.">RAW</option>
 
 				</select>
 				<input id="input_freq" style="width: 64px" type="number" onchange="byteBeat.setSampleRate();" value="1000"/>
@@ -84,7 +82,7 @@
 				Subreddit: <a href="https://www.reddit.com/r/Enhanced_Bytebeat/">r/Enhanced_Bytebeat.</a> Check it out!
 				The blue reprsents the output divided by 256.<br>
 				The red reprsents the output divided by 65536.<br>
-				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the freqency
+				sinf, cosf, tanf, and more are like sin, cos, etc. but maintaining the fact it loops every 256 "steps", instead of every pi steps.
 			</p>
 			<p align="center" style="border: 8px ridge #003f30 ; background-color: #001f18">
 				General<br>
@@ -105,6 +103,7 @@
 				------ [b13] ------ v3 is b13, and the player version is now based off the build. Enhanced the visualizer.
 				------ [b14] ------ The visualizer enhancement broke SR, and since it isn't used, it has been removed.
 				------ [b15] ------ Added RAW mode, and added QOL sqrt() and cbrt().
+				------ [b16] ------ removed record button. OK
 
 			</p>
 		</div>
@@ -695,7 +694,7 @@
 					</li>
 				</ul>
 			</div>
-			<div id="button-library-C" class="button-toggle" title="My Code, Enhacned or not.">
+			<div id="button-library-C" class="button-toggle" title="Chasyxx's creations.">
 				&nbsp;/Chasyxx\
 			</div>
 			<div id="library-C" class="paragraph" style="display: none;">
@@ -916,16 +915,39 @@
 						</li>
 					</ul>
 				</div>
-				<div id="button-C-C" class="button-toggle" title="Songs made on this player after the Second Pack.">
+				<div id="button-L-P" class="button-toggle">
 					&nbsp;-{Common}-
 				</div>
-				<div id="C-C" class="paragraph" style="display: none;">
+				<div id="L-P" class="paragraph" style="display: none;">
 					<ul>
 						<li>
-							Sirpinski's Concert<br />
-							<code samplerate="1250">br(br(t)&amp;br(t&gt;&gt;8)+(t&gt;&gt;13))*1250</code><span class="samplerate">5/2kHz</span>
-
+							Beat <sup>(i wish i had a better name for this)</sup> <br>
+							<code>(((t*(t&gt;&gt;8|t&gt;&gt;4)&amp;255)*(((-t&gt;&gt;3)&amp;255)/256))/(((t&gt;&gt;(16-(t&gt;&gt;16)))%(1*(1&lt;&lt;(t&gt;&gt;16))))+1))</code>
 						</li>
+						<li>
+							<i>C O R R U P T</i><br>
+							<code>e=(t&gt;&gt;1^t),(((t|t&gt;&gt;4)^e)+(t&gt;&gt;12))^e</code>
+						</li>
+						<li>
+							The Line<br>
+							<code>(t*((t&gt;&gt;18)+(1+(((t&gt;&gt;10)&gt;&gt;((t&gt;&gt;5)&amp;7))&amp;1))))</code>
+						</li>
+						<li>
+							<i>Pulse Beat</i><br> (Both of StephanShi's "trance beat" tracks merged with some effects added on top)
+							<code>(((t&gt;&gt;(t%16?4:6)|t&gt;&gt;(t%128?10:4))|(t&gt;&gt;(t%32?4:3)&amp;(t%128?t&gt;&gt;3:t&gt;&gt;3|t&gt;&gt;9))&gt;&gt;((t&amp;t&gt;&gt;8)^(t&amp;t&gt;&gt;10)))-(t&gt;&gt;17&amp;1?(t&gt;&gt;4&amp;128)?0:128:0))^(t&amp;t&gt;&gt;10)</code>
+						</li>
+						<li>
+							t ^ (xor xor)<br>
+							<code>(t^t+(t&gt;&gt;8))^(t^t+(t&gt;&gt;8))+((t^t+(t&gt;&gt;8))&gt;&gt;8)</code>
+						</li>
+						<li>
+							ddCr&amp;/ hardcore<br>
+							<code samplerate="40000">t/(((t&amp;t&gt;&gt;11)^(t&amp;t&gt;&gt;15)))*256|tan(4e3/(t&amp;16383))</code>
+						</li>
+						<!--li>
+							<br>
+							<code></code>
+						</li-->
 					</ul>
 				</div>
 			</div>
@@ -941,8 +963,8 @@
 		<div id="origin" class="paragraph" style="display: none;">
 			Original program is <a href="http://entropedia.co.uk/generative_music/" target="_blank">8-bit Generative Composer</a> by <a href="http://twitter.com/paul_hayes/" target="_blank">@paul_hayes</a><br />
 			Original fork by SthephanShi / Viraya.<br />
-			an old version of <a href="https://dollchan.net/bytebeat/" target="_blank">StephanShi's Dollchan Composer</a> was forked by йорик / kOlbOSa_exe.<br />
-			<a href="https://21436587.github.io/2143_websites/dollchan_old/" target="_blank">kOlbOSa's player'</a> was then forked by Chase / Chasyxx
+			an old version of <a href="https://dollchan.net/bytebeat/" target="_blank">StephanShi's Dollchan Composer</a> was cloned by йорик / kOlbOSa_exe.<br />
+			<a href="https://21436587.github.io/2143_websites/dollchan_old/" target="_blank">kOlbOSa's clone</a> was then forked by Chase / Chasyxx
 		</div>
 		<a class="link-home" href="https://dollchan.net/" title="Home">&lt;--</a>
 	</div>

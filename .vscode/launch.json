@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-msedge",
+            "type": "msedge",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\KidsT\\OneDrive\\Documents\\GitHub\\Enhanced-Bytebeat\\index.html"
+            "file": "c:\\Users\\Chasy\\OneDrive\\Documents\\GitHub\\Enhanced-Bytebeat\\index.html"
         }
     ]
 }
