@@ -2,7 +2,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<meta name="description" content="Bytebeat music is a very short single-line JS expressions generating musical output. Bytebeat composer is an algorhithmic music generator.">
-	<title>Chasyxx Enhanced</title>
+	<title>bytebeat</title>
 	<link rel="canonical" href="https://dollchan.net/bytebeat/index.html">
 	<link rel="shortcut icon" href="https://dollchan.net/bytebeat/favicon.png">
 	<link rel="stylesheet" type="text/css" href="./index_files/bytebeat.css">
@@ -19,25 +19,25 @@
 	</script>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1013.0">
-	<p align="center">Version b16<br /><br />See enhancements for info about what's diffrent<br />
+	<p align="center">Forked from Chasyxx<br /><br />See enhancements for info about what's diffrent<br />
 	between this and regular bytebeat players like <a href="https://dollchan.net/bytebeat/">StephanShi's.</a><br />
 	Example: the br() function bit reverses the input. <a href="https://github.com/Chasyxx/Enhanced-Bytebeat">Github</a></p>
 	<div class="middle container-fixed">
 				<div id="RAW-warning", style="color:#ff8b06", align="center"></div>
 				<br>
-		<div id="input" contenteditable="">(t*(-t&gt;&gt;7&amp;5)*(t&gt;&gt;8&amp;15)*16&amp;64)+(t&gt;&gt;2&amp;127)<br>/* Cool 1kHz Beat By GetdolphinedLOL */</div>
+		<div id="input" contenteditable="">t&~t>>4</div>
 		<div align="center" style="border: 6px ridge #00FF00 ; background-color:#007F00">
 			<div class="buttons-control">
 
-				<button onclick="byteBeat.rev()">◀</button>
-				<button onclick="byteBeat.down()">speed ▼</button>
-				<button onclick="byteBeat.pause()">||</button>
-				<button onclick="byteBeat.up()">speed ▲</button>
-				<button onclick="byteBeat.play()">▶</button>
-				<button onclick="byteBeat.stop()">■</button>
+				<button onclick="byteBeat.rev()">R</button>
+				<button onclick="byteBeat.down()">SD</button>
+				<button onclick="byteBeat.pause()">P</button>
+				<button onclick="byteBeat.up()">SU</button>
+				<button onclick="byteBeat.play()">P</button>
+				<button onclick="byteBeat.stop()">S</button>
 				<button onclick="byteBeat.gotostart()">|&lt;</button>
-				<button id="scaleUp" onclick="byteBeat.changeScale(false);">+</button>
-				<button id="scaleDown" onclick="byteBeat.changeScale(true);">-</button>
+				<button id="scaleUp" onclick="byteBeat.changeScale(false);">SCU</button>
+				<button id="scaleDown" onclick="byteBeat.changeScale(true);">SCD</button>
 				<!--button onclick="byteBeat.rec()">●</button-->
 
 
