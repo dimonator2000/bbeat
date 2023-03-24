@@ -8,4 +8,4 @@ This player includes new functions to play with! Like `br()`, `bre()`, and more.
 
 To some people, this is against bytebeat; the whole point is to have everything needed in the code itself; if that's what you want, you can use [another player.](https://dollchan.net/bytebeat/) I just want to have some fun making my own \:3
 
-Post your creations [here!](https://www.reddit.com/r/Enhanced_Bytebeat/)
+Post your creations [here!](https://www.reddit.com/r/bytebeat/)
